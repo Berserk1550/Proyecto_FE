@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="registro_emprendedores.css"> -->
+    <link rel="stylesheet" href="registro_emprendedores.css">
 </head>
-
 <body>
 
     <main id="caja_padre">
@@ -68,7 +67,7 @@
 
                 </div>
 
-                <form action="">
+                <form action="" id="formulario">
 
                     <!-- FASE 1 Lmao -->
                     <div id="fase_1">
@@ -184,61 +183,64 @@
                         <h3>Nacionalidad</h3>
 
                         <div id="cont_fase_2">
+                            <div id="caja">
+                                <label>Pais</label>
 
-                            <label>Pais</label>
+                                <select name="paises" id="paises" required>
+                                    <option disabled selected>Selecciona un pais</option>
+                                </select>
+                            </div>
+                            <div id="caja">    
+                                <label>Nacionalidad</label>
 
-                            <select name="paises" id="paises" required>
-                                <option disabled selected>Selecciona un pais</option>
-                            </select>
+                                <span id="nacionalidad" name="nacionalidad"></span>
+                            </div>
+                            <div id="caja">
+                                <label>Departamento (si es de otro pais, elija otro)</label>
 
-                            <label>Nacionalidad</label>
+                                <select id="departamento" name="departamento" required>
+                                    <option disabled selected>Selecciona un departamento</option>
+                                    <option value="Amazonas">Amazonas</option>
+                                    <option value="Antioquia">Antioquia</option>
+                                    <option value="Arauca">Arauca</option>
+                                    <option value="Atlántico">Atlántico</option>
+                                    <option value="Bogotá D.C.">Bogotá D.C.</option>
+                                    <option value="Bolívar">Bolívar</option>
+                                    <option value="Boyacá">Boyacá</option>
+                                    <option value="Caldas">Caldas</option>
+                                    <option value="Caquetá">Caquetá</option>
+                                    <option value="Casanare">Casanare</option>
+                                    <option value="Cauca">Cauca</option>
+                                    <option value="Cesar">Cesar</option>
+                                    <option value="Chocó">Chocó</option>
+                                    <option value="Córdoba">Córdoba</option>
+                                    <option value="Cundinamarca">Cundinamarca</option>
+                                    <option value="Guainía">Guainía</option>
+                                    <option value="Guaviare">Guaviare</option>
+                                    <option value="Huila">Huila</option>
+                                    <option value="La Guajira">La Guajira</option>
+                                    <option value="Magdalena">Magdalena</option>
+                                    <option value="Meta">Meta</option>
+                                    <option value="Nariño">Nariño</option>
+                                    <option value="Norte de Santander">Norte de Santander</option>
+                                    <option value="Putumayo">Putumayo</option>
+                                    <option value="Quindío">Quindío</option>
+                                    <option value="Risaralda">Risaralda</option>
+                                    <option value="San Andrés y Providencia">San Andrés y Providencia</option>
+                                    <option value="Santander">Santander</option>
+                                    <option value="Sucre">Sucre</option>
+                                    <option value="Tolima">Tolima</option>
+                                    <option value="Valle del Cauca" selected>Valle del Cauca</option>
+                                    <option value="Vaupés">Vaupés</option>
+                                    <option value="Vichada">Vichada</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                            <div id="caja">
+                                <label>Municipio</label>
 
-                            <span id="nacionalidad" name="nacionalidad"></span>
-
-                            <label>Departamento (si es de otro pais, elija otro)</label>
-
-                            <select id="departamento" name="departamento" required>
-                                <option disabled selected>Selecciona un departamento</option>
-                                <option value="Amazonas">Amazonas</option>
-                                <option value="Antioquia">Antioquia</option>
-                                <option value="Arauca">Arauca</option>
-                                <option value="Atlántico">Atlántico</option>
-                                <option value="Bogotá D.C.">Bogotá D.C.</option>
-                                <option value="Bolívar">Bolívar</option>
-                                <option value="Boyacá">Boyacá</option>
-                                <option value="Caldas">Caldas</option>
-                                <option value="Caquetá">Caquetá</option>
-                                <option value="Casanare">Casanare</option>
-                                <option value="Cauca">Cauca</option>
-                                <option value="Cesar">Cesar</option>
-                                <option value="Chocó">Chocó</option>
-                                <option value="Córdoba">Córdoba</option>
-                                <option value="Cundinamarca">Cundinamarca</option>
-                                <option value="Guainía">Guainía</option>
-                                <option value="Guaviare">Guaviare</option>
-                                <option value="Huila">Huila</option>
-                                <option value="La Guajira">La Guajira</option>
-                                <option value="Magdalena">Magdalena</option>
-                                <option value="Meta">Meta</option>
-                                <option value="Nariño">Nariño</option>
-                                <option value="Norte de Santander">Norte de Santander</option>
-                                <option value="Putumayo">Putumayo</option>
-                                <option value="Quindío">Quindío</option>
-                                <option value="Risaralda">Risaralda</option>
-                                <option value="San Andrés y Providencia">San Andrés y Providencia</option>
-                                <option value="Santander">Santander</option>
-                                <option value="Sucre">Sucre</option>
-                                <option value="Tolima">Tolima</option>
-                                <option value="Valle del Cauca" selected>Valle del Cauca</option>
-                                <option value="Vaupés">Vaupés</option>
-                                <option value="Vichada">Vichada</option>
-                                <option value="Otro">Otro</option>
-                            </select>
-
-                            <label>Municipio</label>
-
-                            <input type="text" id="municipio" name="municipio" required>
-
+                                <input type="text" id="municipio" name="municipio" required>
+                            </div>
                         </div>
 
                         <div id="navegacion-botones">
@@ -804,6 +806,8 @@
         </section>
 
     </main>
+
+    <script src="registro_emprendedores.js"></script>
 
 </body>
 
