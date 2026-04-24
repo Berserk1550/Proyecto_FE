@@ -1,22 +1,28 @@
 <?php
 
     class Emprendedor {
+        private $db;
+
+        public function __construct($conn){
+            $this->db = $conn;
+        }
         
         public function insertar($data) {
 
-            $sql = "INSERT INTO usuarios (
-                nombre, apellido, tipo_documento, documento,
-                telefono, fecha_nacimiento, sexo, correo,
-                pais, departamento, municipio,
-                clasificacion, discapacidad,
-                tipo_emprendedor, nivel_formacion,
-                situacion_negocio, programa,
-                centro_orientacion, orientador
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+            $sql = "INSERT INTO registro_emprendedor (
+            nombres, apellidos, tipo_id, numero_id,
+            celular, fecha_nacimiento, sexo, correo,
+            pais, departamento, municipio,
+            clasificacion, discapacidad,
+            tipo_emprendedor, nivel_formacion,
+            situacion_negocio, programa,
+            centro_orientacion, orientador,
+            ejercer_actividad_proyecto, empresa_formalizada,
+            rol, estado_proceso, contrasena
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($sql);
 
-            $stmt->execute([
+            return $stmt->execute([
                 $data['nombre_emprendedor'],
                 $data['apellido_emprendedor'],
                 $data['tipo_documento_emprendedor'],
@@ -35,7 +41,12 @@
                 $data['situacion_negocio'],
                 $data['programa'],
                 $data['centro_orientacion'],
-                $data['orientador']
+                $data['orientador'],
+                $data['ejercer_actividad_proyecto'],
+                $data['empresa_formalizada'],
+                $data['rol'],
+                $data['estado_proceso'],
+                $data['contrasena']
             ]);
         }
     }
