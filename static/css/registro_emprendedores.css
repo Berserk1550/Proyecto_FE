@@ -215,7 +215,7 @@ body::after{
 }
 
 #btn_fase4{
-  display:none;
+  display:block;
   margin-top:24px;
   min-width:188px;
 }
@@ -233,7 +233,7 @@ body::after{
 }
 
 #btn_volver{
-  display:none;
+  display:block;
   align-items:center;
   justify-content:center;
   padding:11px 22px;
@@ -367,8 +367,7 @@ body::after{
   display:block;
 }
 
-#caja input,
-#caja select{
+#caja input, select{
   width:100%;
   padding:10px 14px;
   font-size:1rem;
@@ -381,14 +380,13 @@ body::after{
   font-family:inherit;
 }
 
-#caja input:focus,
-#caja select:focus{
+#caja input:focus, select:focus{
   border-color:#007832;
   outline:none;
   box-shadow:0 0 0 2px #39a90033;
 }
 
-#caja select{
+select{
   appearance:none;
   cursor:pointer;
   padding-right:40px;
