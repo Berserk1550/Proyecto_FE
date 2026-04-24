@@ -771,10 +771,11 @@
 
                             <label>¿Cuál fue el orientador que brindó la orientación?</label>
 
-                            <select id="orientador" name="orientador" class="form-control" required
-                                    <option value="" selected>
-                                    </option>
+                            <select id="orientador" name="orientador" class="form-control" required>
                                     <option value="" disabled selected>-- Selecciona primero un centro --</option>
+                                    <option value="CAB">Carlos Alberto Bernal</option>
+                                    <option value="CBI">Diana Carolina Rodríguez</option>
+                                    <option value="CDTI">Jorge Iván Martínez</option>   
                             </select>
                         </div>
 
