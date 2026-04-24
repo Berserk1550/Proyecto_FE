@@ -67,7 +67,7 @@
 
                 </div>
 
-                <form action="" id="formulario">
+                <form action="" id="formulario" method="POST">
 
                     <!-- FASE 1 Lmao -->
                     <div id="fase_1">
@@ -808,7 +808,7 @@
 
     </main>
 
-    <script src="registro_emprendedores.js"></script>
+    <script src="../static/js/registro_emprendedores.js"></script>
 
 </body>
 
