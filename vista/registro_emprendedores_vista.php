@@ -67,7 +67,7 @@
 
                 </div>
 
-                <form action="" id="formulario" method="POST">
+                <form action="../controller/registro.php" id="formulario" method="POST">
 
                     <!-- FASE 1 Lmao -->
                     <div id="fase_1">
@@ -264,7 +264,7 @@
 
                             <label>Clasificación de población (si aplica)</label>
 
-                            <select id="clasificacion" name="clasificacion" class="form-control" required>
+                            <select id="clasificacion" name="clasificacion" required>
                                 <option value="" disabled selected>Selecciona una opción</option>
                                 <option value="Ninguno">Ninguno</option>
                                 <option value="Adolescente trabajador">Adolescente trabajador</option>
@@ -329,7 +329,7 @@
 
                             <label>Tipo de emprendedor</label>
 
-                            <select id="tipo_emprendedor" name="tipo_emprendedor" required class="form-control">
+                            <select id="tipo_emprendedor" name="tipo_emprendedor" required>
                                 <option value="" disabled selected>Selecciona una opción</option>
                                 <option value="Aprendiz">Aprendiz</option>
                                 <option value="Instructor">Instructor</option>
@@ -342,7 +342,7 @@
 
                             <label>Nivel de formación en el momento actual</label>
 
-                            <select id="nivel_formacion" name="nivel_formacion" class="form-control" required>
+                            <select id="nivel_formacion" name="nivel_formacion" required>
                                 <option value="" disabled selected>Selecciona</option>
                                 <option value="Técnico">Técnico</option>
                                 <option value="Tecnólogo">Tecnólogo</option>
@@ -355,7 +355,7 @@
                                 <option value="Sin título">Sin título</option>
                             </select>
 
-                            <select id="carrera_tecnologo" name="carrera_tecnologo" style="display:none;margin-top:8px" class="form-control">
+                            <select id="carrera_tecnologo" name="carrera_tecnologo" style="display:none;margin-top:8px">
                                 <option value="" disabled selected>
                                     -- Elige tu Tecnólogo --
                                 </option>
@@ -386,7 +386,7 @@
                                 <option value="Otro">Otro</option>
                             </select>
 
-                            <select id="carrera_tecnico" name="carrera_tecnico" style="display:none;margin-top:8px" class="form-control">
+                            <select id="carrera_tecnico" name="carrera_tecnico" style="display:none;margin-top:8px">
                                 <option value="" disabled selected>-- Elige tu Técnico --</option>
                                 <option value="Asistencia administrativa">Asistencia administrativa</option>
                                 <option value="Cocina">Cocina</option>
@@ -424,7 +424,7 @@
                                 <option value="Técnico en operaciones forestales y producción ovino-caprina">Técnico en operaciones forestales y producción ovino-caprina</option>
                             </select>
 
-                            <select id="carrera_operario" name="carrera_operario" style="display:none;margin-top:8px" class="form-control">
+                            <select id="carrera_operario" name="carrera_operario" style="display:none;margin-top:8px">
                                 <option value="" disabled selected>
                                     -- Elige tu Operario --
                                 </option>
@@ -434,13 +434,13 @@
                                 <option value="Otro">Otro</option>
                             </select>
 
-                            <select id="carrera_auxiliar" name="carrera_auxiliar" style="display:none;margin-top:8px" class="form-control">
+                            <select id="carrera_auxiliar" name="carrera_auxiliar" style="display:none;margin-top:8px">
                                 <option value="" disabled selected>-- Elige tu Auxiliar --</option>
                                 <option value="Servicios de apoyo al cliente">Servicios de apoyo al cliente</option>
                                 <option value="Otro">Otro</option>
                             </select>
 
-                        <select id="carrera_profesional" name="carrera_profesional" required class="form-control" style="display:none; margin-top: 8px;">
+                        <select id="carrera_profesional" name="carrera_profesional" style="display:none; margin-top: 8px;">
                             <option value="" disabled selected>-- Selecciona tu carrera profesional --</option>
 
                             <optgroup label="Ingenierías y Tecnología">
@@ -631,8 +631,7 @@
                         </select>
 
                         <!-- ESPECIALIZACIÓN -->
-                        <select id="posgrado_especializacion" name="posgrado_especializacion"
-                            class="form-control" style="display:none;">
+                        <select id="posgrado_especializacion" name="posgrado_especializacion" style="display:none;">
                             <option value="" disabled selected>-- Selecciona tu especialización --</option>
                             <option value="Especialización en Gerencia de Proyectos">Especialización en Gerencia de Proyectos</option>
                             <option value="Especialización en Seguridad y Salud en el Trabajo">Especialización en Seguridad y Salud en el Trabajo</option>
@@ -643,8 +642,7 @@
                         </select>
 
                         <!-- MAESTRÍA -->
-                        <select id="posgrado_maestria" name="posgrado_maestria"
-                            class="form-control" style="display:none;">
+                        <select id="posgrado_maestria" name="posgrado_maestria" style="display:none;">
                             <option value="" disabled selected>-- Selecciona tu maestría --</option>
                             <option value="Maestría en Ingeniería de Software">Maestría en Ingeniería de Software</option>
                             <option value="Maestría en Administración (MBA)">Maestría en Administración (MBA)</option>
@@ -657,8 +655,7 @@
                         </select>
 
                         <!-- DOCTORADO -->
-                        <select id="posgrado_doctorado" name="posgrado_doctorado"
-                            class="form-control" style="display:none;">
+                        <select id="posgrado_doctorado" name="posgrado_doctorado"style="display:none;">
                             <option value="" disabled selected>-- Selecciona tu doctorado --</option>
                             <option value="Doctorado en Ingeniería">Doctorado en Ingeniería</option>
                             <option value="Doctorado en Ciencias">Doctorado en Ciencias</option>
@@ -693,7 +690,7 @@
 
                             <label>Eres un emprendedor que tiene...</label>
 
-                            <select id="situacion_negocio" name="situacion_negocio" required class="form-control">
+                            <select id="situacion_negocio" name="situacion_negocio" >
                                 <option value="" disabled selected>-- Selecciona --</option>
                                 <option value="Ninguno">Ninguno</option>
                                 <option value="Idea de negocio">Una idea de negocio</option>
@@ -705,7 +702,7 @@
 
                             <label>¿Pertenece a alguno de los siguientes programas especiales?</label>
 
-                            <select id="programa" name="programa" required class="form-control">
+                            <select id="programa" name="programa" required>
                                 <option value="" disabled selected>-- Selecciona --</option>
                                 <option value="Ninguno">Ninguno</option>
                                 <option value="Jóvenes en paz">Jóvenes en paz</option>
@@ -718,7 +715,7 @@
 
                             <label>¿Usted ejerce la actividad relacionada con el proyecto que desea presentar?</label>
 
-                            <select id="ejercer_actividad_proyecto" name="ejercer_actividad_proyecto" required class="form-control">
+                            <select id="ejercer_actividad_proyecto" name="ejercer_actividad_proyecto" required>
                                 <option value="" disabled selected hidden>-- Selecciona --</option>
                                 <option value="SI">Sí</option>
                                 <option value="NO">No</option>
@@ -726,7 +723,7 @@
 
                             <label>¿Usted tiene empresa formalizada ante Cámara de Comercio?</label>
 
-                            <select id="empresa_formalizada" name="empresa_formalizada" required class="form-control">
+                            <select id="empresa_formalizada" name="empresa_formalizada" required>
                                 <option value="" disabled selected hidden>-- Selecciona --</option>
                                 <option value="SI">Sí</option>
                                 <option value="NO">No</option>
@@ -754,7 +751,7 @@
 
                             <label>¿Cuál es el centro de Desarrollo Empresarial que brinda la orientación?</label>
 
-                            <select id="centro_orientacion" name="centro_orientacion" class="form-control" required>
+                            <select id="centro_orientacion" name="centro_orientacion" required>
                                 <option value="">-- Selecciona un centro --</option>
 
                                 <option value="CAB">Centro Agropecuario de Buga (CAB)</option>
@@ -771,7 +768,7 @@
 
                             <label>¿Cuál fue el orientador que brindó la orientación?</label>
 
-                            <select id="orientador" name="orientador" class="form-control" required>
+                            <select id="orientador" name="orientador" required>
                                     <option value="" disabled selected>-- Selecciona primero un centro --</option>
                                     <option value="CAB">Carlos Alberto Bernal</option>
                                     <option value="CBI">Diana Carolina Rodríguez</option>
@@ -794,11 +791,25 @@
 
             </article>
 
+            <footer id="pie_pagina">
+
+                <div id="cont_pie_pagina">
+
+                        <img src="../static/img/logocolombiaporlavidatrabajo.png" width="80" height="30" loading="eager">
+
+                        <img src="../static/img/mintrabajo.png" width="70" height="30" loading="eager">
+
+                </div>
+
+            </footer>
+
         </section>
 
     </main>
 
     <script src="../static/js/registro_emprendedores.js"></script>
+
+    <script src="../static/js/funciones.js"></script>
 
 </body>
 

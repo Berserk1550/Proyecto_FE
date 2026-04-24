@@ -69,6 +69,51 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   }
 
+// Manejar visibilidad dinámica de campos de carrera
+  const nivelFormacion = document.getElementById('nivel_formacion');
+  const camposCarrera = {
+    'Técnico': document.getElementById('carrera_tecnico'),
+    'Tecnólogo': document.getElementById('carrera_tecnologo'),
+    'Operario': document.getElementById('carrera_operario'),
+    'Auxiliar': document.getElementById('carrera_auxiliar'),
+    'Profesional': document.getElementById('carrera_profesional'),
+    'Especialización': document.getElementById('posgrado_especializacion'),
+    'Maestría': document.getElementById('posgrado_maestria'),
+    'Doctorado': document.getElementById('posgrado_doctorado')
+  };
+
+  function actualizarCarrerasVisibles() {
+    if (!nivelFormacion) return;
+    
+    const nivelSeleccionado = nivelFormacion.value;
+    
+    // Ocultar todos los campos de carrera
+    Object.values(camposCarrera).forEach(campo => {
+      if (campo) {
+        campo.style.display = 'none';
+        campo.removeAttribute('required');
+      }
+    });
+    
+    // Mostrar el campo de carrera correspondiente
+    if (camposCarrera[nivelSeleccionado]) {
+      camposCarrera[nivelSeleccionado].style.display = 'block';
+      camposCarrera[nivelSeleccionado].setAttribute('required', 'required');
+    }
+  }
+
+  if (nivelFormacion) {
+    nivelFormacion.addEventListener('change', actualizarCarrerasVisibles);
+  }
+
+  // Manejar visibilidad dinámica de campos de posgrado
+  const carreraProf = document.getElementById('carrera_profesional');
+  if (carreraProf) {
+    carreraProf.addEventListener('change', function() {
+      // La lógica para mostrar/ocultar especializaciones se maneja arriba
+    });
+  }
+
   // Event listeners para botones de navegación
   document.addEventListener('click', (e) => {
     // Botón siguiente
@@ -94,14 +139,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
-
+  
+  const enviar_formulario = document.getElementById('btn_fase6');
   // Envío del formulario
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+
     if (validarFaseActual()) {
       console.log('Formulario válido, enviando...');
-      // Aquí iría la lógica para enviar el formulario
-      // form.submit();
+
+      // Crear objeto FormData con todos los campos del formulario
+      const formData = new FormData(form);
+
+      // Enviar al controlador con fetch
+      fetch('../controller/registro.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        console.log('Respuesta del servidor:', data);
+        alert('Registro guardado correctamente');
+      })
+      .catch(error => {
+        console.error('Error al enviar:', error);
+      });
     }
   });
 

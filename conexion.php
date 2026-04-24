@@ -3,7 +3,7 @@
 $host = "localhost";   // IP servidor
 $user = "root";  // usuario MySQL
 $pass = ""; // contraseña MySQL
-$db   = "fecab";       // BD
+$db   = "fe_cab";       // BD
 
 // Crear conexión
 $conn = new mysqli($host, $user, $pass, $db);
