@@ -21,13 +21,13 @@ img,svg,video{max-width:100%;height:auto}
 body{
   font-family:"Work Sans",Arial,sans-serif;
   min-height:100dvh;
-  background:url("postits.jpg") center/cover no-repeat;
+  background:url("../img/postits.jpg") center/cover no-repeat;
   display:flex;
   flex-direction:column;
   position:relative;
   overflow-x:hidden;
   font-size:14px;
-  background:linear-gradient(180deg,#f7fff6 0%,#ecffef 100%),url("postits.jpg") center/cover no-repeat;
+  background:linear-gradient(180deg,#f7fff6 0%,#ecffef 100%),url("../img/postits.jpg") center/cover no-repeat;
 }
 
 body::before{
@@ -35,7 +35,7 @@ body::before{
   position:fixed;
   inset:0;
   z-index:-2;
-  background:url("postits.jpg") center/cover no-repeat;
+  background:url("../img/postits.jpg") center/cover no-repeat;
   filter:saturate(1.05) contrast(1.03) blur(.6px) brightness(.6) opacity(.9);
   transform:translateZ(0);
   image-rendering:auto;
