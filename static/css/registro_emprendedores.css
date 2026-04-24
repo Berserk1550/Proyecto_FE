@@ -21,13 +21,13 @@ img,svg,video{max-width:100%;height:auto}
 body{
   font-family:"Work Sans",Arial,sans-serif;
   min-height:100dvh;
-  background:url("postits.jpg") center/cover no-repeat;
+  background:url("../img/postits.jpg") center/cover no-repeat;
   display:flex;
   flex-direction:column;
   position:relative;
   overflow-x:hidden;
   font-size:14px;
-  background:linear-gradient(180deg,#f7fff6 0%,#ecffef 100%),url("postits.jpg") center/cover no-repeat;
+  background:linear-gradient(180deg,#f7fff6 0%,#ecffef 100%),url("../img/postits.jpg") center/cover no-repeat;
 }
 
 body::before{
@@ -35,7 +35,7 @@ body::before{
   position:fixed;
   inset:0;
   z-index:-2;
-  background:url("postits.jpg") center/cover no-repeat;
+  background:url("../img/postits.jpg") center/cover no-repeat;
   filter:saturate(1.05) contrast(1.03) blur(.6px) brightness(.6) opacity(.9);
   transform:translateZ(0);
   image-rendering:auto;
@@ -215,7 +215,7 @@ body::after{
 }
 
 #btn_fase4{
-  display:none;
+  display:block;
   margin-top:24px;
   min-width:188px;
 }
@@ -233,7 +233,7 @@ body::after{
 }
 
 #btn_volver{
-  display:none;
+  display:block;
   align-items:center;
   justify-content:center;
   padding:11px 22px;
@@ -367,8 +367,7 @@ body::after{
   display:block;
 }
 
-#caja input,
-#caja select{
+#caja input, select{
   width:100%;
   padding:10px 14px;
   font-size:1rem;
@@ -381,14 +380,13 @@ body::after{
   font-family:inherit;
 }
 
-#caja input:focus,
-#caja select:focus{
+#caja input:focus, select:focus{
   border-color:#007832;
   outline:none;
   box-shadow:0 0 0 2px #39a90033;
 }
 
-#caja select{
+select{
   appearance:none;
   cursor:pointer;
   padding-right:40px;

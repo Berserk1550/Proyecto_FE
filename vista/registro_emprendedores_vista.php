@@ -15,7 +15,7 @@
 
             <div id="cont_encabezado">
 
-                <img src="logoFondoEmprender.svg" with="160" height="50" loading="eager">
+                <img src="../static/img/logo_fondo_emprender.png" with="160" height="50" loading="eager">
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#39a900" stroke-width="2" id="medalla_programa">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -82,7 +82,7 @@
 
                                     <label>Nombres</label>
 
-                                    <input type="text" id="nombre_emprendedor" name="nombre_emprendedor" required>
+                                    <input type="text" id="nombre_emprendedor" name="nombre_emprendedor" required minlength="2" maxlength="50" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+" title="Solo se permiten letras y espacios" placeholder="Ej: Juan Carlos">
 
                                 </div>
 
@@ -90,7 +90,7 @@
 
                                     <label>Apellidos</label>
 
-                                    <input type="text" id="apellido_emprendedor" name="apellido_emprendedor" required>
+                                    <input type="text" id="apellido_emprendedor" name="apellido_emprendedor" required minlength="2" maxlength="50" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+" title="Solo se permiten letras y espacios" placeholder="Ej: García Rodríguez">
 
                                 </div>
 
@@ -118,7 +118,7 @@
 
                                     <label>Número de documento</label>
 
-                                    <input type="text" id="documento_emprendedor" name="documento_emprendedor" required>
+                                    <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="11" inputmode="numeric" pattern="[0-9]+" title="Solo números (5-11 dígitos)" placeholder="Ej: 1234567890">
 
                                 </div>
 
@@ -130,7 +130,7 @@
 
                                     <label>Numero de telefono</label>
 
-                                    <input type="text" id="telefono_emprendedor" name="telefono_emprendedor" required>
+                                    <input type="tel" id="telefono_emprendedor" name="telefono_emprendedor" required minlength="10" maxlength="10" inputmode="tel" pattern="[0-9]{10}" title="Ingresa 10 dígitos" placeholder="Ej: 3001234567">
 
                                 </div>
 
@@ -138,7 +138,7 @@
 
                                     <label>Fecha de nacimiento</label>
 
-                                    <input type="date" id="fecha_nacimiento_emprendedor" name="fecha_nacimiento_emprendedor" required>
+                                    <input type="date" id="fecha_nacimiento_emprendedor" name="fecha_nacimiento_emprendedor" required title="Selecciona tu fecha de nacimiento">
 
                                 </div>
 
@@ -240,7 +240,7 @@
                             <div id="caja">
                                 <label>Municipio</label>
 
-                                <input type="text" id="municipio" name="municipio" required>
+                                <input type="text" id="municipio" name="municipio" required minlength="2" maxlength="100" placeholder="Ej: Cali">
                             </div>
                         </div>
 
@@ -672,18 +672,16 @@
 
                         <label>Si eres aprendiz o egresado SENA, escribe tu numero de ficha, de lo contrario escribe "No aplica"</label>
 
-                        <input type="text" id="numero_ficha" name="numero_ficha" required>
+                        <input type="text" id="numero_ficha" name="numero_ficha" required minlength="2" maxlength="50" placeholder="Ej: 12345 o No aplica">
 
-                    </div>
-
-                    <div id="navegacion-botones">
-                        <button type="button" id="btn_volver">
-                            <svg width="40" height="40" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
-                                <path d="M3.57813 12.4981C3.5777 12.6905 3.65086 12.8831 3.79761 13.0299L9.7936 19.0301C10.0864 19.3231 10.5613 19.3233 10.8543 19.0305C11.1473 18.7377 11.1474 18.2629 10.8546 17.9699L6.13418 13.2461L20.3295 13.2461C20.7437 13.2461 21.0795 12.9103 21.0795 12.4961C21.0795 12.0819 20.7437 11.7461 20.3295 11.7461L6.14168 11.7461L10.8546 7.03016C11.1474 6.73718 11.1473 6.2623 10.8543 5.9695C10.5613 5.6767 10.0864 5.67685 9.79362 5.96984L3.84392 11.9233C3.68134 12.0609 3.57812 12.2664 3.57812 12.4961L3.57813 12.4981Z" fill="#343C54" />
-                            </svg>
-                        </button>
-                        <button type="button" id="btn_fase4">Siguiente</button>
-                    </div>
+                        <div id="navegacion-botones">
+                            <button type="button" id="btn_volver">
+                                <svg width="40" height="40" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                                    <path d="M3.57813 12.4981C3.5777 12.6905 3.65086 12.8831 3.79761 13.0299L9.7936 19.0301C10.0864 19.3231 10.5613 19.3233 10.8543 19.0305C11.1473 18.7377 11.1474 18.2629 10.8546 17.9699L6.13418 13.2461L20.3295 13.2461C20.7437 13.2461 21.0795 12.9103 21.0795 12.4961C21.0795 12.0819 20.7437 11.7461 20.3295 11.7461L6.14168 11.7461L10.8546 7.03016C11.1474 6.73718 11.1473 6.2623 10.8543 5.9695C10.5613 5.6767 10.0864 5.67685 9.79362 5.96984L3.84392 11.9233C3.68134 12.0609 3.57812 12.2664 3.57812 12.4961L3.57813 12.4981Z" fill="#343C54" />
+                                </svg>
+                            </button>
+                            <button type="button" id="btn_fase4">Siguiente</button>
+                        </div>
 
                     </div>
 
