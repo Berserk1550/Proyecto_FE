@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio SENA CAB - Fondo Emprender</title>
     
-    <link rel="stylesheet" href="index_vista.css">
-    <script src="funciones.js"></script>
+    <link rel="stylesheet" href="static/css/index_vista.css">
+    <script src="static/js/funciones.js"></script>
 </head>
 <body>
 
@@ -48,7 +48,7 @@
 
                 <p id="texto_2">Crea tu cuenta y comencemos juntos.</p>
 
-                <a href="<!-- ruta al registro -->">Registrarme</a>
+                <a href="vista/registro_emprendedores_vista.php">Registrarme</a>
 
                 <p id="texto_3">(Al registrarse autorizas el tratamiento de tus datos conforme a la Ley 1581 de 2012 y normas concordantes de Habeas Data)</p>
 
@@ -230,9 +230,9 @@
 
                 <div id="cont_pie_pagina">
 
-                        <img src="logocolombiaporlavidatrabajo.png" width="80" height="30" loading="eager">
+                        <img src="static/img/logocolombiaporlavidatrabajo.png" width="80" height="30" loading="eager">
 
-                        <img src="mintrabajo.png" width="70" height="30" loading="eager">
+                        <img src="static/img/mintrabajo.png" width="70" height="30" loading="eager">
 
                 </div>
 
