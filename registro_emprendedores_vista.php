@@ -183,18 +183,19 @@
                         <h3>Nacionalidad</h3>
 
                         <div id="cont_fase_2">
-                            <div id="caja">
-                                <label>Pais</label>
+                            <div id="grupos">
+                                    <div id="caja">
+                                        <label>Pais</label>
+                                        <select name="paises" id="paises" required>
+                                            <option disabled selected>Selecciona un pais</option>
+                                        </select>
+                                    </div>
 
-                                <select name="paises" id="paises" required>
-                                    <option disabled selected>Selecciona un pais</option>
-                                </select>
-                            </div>
-                            <div id="caja">    
-                                <label>Nacionalidad</label>
-
-                                <span id="nacionalidad" name="nacionalidad"></span>
-                            </div>
+                                    <div id="caja">    
+                                        <label>Nacionalidad</label>
+                                        <span id="nacionalidad" name="nacionalidad"></span>
+                                    </div>
+                                </div>
                             <div id="caja">
                                 <label>Departamento (si es de otro pais, elija otro)</label>
 

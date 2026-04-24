@@ -108,3 +108,37 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inicializar
   actualizarProgreso();
 });
+
+// intento de api para paises y nacionalidades
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById('formulario');
+    fetch("https://restcountries.com/v3.1/all")
+        .then(response => response.json())
+        .then(data => {
+            const select = document.getElementById("paises");
+
+            // Ordenar países alfabéticamente
+            data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+
+            data.forEach(item => {
+                const option = document.createElement("option");
+                option.value = item.name.common;
+                option.textContent = item.name.common;
+
+                // Obtener gentilicio (preferimos español si existe)
+                const nacionalidad =
+                    item.demonyms?.spa?.m ||
+                    item.demonyms?.eng?.m ||
+                    "No disponible";
+
+                option.dataset.nacionalidad = nacionalidad;
+
+                select.appendChild(option);
+            });
+        });
+
+    // Mostrar nacionalidad al seleccionar un país
+    document.getElementById("paises").addEventListener("change", function () {
+        const nacionalidad = this.selectedOptions[0].dataset.nacionalidad;
+        document.getElementById("nacionalidad").textContent = nacionalidad;
+    })});
