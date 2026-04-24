@@ -162,7 +162,7 @@
 
                                     <label>Correo electrónico</label>
 
-                                    <input type="email" id="correo_emprendedor" name="correo_emprendedor" required>
+                                    <input type="email" id="correo_emprendedor" name="correo_emprendedor" placeholder="Ej: soyemprendedor@gmail.com" required>
 
                                 </div>
 
@@ -171,7 +171,7 @@
 
                         </div>
 
-                        <div id="navegacion-botones">
+                        <div id="navegacion_botones">
                             <button type="button" id="btn_fase1">Siguiente</button>
                         </div>
 
@@ -244,13 +244,13 @@
                             </div>
                         </div>
 
-                        <div id="navegacion-botones">
+                        <div id="navegacion_botones">
                             <button type="button" id="btn_volver">
-                                <svg width="40" height="40" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                                <svg width="30" height="30" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                                     <path d="M3.57813 12.4981C3.5777 12.6905 3.65086 12.8831 3.79761 13.0299L9.7936 19.0301C10.0864 19.3231 10.5613 19.3233 10.8543 19.0305C11.1473 18.7377 11.1474 18.2629 10.8546 17.9699L6.13418 13.2461L20.3295 13.2461C20.7437 13.2461 21.0795 12.9103 21.0795 12.4961C21.0795 12.0819 20.7437 11.7461 20.3295 11.7461L6.14168 11.7461L10.8546 7.03016C11.1474 6.73718 11.1473 6.2623 10.8543 5.9695C10.5613 5.6767 10.0864 5.67685 9.79362 5.96984L3.84392 11.9233C3.68134 12.0609 3.57812 12.2664 3.57812 12.4961L3.57813 12.4981Z" fill="#343C54" />
                                 </svg>
                             </button>
-                            <button type="button" id="btn_fase2">Siguiente</button>
+                            <button type="button" id="btn_fase">Siguiente</button>
                         </div>
 
                     </div>
@@ -309,13 +309,13 @@
 
                         </div>
 
-                        <div id="navegacion-botones">
+                        <div id="navegacion_botones">
                             <button type="button" id="btn_volver">
-                                <svg width="40" height="40" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                                <svg width="30" height="30" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                                     <path d="M3.57813 12.4981C3.5777 12.6905 3.65086 12.8831 3.79761 13.0299L9.7936 19.0301C10.0864 19.3231 10.5613 19.3233 10.8543 19.0305C11.1473 18.7377 11.1474 18.2629 10.8546 17.9699L6.13418 13.2461L20.3295 13.2461C20.7437 13.2461 21.0795 12.9103 21.0795 12.4961C21.0795 12.0819 20.7437 11.7461 20.3295 11.7461L6.14168 11.7461L10.8546 7.03016C11.1474 6.73718 11.1473 6.2623 10.8543 5.9695C10.5613 5.6767 10.0864 5.67685 9.79362 5.96984L3.84392 11.9233C3.68134 12.0609 3.57812 12.2664 3.57812 12.4961L3.57813 12.4981Z" fill="#343C54" />
                                 </svg>
                             </button>
-                            <button type="button" id="btn_fase3">Siguiente</button>
+                            <button type="button" id="btn_fase">Siguiente</button>
                         </div>
 
                     </div>
@@ -439,8 +439,6 @@
                                 <option value="Servicios de apoyo al cliente">Servicios de apoyo al cliente</option>
                                 <option value="Otro">Otro</option>
                             </select>
-
-                        </div>
 
                         <select id="carrera_profesional" name="carrera_profesional" required class="form-control" style="display:none; margin-top: 8px;">
                             <option value="" disabled selected>-- Selecciona tu carrera profesional --</option>
@@ -674,13 +672,14 @@
 
                         <input type="text" id="numero_ficha" name="numero_ficha" required minlength="2" maxlength="50" placeholder="Ej: 12345 o No aplica">
 
-                        <div id="navegacion-botones">
+                    </div>
+                        <div id="navegacion_botones">
                             <button type="button" id="btn_volver">
-                                <svg width="40" height="40" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                                <svg width="30" height="30" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                                     <path d="M3.57813 12.4981C3.5777 12.6905 3.65086 12.8831 3.79761 13.0299L9.7936 19.0301C10.0864 19.3231 10.5613 19.3233 10.8543 19.0305C11.1473 18.7377 11.1474 18.2629 10.8546 17.9699L6.13418 13.2461L20.3295 13.2461C20.7437 13.2461 21.0795 12.9103 21.0795 12.4961C21.0795 12.0819 20.7437 11.7461 20.3295 11.7461L6.14168 11.7461L10.8546 7.03016C11.1474 6.73718 11.1473 6.2623 10.8543 5.9695C10.5613 5.6767 10.0864 5.67685 9.79362 5.96984L3.84392 11.9233C3.68134 12.0609 3.57812 12.2664 3.57812 12.4961L3.57813 12.4981Z" fill="#343C54" />
                                 </svg>
                             </button>
-                            <button type="button" id="btn_fase4">Siguiente</button>
+                            <button type="button" id="btn_fase">Siguiente</button>
                         </div>
 
                     </div>
@@ -735,13 +734,13 @@
 
                         </div>
 
-                        <div id="navegacion-botones">
+                        <div id="navegacion_botones">
                             <button type="button" id="btn_volver">
                                 <svg width="40" height="40" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                                     <path d="M3.57813 12.4981C3.5777 12.6905 3.65086 12.8831 3.79761 13.0299L9.7936 19.0301C10.0864 19.3231 10.5613 19.3233 10.8543 19.0305C11.1473 18.7377 11.1474 18.2629 10.8546 17.9699L6.13418 13.2461L20.3295 13.2461C20.7437 13.2461 21.0795 12.9103 21.0795 12.4961C21.0795 12.0819 20.7437 11.7461 20.3295 11.7461L6.14168 11.7461L10.8546 7.03016C11.1474 6.73718 11.1473 6.2623 10.8543 5.9695C10.5613 5.6767 10.0864 5.67685 9.79362 5.96984L3.84392 11.9233C3.68134 12.0609 3.57812 12.2664 3.57812 12.4961L3.57813 12.4981Z" fill="#343C54" />
                                 </svg>
                             </button>
-                            <button type="button" id="btn_fase5">Siguiente</button>
+                            <button type="button" id="btn_fase">Siguiente</button>
                         </div>
 
                     </div>
@@ -755,45 +754,37 @@
 
                             <label>¿Cuál es el centro de Desarrollo Empresarial que brinda la orientación?</label>
 
-                            <select id="centro_orientacion" name="centro_orientacion" class="form-control" required
-                                onchange="actualizarOrientadores()"
-                                <?= $prefill_ok ? 'disabled title="Preseleccionado desde QR"' : '' ?>>
+                            <select id="centro_orientacion" name="centro_orientacion" class="form-control" required>
+                                <option value="">-- Selecciona un centro --</option>
 
-                                <option value="" disabled <?= $prefill_ok ? '' : 'selected' ?>>-- Selecciona un centro --</option>
-
-                                <option value="CAB" <?= ($prefill_ok && $center === 'CAB')  ? 'selected' : '' ?>>Centro Agropecuario de Buga (CAB)</option>
-                                <option value="CBI" <?= ($prefill_ok && $center === 'CBI')  ? 'selected' : '' ?>>Centro de Biotecnología Industrial (CBI Palmira)</option>
-                                <option value="CDTI" <?= ($prefill_ok && $center === 'CDTI') ? 'selected' : '' ?>>Centro de Diseño Tecnológico Industrial (CDTI Cali)</option>
-                                <option value="CEAI" <?= ($prefill_ok && $center === 'CEAI') ? 'selected' : '' ?>>Centro de Electricidad y Automatización Industrial (CEAI Cali)</option>
-                                <option value="CGTS" <?= ($prefill_ok && $center === 'CGTS') ? 'selected' : '' ?>>Centro de Gestión Tecnológica de Servicios (CGTS Cali)</option>
-                                <option value="ASTIN" <?= ($prefill_ok && $center === 'ASTIN') ? 'selected' : '' ?>>Centro Nacional de Asistencia Técnica a la Industria (ASTIN - Cali)</option>
-                                <option value="CTA" <?= ($prefill_ok && $center === 'CTA')  ? 'selected' : '' ?>>Centro de Tecnologías Agroindustriales (CTA - Cartago)</option>
-                                <option value="CLEM" <?= ($prefill_ok && $center === 'CLEM') ? 'selected' : '' ?>>Centro Latinoamericano de Especies Menores (CLEM - Tuluá)</option>
-                                <option value="CNP" <?= ($prefill_ok && $center === 'CNP')  ? 'selected' : '' ?>>Centro Náutico y Pesquero (CNP - Buenaventura)</option>
-                                <option value="CC" <?= ($prefill_ok && $center === 'CC')   ? 'selected' : '' ?>>Centro de la Construcción (CC - Cali)</option>
+                                <option value="CAB">Centro Agropecuario de Buga (CAB)</option>
+                                <option value="CBI" >Centro de Biotecnología Industrial (CBI Palmira)</option>
+                                <option value="CDTI">Centro de Diseño Tecnológico Industrial (CDTI Cali)</option>
+                                <option value="CEAI">Centro de Electricidad y Automatización Industrial (CEAI Cali)</option>
+                                <option value="CGTS">Centro de Gestión Tecnológica de Servicios (CGTS Cali)</option>
+                                <option value="ASTIN">Centro Nacional de Asistencia Técnica a la Industria (ASTIN - Cali)</option>
+                                <option value="CTA">Centro de Tecnologías Agroindustriales (CTA - Cartago)</option>
+                                <option value="CLEM">Centro Latinoamericano de Especies Menores (CLEM - Tuluá)</option>
+                                <option value="CNP">Centro Náutico y Pesquero (CNP - Buenaventura)</option>
+                                <option value="CC">Centro de la Construcción (CC - Cali)</option>
                             </select>
 
                             <label>¿Cuál fue el orientador que brindó la orientación?</label>
 
                             <select id="orientador" name="orientador" class="form-control" required
-                                <?= $prefill_ok ? 'disabled title="Preseleccionado desde QR"' : '' ?>>
-                                <?php if ($prefill_ok): ?>
-                                    <option value="<?= htmlspecialchars($name, ENT_QUOTES, 'UTF-8') ?>" selected>
-                                        <?= htmlspecialchars($name, ENT_QUOTES, 'UTF-8') ?>
+                                    <option value="" selected>
                                     </option>
-                                <?php else: ?>
                                     <option value="" disabled selected>-- Selecciona primero un centro --</option>
-                                <?php endif; ?>
                             </select>
                         </div>
 
-                        <div id="navegacion-botones">
+                        <div id="navegacion_botones">
                             <button type="button" id="btn_volver">
-                                <svg width="40" height="40" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                                <svg width="30" height="30" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                                     <path d="M3.57813 12.4981C3.5777 12.6905 3.65086 12.8831 3.79761 13.0299L9.7936 19.0301C10.0864 19.3231 10.5613 19.3233 10.8543 19.0305C11.1473 18.7377 11.1474 18.2629 10.8546 17.9699L6.13418 13.2461L20.3295 13.2461C20.7437 13.2461 21.0795 12.9103 21.0795 12.4961C21.0795 12.0819 20.7437 11.7461 20.3295 11.7461L6.14168 11.7461L10.8546 7.03016C11.1474 6.73718 11.1473 6.2623 10.8543 5.9695C10.5613 5.6767 10.0864 5.67685 9.79362 5.96984L3.84392 11.9233C3.68134 12.0609 3.57812 12.2664 3.57812 12.4961L3.57813 12.4981Z" fill="#343C54" />
                                 </svg>
                             </button>
-                            <button type="submit" id="btn_fase6">Enviar formulario</button>
+                            <button type="submit" id="btn_fase">Enviar formulario</button>
                         </div>
 
                     </div>
