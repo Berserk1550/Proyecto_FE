@@ -18,7 +18,7 @@
 
             <div id="cont_encabezado">
 
-                    <img src="logoFondoEmprender.svg" width="160" height="50" loading="eager">
+                    <img src="static/img/logoFondoEmprender.svg" width="160" height="50" loading="eager">
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#39a900" stroke-width="2" id="medalla_programa">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
