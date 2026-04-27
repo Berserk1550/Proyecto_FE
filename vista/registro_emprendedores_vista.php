@@ -49,7 +49,6 @@
                 
                 <div>
 
-<<<<<<< HEAD
                 <div id="cont_progreso">
 
                     <h1>Registro Ruta Emprendedora 2025</h1>
@@ -62,23 +61,6 @@
                         <span id="progreso_no" class="step" data-step="4">4</span>
                         <span id="progreso_no" class="step" data-step="5">5</span>
                         <span id="progreso_no" class="step" data-step="6">6</span>   
-=======
-                    <h1>Registro Ruta Emprendedora - 2025</h1>
->>>>>>> 243dc3dcb65fa378ccea70b6cb35c42f24214abe
-
-                    <div id="progress-container">
-                        <div id="progress-bar">
-                            <div id="progress-bar-fill"></div>
-                        </div>
-                        <div id="progress-steps">
-                            <span class="step" data-step="1">1</span>
-                            <span class="step" data-step="2">2</span>
-                            <span class="step" data-step="3">3</span>
-                            <span class="step" data-step="4">4</span>
-                            <span class="step" data-step="5">5</span>
-                            <span class="step" data-step="6">6</span>
-                        </div>
-                    </div>
 
                 </div>
 
