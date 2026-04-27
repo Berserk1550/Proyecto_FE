@@ -82,7 +82,7 @@
 
                                     <label>Nombres</label>
 
-                                    <input type="text" id="nombre_emprendedor" name="nombre_emprendedor" required minlength="2" maxlength="50" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+" title="Solo se permiten letras y espacios" placeholder="Ej: Juan Carlos">
+                                    <input type="text" id="nombre_emprendedor" name="nombre_emprendedor" required minlength="2" maxlength="50" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{2,50}" title="Solo se permiten letras y espacios" placeholder="Ej: Juan Carlos">
 
                                 </div>
 
@@ -90,7 +90,7 @@
 
                                     <label>Apellidos</label>
 
-                                    <input type="text" id="apellido_emprendedor" name="apellido_emprendedor" required minlength="2" maxlength="50" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+" title="Solo se permiten letras y espacios" placeholder="Ej: García Rodríguez">
+                                    <input type="text" id="apellido_emprendedor" name="apellido_emprendedor" required minlength="2" maxlength="50" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{2,50}" title="Solo se permiten letras y espacios" placeholder="Ej: García Rodríguez">
 
                                 </div>
 
@@ -118,7 +118,7 @@
 
                                     <label>Número de documento</label>
 
-                                    <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="11" inputmode="numeric" pattern="[0-9]+" title="Solo números (5-11 dígitos)" placeholder="Ej: 1234567890">
+                                    <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="11" inputmode="numeric" pattern="[0-9]{5,11}" title="Solo números (5-11 dígitos)" placeholder="Ej: 1234567890">
 
                                 </div>
 
@@ -130,7 +130,7 @@
 
                                     <label>Numero de telefono</label>
 
-                                    <input type="tel" id="telefono_emprendedor" name="telefono_emprendedor" required minlength="10" maxlength="10" inputmode="tel" pattern="[0-9]{10}" title="Ingresa 10 dígitos" placeholder="Ej: 3001234567">
+                                    <input type="tel" id="telefono_emprendedor" name="telefono_emprendedor" required minlength="10" maxlength="10" inputmode="tel" pattern="[0-9]{10,10}" title="Ingresa 10 dígitos" placeholder="Ej: 3001234567">
 
                                 </div>
 
@@ -162,7 +162,7 @@
 
                                     <label>Correo electrónico</label>
 
-                                    <input type="email" id="correo_emprendedor" name="correo_emprendedor" placeholder="Ej: soyemprendedor@gmail.com" required>
+                                    <input type="email" id="correo_emprendedor" name="correo_emprendedor" maxlength="64" minlength="11" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{2,64}" placeholder="Ej: soyemprendedor@gmail.com" required>
 
                                 </div>
 
@@ -240,7 +240,7 @@
                             <div id="caja">
                                 <label>Municipio</label>
 
-                                <input type="text" id="municipio" name="municipio" required minlength="2" maxlength="100" placeholder="Ej: Cali">
+                                <input type="text" id="municipio" name="municipio" required minlength="2" maxlength="30" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{2,30}" placeholder="Ej: Cali">
                             </div>
                         </div>
 
@@ -667,7 +667,7 @@
 
                         <label>Si eres aprendiz o egresado SENA, escribe tu numero de ficha, de lo contrario escribe "No aplica"</label>
 
-                        <input type="text" id="numero_ficha" name="numero_ficha" required minlength="2" maxlength="50" placeholder="Ej: 12345 o No aplica">
+                        <input type="text" id="numero_ficha" name="numero_ficha" required minlength="7" maxlength="7" inputmode="numeric" pattern="[0-9]{7,7}" placeholder="Ej: 12345 o No aplica">
 
                     </div>
                         <div id="navegacion_botones">

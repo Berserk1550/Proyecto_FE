@@ -174,13 +174,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
   if (campoFecha) {
     const hoy = new Date();
-    const hace100anos = new Date(hoy.getFullYear() - 100, hoy.getMonth(), hoy.getDate());
-    
+    const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
+    const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
+
     // Formato YYYY-MM-DD para HTML5 date input
     const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
     
-    campoFecha.max = formatoFecha(hoy);
-    campoFecha.min = formatoFecha(hace100anos);
+    campoFecha.max = formatoFecha(desde15anos);
+    campoFecha.min = formatoFecha(hasta100anos);
   }
 });
 
