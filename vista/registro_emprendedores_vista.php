@@ -58,12 +58,12 @@
 
                     <div id="caja_progreso">
 
-                        <span class="step" data-step="1">1</span>
-                        <span class="step" data-step="2">2</span>
-                        <span class="step" data-step="3">3</span>
-                        <span class="step" data-step="4">4</span>
-                        <span class="step" data-step="5">5</span>
-                        <span class="step" data-step="6">6</span>   
+                        <span id="progreso_no" class="step" data-step="1">1</span>
+                        <span id="progreso_no" class="step" data-step="2">2</span>
+                        <span id="progreso_no" class="step" data-step="3">3</span>
+                        <span id="progreso_no" class="step" data-step="4">4</span>
+                        <span id="progreso_no" class="step" data-step="5">5</span>
+                        <span id="progreso_no" class="step" data-step="6">6</span>   
 
                     </div>
 
@@ -266,7 +266,7 @@
 
                             <label>Clasificación de población (si aplica)</label>
 
-                            <select id="clasificacion" name="clasificacion" required>
+                            <select id="clasificacion" name="clasificacion" required style="width: 200px;">
                                 <option value="" disabled selected>Selecciona una opción</option>
                                 <option value="Ninguno">Ninguno</option>
                                 <option value="Adolescente trabajador">Adolescente trabajador</option>
@@ -753,7 +753,7 @@
 
                             <label>¿Cuál es el centro de Desarrollo Empresarial que brinda la orientación?</label>
 
-                            <select id="centro_orientacion" name="centro_orientacion" required>
+                            <select id="centro_orientacion" name="centro_orientacion" required style="width: 200px;">
                                 <option value="">-- Selecciona un centro --</option>
 
                                 <option value="CAB">Centro Agropecuario de Buga (CAB)</option>

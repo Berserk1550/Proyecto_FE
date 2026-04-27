@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('fase_5'),
     document.getElementById('fase_6')
   ];
-  const pasos = Array.from(document.querySelectorAll('#progress-steps .step'));
+  const pasos = Array.from(document.querySelectorAll('#caja_progreso .step'));
   const barraLleno = document.getElementById('progress-bar-fill');
 
   if (!form || fases.length === 0 || pasos.length === 0) {

@@ -14,6 +14,8 @@
     --verde-claro: #9EE37D;
     --texto-negro: #1A1A1A;
     --texto-gris: #6F6F6F;
+    --gris-claro: #C9C9C9;
+    --texto-verde-oscuro: #062606;
     --blanco-total: #FFFFFF;
     --opacidad-pantalla: rgba(184, 184, 184, 0.589);
     --texto-casi-negro: #2D3748;
@@ -35,6 +37,7 @@ body {
 #caja_padre {
     padding: 0;
     margin: 0;
+    display: flex;
     width: 100%;
     height: 100vh;
     position: relative;
@@ -51,11 +54,11 @@ body {
     }
 
         #encabezado #cont_encabezado {
-            width: 100%;
             height: 50px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            width: 100%;
         }
 
             #cont_encabezado #medalla_programa {
@@ -84,7 +87,6 @@ body {
         height: 100vh;
         display: flex;
         flex-direction: column;
-        margin-top: 15%;
         z-index: 3;
     }
 
@@ -145,10 +147,117 @@ body {
                     font-size: 1.4rem;
                     text-align: center;
                     margin-bottom: 15px;
+                    color: var(--verde-oscuro);
                 }
 
                 #cont_progreso #caja_progreso {
                     width: 100%;
                     display: flex;
                     justify-content: space-between;
+                    margin: 30px 0;
+                }   
+
+                    #caja_progreso #progreso_no {
+                        background: var(--gris-claro);
+                        color: var(--blanco-total);
+                        padding: 3px;
+                        width: 28px;
+                        display: flex;
+                        height: 28px;
+                        border-radius: 99px;
+                        font-weight: bold;
+                        align-items: center;
+                        font-size: 13px;
+                        justify-content: center;
+                    }
+
+            #contenido_registro #formulario {
+                width: 100%;
+                display: flex;
+            }
+
+                #formulario #fase_1 {
+                    width: 90%;
+                    left: 50%;
+                    position: relative;
+                    transform: translateX(-50%);
+                    display: flex;
+                    flex-direction: column;
                 }
+
+                    #fase_1 h3 {
+                        font-size: 1.3rem;
+                        text-align: center;
+                        margin-bottom: 20px;
+                        color: var(--verde-oscuro);
+                    }
+
+                        #cont_fase_1 #grupos {
+                            display: flex;
+                            flex-direction: column;
+                        }
+
+                            #grupos #caja {
+                                display: flex;
+                                flex-direction: column;
+                            }
+
+                                #caja label {
+                                    margin:20px 0 5px 0;
+                                    font-weight: 600;
+                                    font-size: 15px;
+                                    color: var(--texto-verde-oscuro);
+                                }
+
+                                #caja input {
+                                    border: 2px solid var(--color-verde-sena);
+                                    border-radius: 8px;
+                                    height: 45px;
+                                    padding: 5px;
+                                    font-size: 15px;
+                                    outline: none;
+                                }
+
+                                #caja select {
+                                    border: 2px solid var(--color-verde-sena);
+                                    border-radius: 8px;
+                                    height: 45px;
+                                    font-size: 15px;
+                                    outline: none;
+                                    padding: 5px;
+                                }
+
+                    #fase_1 #btn_fase1 {
+                        background: var(--verde-oscuro);
+                        border: none;
+                        width: 100%;
+                        height: 50px;
+                        text-align: center;
+                        color: var(--blanco-total);
+                        font-size: 16px;
+                        font-weight: bold;
+                        border-radius: 99px;
+                        margin: 30px 0 10px 0;
+                    }
+
+    #caja_padre #pie_pagina {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        height: 50px;
+        margin-top: 20px;
+        background: var(--blanco);
+        width: 100%;
+        display: block;
+        z-index: 100;
+    }
+
+        #pie_pagina #cont_pie_pagina {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
