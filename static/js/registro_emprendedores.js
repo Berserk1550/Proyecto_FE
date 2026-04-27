@@ -114,6 +114,104 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Manejar tipo_emprendedor para llenar número de ficha automáticamente
+  const tipoEmprendedor = document.getElementById('tipo_emprendedor');
+  const numeroFicha = document.getElementById('numero_ficha');
+
+  if (tipoEmprendedor) {
+    tipoEmprendedor.addEventListener('change', function() {
+      if (this.value === 'No cuenta con formación' || this.value === 'Otro') {
+        numeroFicha.value = 'No aplica';
+        numeroFicha.disabled = true;
+        numeroFicha.removeAttribute('required');
+      } else {
+        numeroFicha.value = '';
+        numeroFicha.disabled = false;
+        numeroFicha.setAttribute('required', 'required');
+      }
+    });
+  }
+
+  // Función para ordenar alfabéticamente los selects
+  function ordenarSelectsAlfabeticamente() {
+    const selectsParaOrdenar = [
+      'clasificacion',
+      'discapacidad',
+      'tipo_emprendedor',
+      'nivel_formacion',
+      'carrera_tecnico',
+      'carrera_tecnologo',
+      'carrera_operario',
+      'carrera_auxiliar',
+      'carrera_profesional',
+      'posgrado_especializacion',
+      'posgrado_maestria',
+      'posgrado_doctorado',
+      'situacion_negocio',
+      'programa',
+      'ejercer_actividad_proyecto',
+      'empresa_formalizada',
+      'centro_orientacion',
+      'orientador',
+      'departamento'
+    ];
+
+    selectsParaOrdenar.forEach(selectId => {
+      const select = document.getElementById(selectId);
+      if (!select) return;
+
+      // Separar opciones con optgroup
+      const conOptgroup = [];
+      let opcionesActuales = [];
+
+      // Procesar todos los hijos del select
+      Array.from(select.children).forEach((child, index) => {
+        if (child.tagName === 'OPTION') {
+          if (index === 0) return; // Saltar la primera opción (placeholder)
+          opcionesActuales.push(child);
+        } else if (child.tagName === 'OPTGROUP') {
+          if (opcionesActuales.length > 0) {
+            conOptgroup.push({ opciones: opcionesActuales, grupo: null });
+            opcionesActuales = [];
+          }
+          const grupo = child.label;
+          const opcionesDelGrupo = Array.from(child.querySelectorAll('option'));
+          conOptgroup.push({ opciones: opcionesDelGrupo, grupo: grupo });
+        }
+      });
+
+      if (opcionesActuales.length > 0) {
+        conOptgroup.push({ opciones: opcionesActuales, grupo: null });
+      }
+
+      // Ordenar las opciones alfabéticamente
+      conOptgroup.forEach(item => {
+        item.opciones.sort((a, b) => a.text.localeCompare(b.text, 'es'));
+      });
+
+      // Limpiar el select manteniendo solo la primera opción
+      while (select.children.length > 1) {
+        select.children[1].remove();
+      }
+
+      // Reconstruir el select con opciones ordenadas
+      conOptgroup.forEach(item => {
+        if (item.grupo) {
+          const optgroup = document.createElement('optgroup');
+          optgroup.label = item.grupo;
+          item.opciones.forEach(opcion => {
+            optgroup.appendChild(opcion);
+          });
+          select.appendChild(optgroup);
+        } else {
+          item.opciones.forEach(opcion => {
+            select.appendChild(opcion);
+          });
+        }
+      });
+    });
+  }
+
   // Event listeners para botones de navegación
   document.addEventListener('click', (e) => {
     // Botón siguiente
@@ -169,18 +267,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Inicializar
   actualizarProgreso();
+  ordenarSelectsAlfabeticamente();
   
   // Establecer restricciones de fecha en el campo de nacimiento
   const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
   if (campoFecha) {
     const hoy = new Date();
-    const hace100anos = new Date(hoy.getFullYear() - 100, hoy.getMonth(), hoy.getDate());
-    
+    const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
+    const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
+
     // Formato YYYY-MM-DD para HTML5 date input
     const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
     
-    campoFecha.max = formatoFecha(hoy);
-    campoFecha.min = formatoFecha(hace100anos);
+    campoFecha.max = formatoFecha(desde15anos);
+    campoFecha.min = formatoFecha(hasta100anos);
   }
 });
 
@@ -195,6 +295,7 @@ function cargarPaises() {
 
   // Lista de países y gentilicios (sin API externa)
   const paises = [
+    { nombre: "Colombia", gentilicio: "Colombiano/a" },
     { nombre: "Afganistán", gentilicio: "Afgano/a" },
     { nombre: "Albania", gentilicio: "Albanés/a" },
     { nombre: "Alemania", gentilicio: "Alemán/a" },
@@ -236,7 +337,6 @@ function cargarPaises() {
     { nombre: "China", gentilicio: "Chino/a" },
     { nombre: "Chipre", gentilicio: "Chipriota" },
     { nombre: "Ciudad del Vaticano", gentilicio: "Vaticano" },
-    { nombre: "Colombia", gentilicio: "Colombiano/a" },
     { nombre: "Comoras", gentilicio: "Comorense" },
     { nombre: "Congo", gentilicio: "Congoleño/a" },
     { nombre: "Corea del Norte", gentilicio: "Norcoreano/a" },
@@ -435,6 +535,9 @@ function cargarPaises() {
     option.dataset.nacionalidad = item.gentilicio;
     paisSelect.appendChild(option);
   });
+
+  // Establecer Colombia como seleccionado por defecto
+  paisSelect.value = "Colombia";
 
   console.log('✓ Países cargados correctamente: ' + paises.length);
 }
