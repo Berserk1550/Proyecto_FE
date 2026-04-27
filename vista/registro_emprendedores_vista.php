@@ -6,16 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../static/css/registro_emprendedores.css">
-
-    <script src="../static/js/registro_emprendedores.js"></script>
-
-    <script src="../static/js/funciones.js"></script>
 </head>
-
 <body>
 
     <main id="caja_padre">
-
+        
         <header id="encabezado">
 
             <div id="cont_encabezado">
@@ -42,29 +37,32 @@
 
                 <h2>ORIENTACIÓN A EMPRENDEDORES 2025</h2>
 
-                <p id="texto_1">Centros de Desarrollo Empresarial - Regional Valle</p>
+                <p>Centros de Desarrollo Empresarial - Regional Valle</p>
 
-                <p id="texto_2">¡Bienvenido/a Emprendedor(a)! Por favor registre su asistencia a la orientación sobre los servicios de los Centros de Desarrollo Empresarial del SENA CAB Regional Valle. Este espacio permite acceder a la <b>Ruta Emprendedora</b> y a las herramientas necesarias para fortalecer sus habilidades blandas, desarrollar competencias emprendedoras y acceder a oportunidades como participar en convocatorias Fondo Emprender.</p>
+                <p>¡Bienvenido/a Emprendedor(a)! Por favor registre su asistencia a la orientación sobre los servicios de los Centros de Desarrollo Empresarial del SENA CAB Regional Valle. Este espacio permite acceder a la <b>Ruta Emprendedora</b> y a las herramientas necesarias para fortalecer sus habilidades blandas, desarrollar competencias emprendedoras y acceder a oportunidades como participar en convocatorias Fondo Emprender.</p>
 
-                <p id="texto_3"><b>CONSENTIMIENTO INFORMADO Y PROTECCIÓN DE DATOS:</b> Entiendo que mi participación consiste en el diligenciamiento del presente formulario. La información es confidencial(Ley 1581 de 2012).</p>
-
+                <p><b>CONSENTIMIENTO INFORMADO Y PROTECCIÓN DE DATOS:</b> Entiendo que mi participación consiste en el diligenciamiento del presente formulario. La información es confidencial(Ley 1581 de 2012).</p>
+            
             </article>
 
             <article id="contenido_registro">
+                
+                <div>
 
-                <div id="cont_progreso">
+                    <h1>Registro Ruta Emprendedora - 2025</h1>
 
-                    <h1>Registro Ruta Emprendedora 2025</h1>
-
-                    <div id="caja_progreso">
-
-                        <span class="step" data-step="1">1</span>
-                        <span class="step" data-step="2">2</span>
-                        <span class="step" data-step="3">3</span>
-                        <span class="step" data-step="4">4</span>
-                        <span class="step" data-step="5">5</span>
-                        <span class="step" data-step="6">6</span>   
-
+                    <div id="progress-container">
+                        <div id="progress-bar">
+                            <div id="progress-bar-fill"></div>
+                        </div>
+                        <div id="progress-steps">
+                            <span class="step" data-step="1">1</span>
+                            <span class="step" data-step="2">2</span>
+                            <span class="step" data-step="3">3</span>
+                            <span class="step" data-step="4">4</span>
+                            <span class="step" data-step="5">5</span>
+                            <span class="step" data-step="6">6</span>
+                        </div>
                     </div>
 
                 </div>
@@ -186,18 +184,18 @@
 
                         <div id="cont_fase_2">
                             <div id="grupos">
-                                <div id="caja">
-                                    <label>Pais</label>
-                                    <select name="paises" id="paises" required>
-                                        <option disabled selected>Selecciona un pais</option>
-                                    </select>
-                                </div>
+                                    <div id="caja">
+                                        <label>Pais</label>
+                                        <select name="paises" id="paises" required>
+                                            <option disabled selected>Selecciona un pais</option>
+                                        </select>
+                                    </div>
 
-                                <div id="caja">
-                                    <label>Nacionalidad</label>
-                                    <span id="nacionalidad" name="nacionalidad"></span>
+                                    <div id="caja">    
+                                        <label>Nacionalidad</label>
+                                        <span id="nacionalidad" name="nacionalidad"></span>
+                                    </div>
                                 </div>
-                            </div>
                             <div id="caja">
                                 <label>Departamento (si es de otro pais, elija otro)</label>
 
@@ -442,236 +440,236 @@
                                 <option value="Otro">Otro</option>
                             </select>
 
-                            <select id="carrera_profesional" name="carrera_profesional" style="display:none; margin-top: 8px;">
-                                <option value="" disabled selected>-- Selecciona tu carrera profesional --</option>
+                        <select id="carrera_profesional" name="carrera_profesional" style="display:none; margin-top: 8px;">
+                            <option value="" disabled selected>-- Selecciona tu carrera profesional --</option>
 
-                                <optgroup label="Ingenierías y Tecnología">
-                                    <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
-                                    <option value="Ingeniería de Software">Ingeniería de Software</option>
-                                    <option value="Ingeniería Informática">Ingeniería Informática</option>
-                                    <option value="Ingeniería en Computación">Ingeniería en Computación</option>
-                                    <option value="Ingeniería Electrónica">Ingeniería Electrónica</option>
-                                    <option value="Ingeniería Eléctrica">Ingeniería Eléctrica</option>
-                                    <option value="Ingeniería en Telecomunicaciones">Ingeniería en Telecomunicaciones</option>
-                                    <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
-                                    <option value="Ingeniería Mecatrónica">Ingeniería Mecatrónica</option>
-                                    <option value="Ingeniería Industrial">Ingeniería Industrial</option>
-                                    <option value="Ingeniería Civil">Ingeniería Civil</option>
-                                    <option value="Ingeniería Ambiental">Ingeniería Ambiental</option>
-                                    <option value="Ingeniería Química">Ingeniería Química</option>
-                                    <option value="Ingeniería Biomédica">Ingeniería Biomédica</option>
-                                    <option value="Ingeniería Aeroespacial">Ingeniería Aeroespacial</option>
-                                    <option value="Ingeniería Naval">Ingeniería Naval</option>
-                                    <option value="Ingeniería Geológica">Ingeniería Geológica</option>
-                                    <option value="Ingeniería de Petróleos">Ingeniería de Petróleos</option>
-                                    <option value="Ingeniería de Minas">Ingeniería de Minas</option>
-                                    <option value="Ingeniería Agroindustrial">Ingeniería Agroindustrial</option>
-                                    <option value="Ingeniería de Alimentos">Ingeniería de Alimentos</option>
-                                    <option value="Ingeniería en Energías Renovables">Ingeniería en Energías Renovables</option>
-                                    <option value="Ingeniería en Materiales">Ingeniería en Materiales</option>
-                                    <option value="Ingeniería Topográfica">Ingeniería Topográfica</option>
-                                    <option value="Ingeniería de Transporte">Ingeniería de Transporte</option>
-                                    <option value="Ingeniería de Datos">Ingeniería de Datos</option>
-                                    <option value="Ciencia de Datos">Ciencia de Datos</option>
-                                    <option value="Analítica de Negocios">Analítica de Negocios</option>
-                                    <option value="Inteligencia Artificial">Inteligencia Artificial</option>
-                                    <option value="Ciberseguridad">Ciberseguridad</option>
-                                    <option value="Robótica">Robótica</option>
-                                    <option value="Geomática">Geomática</option>
-                                    <option value="Logística e Ingeniería Logística">Logística e Ingeniería Logística</option>
-                                </optgroup>
+                            <optgroup label="Ingenierías y Tecnología">
+                                <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                                <option value="Ingeniería de Software">Ingeniería de Software</option>
+                                <option value="Ingeniería Informática">Ingeniería Informática</option>
+                                <option value="Ingeniería en Computación">Ingeniería en Computación</option>
+                                <option value="Ingeniería Electrónica">Ingeniería Electrónica</option>
+                                <option value="Ingeniería Eléctrica">Ingeniería Eléctrica</option>
+                                <option value="Ingeniería en Telecomunicaciones">Ingeniería en Telecomunicaciones</option>
+                                <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
+                                <option value="Ingeniería Mecatrónica">Ingeniería Mecatrónica</option>
+                                <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                                <option value="Ingeniería Civil">Ingeniería Civil</option>
+                                <option value="Ingeniería Ambiental">Ingeniería Ambiental</option>
+                                <option value="Ingeniería Química">Ingeniería Química</option>
+                                <option value="Ingeniería Biomédica">Ingeniería Biomédica</option>
+                                <option value="Ingeniería Aeroespacial">Ingeniería Aeroespacial</option>
+                                <option value="Ingeniería Naval">Ingeniería Naval</option>
+                                <option value="Ingeniería Geológica">Ingeniería Geológica</option>
+                                <option value="Ingeniería de Petróleos">Ingeniería de Petróleos</option>
+                                <option value="Ingeniería de Minas">Ingeniería de Minas</option>
+                                <option value="Ingeniería Agroindustrial">Ingeniería Agroindustrial</option>
+                                <option value="Ingeniería de Alimentos">Ingeniería de Alimentos</option>
+                                <option value="Ingeniería en Energías Renovables">Ingeniería en Energías Renovables</option>
+                                <option value="Ingeniería en Materiales">Ingeniería en Materiales</option>
+                                <option value="Ingeniería Topográfica">Ingeniería Topográfica</option>
+                                <option value="Ingeniería de Transporte">Ingeniería de Transporte</option>
+                                <option value="Ingeniería de Datos">Ingeniería de Datos</option>
+                                <option value="Ciencia de Datos">Ciencia de Datos</option>
+                                <option value="Analítica de Negocios">Analítica de Negocios</option>
+                                <option value="Inteligencia Artificial">Inteligencia Artificial</option>
+                                <option value="Ciberseguridad">Ciberseguridad</option>
+                                <option value="Robótica">Robótica</option>
+                                <option value="Geomática">Geomática</option>
+                                <option value="Logística e Ingeniería Logística">Logística e Ingeniería Logística</option>
+                            </optgroup>
 
-                                <optgroup label="Ciencias de la Salud">
-                                    <option value="Medicina">Medicina</option>
-                                    <option value="Enfermería">Enfermería</option>
-                                    <option value="Odontología">Odontología</option>
-                                    <option value="Fisioterapia">Fisioterapia</option>
-                                    <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-                                    <option value="Fonoaudiología">Fonoaudiología</option>
-                                    <option value="Nutrición y Dietética">Nutrición y Dietética</option>
-                                    <option value="Instrumentación Quirúrgica">Instrumentación Quirúrgica</option>
-                                    <option value="Bacteriología">Bacteriología</option>
-                                    <option value="Microbiología">Microbiología</option>
-                                    <option value="Química Farmacéutica (Farmacia)">Química Farmacéutica (Farmacia)</option>
-                                    <option value="Optometría">Optometría</option>
-                                    <option value="Terapia Respiratoria">Terapia Respiratoria</option>
-                                    <option value="Salud Pública">Salud Pública</option>
-                                    <option value="Radiología e Imágenes Diagnósticas">Radiología e Imágenes Diagnósticas</option>
-                                </optgroup>
+                            <optgroup label="Ciencias de la Salud">
+                                <option value="Medicina">Medicina</option>
+                                <option value="Enfermería">Enfermería</option>
+                                <option value="Odontología">Odontología</option>
+                                <option value="Fisioterapia">Fisioterapia</option>
+                                <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+                                <option value="Fonoaudiología">Fonoaudiología</option>
+                                <option value="Nutrición y Dietética">Nutrición y Dietética</option>
+                                <option value="Instrumentación Quirúrgica">Instrumentación Quirúrgica</option>
+                                <option value="Bacteriología">Bacteriología</option>
+                                <option value="Microbiología">Microbiología</option>
+                                <option value="Química Farmacéutica (Farmacia)">Química Farmacéutica (Farmacia)</option>
+                                <option value="Optometría">Optometría</option>
+                                <option value="Terapia Respiratoria">Terapia Respiratoria</option>
+                                <option value="Salud Pública">Salud Pública</option>
+                                <option value="Radiología e Imágenes Diagnósticas">Radiología e Imágenes Diagnósticas</option>
+                            </optgroup>
 
-                                <optgroup label="Ciencias Sociales y Humanas">
-                                    <option value="Psicología">Psicología</option>
-                                    <option value="Sociología">Sociología</option>
-                                    <option value="Antropología">Antropología</option>
-                                    <option value="Trabajo Social">Trabajo Social</option>
-                                    <option value="Filosofía">Filosofía</option>
-                                    <option value="Historia">Historia</option>
-                                    <option value="Geografía">Geografía</option>
-                                    <option value="Ciencia Política">Ciencia Política</option>
-                                    <option value="Relaciones Internacionales">Relaciones Internacionales</option>
-                                    <option value="Arqueología">Arqueología</option>
-                                    <option value="Lingüística">Lingüística</option>
-                                    <option value="Literatura">Literatura</option>
-                                    <option value="Estudios Culturales">Estudios Culturales</option>
-                                    <option value="Teología">Teología</option>
-                                    <option value="Desarrollo Territorial">Desarrollo Territorial</option>
-                                </optgroup>
+                            <optgroup label="Ciencias Sociales y Humanas">
+                                <option value="Psicología">Psicología</option>
+                                <option value="Sociología">Sociología</option>
+                                <option value="Antropología">Antropología</option>
+                                <option value="Trabajo Social">Trabajo Social</option>
+                                <option value="Filosofía">Filosofía</option>
+                                <option value="Historia">Historia</option>
+                                <option value="Geografía">Geografía</option>
+                                <option value="Ciencia Política">Ciencia Política</option>
+                                <option value="Relaciones Internacionales">Relaciones Internacionales</option>
+                                <option value="Arqueología">Arqueología</option>
+                                <option value="Lingüística">Lingüística</option>
+                                <option value="Literatura">Literatura</option>
+                                <option value="Estudios Culturales">Estudios Culturales</option>
+                                <option value="Teología">Teología</option>
+                                <option value="Desarrollo Territorial">Desarrollo Territorial</option>
+                            </optgroup>
 
-                                <optgroup label="Economía, Negocios y Gestión">
-                                    <option value="Administración de Empresas">Administración de Empresas</option>
-                                    <option value="Contaduría Pública">Contaduría Pública</option>
-                                    <option value="Economía">Economía</option>
-                                    <option value="Finanzas">Finanzas</option>
-                                    <option value="Mercadeo">Mercadeo</option>
-                                    <option value="Negocios Internacionales">Negocios Internacionales</option>
-                                    <option value="Comercio Exterior">Comercio Exterior</option>
-                                    <option value="Administración Pública">Administración Pública</option>
-                                    <option value="Gestión Empresarial">Gestión Empresarial</option>
-                                    <option value="Banca y Finanzas">Banca y Finanzas</option>
-                                    <option value="Dirección de Empresas">Dirección de Empresas</option>
-                                    <option value="Emprendimiento">Emprendimiento</option>
-                                    <option value="Gerencia Logística">Gerencia Logística</option>
-                                    <option value="Gestión de Proyectos">Gestión de Proyectos</option>
-                                    <option value="Gestión del Talento Humano">Gestión del Talento Humano</option>
-                                    <option value="Administración Turística y Hotelera">Administración Turística y Hotelera</option>
-                                </optgroup>
+                            <optgroup label="Economía, Negocios y Gestión">
+                                <option value="Administración de Empresas">Administración de Empresas</option>
+                                <option value="Contaduría Pública">Contaduría Pública</option>
+                                <option value="Economía">Economía</option>
+                                <option value="Finanzas">Finanzas</option>
+                                <option value="Mercadeo">Mercadeo</option>
+                                <option value="Negocios Internacionales">Negocios Internacionales</option>
+                                <option value="Comercio Exterior">Comercio Exterior</option>
+                                <option value="Administración Pública">Administración Pública</option>
+                                <option value="Gestión Empresarial">Gestión Empresarial</option>
+                                <option value="Banca y Finanzas">Banca y Finanzas</option>
+                                <option value="Dirección de Empresas">Dirección de Empresas</option>
+                                <option value="Emprendimiento">Emprendimiento</option>
+                                <option value="Gerencia Logística">Gerencia Logística</option>
+                                <option value="Gestión de Proyectos">Gestión de Proyectos</option>
+                                <option value="Gestión del Talento Humano">Gestión del Talento Humano</option>
+                                <option value="Administración Turística y Hotelera">Administración Turística y Hotelera</option>
+                            </optgroup>
 
-                                <optgroup label="Educación (Licenciaturas)">
-                                    <option value="Licenciatura en Educación Preescolar">Licenciatura en Educación Preescolar</option>
-                                    <option value="Licenciatura en Educación Básica Primaria">Licenciatura en Educación Básica Primaria</option>
-                                    <option value="Licenciatura en Lengua Castellana">Licenciatura en Lengua Castellana</option>
-                                    <option value="Licenciatura en Matemáticas">Licenciatura en Matemáticas</option>
-                                    <option value="Licenciatura en Ciencias Naturales">Licenciatura en Ciencias Naturales</option>
-                                    <option value="Licenciatura en Educación Física">Licenciatura en Educación Física</option>
-                                    <option value="Licenciatura en Idiomas (Inglés)">Licenciatura en Idiomas (Inglés)</option>
-                                    <option value="Licenciatura en Educación Especial">Licenciatura en Educación Especial</option>
-                                    <option value="Licenciatura en Artes">Licenciatura en Artes</option>
-                                    <option value="Licenciatura en Música">Licenciatura en Música</option>
-                                    <option value="Licenciatura en Tecnología e Informática">Licenciatura en Tecnología e Informática</option>
-                                </optgroup>
+                            <optgroup label="Educación (Licenciaturas)">
+                                <option value="Licenciatura en Educación Preescolar">Licenciatura en Educación Preescolar</option>
+                                <option value="Licenciatura en Educación Básica Primaria">Licenciatura en Educación Básica Primaria</option>
+                                <option value="Licenciatura en Lengua Castellana">Licenciatura en Lengua Castellana</option>
+                                <option value="Licenciatura en Matemáticas">Licenciatura en Matemáticas</option>
+                                <option value="Licenciatura en Ciencias Naturales">Licenciatura en Ciencias Naturales</option>
+                                <option value="Licenciatura en Educación Física">Licenciatura en Educación Física</option>
+                                <option value="Licenciatura en Idiomas (Inglés)">Licenciatura en Idiomas (Inglés)</option>
+                                <option value="Licenciatura en Educación Especial">Licenciatura en Educación Especial</option>
+                                <option value="Licenciatura en Artes">Licenciatura en Artes</option>
+                                <option value="Licenciatura en Música">Licenciatura en Música</option>
+                                <option value="Licenciatura en Tecnología e Informática">Licenciatura en Tecnología e Informática</option>
+                            </optgroup>
 
-                                <optgroup label="Artes, Arquitectura y Diseño">
-                                    <option value="Arquitectura">Arquitectura</option>
-                                    <option value="Diseño Gráfico">Diseño Gráfico</option>
-                                    <option value="Diseño Industrial">Diseño Industrial</option>
-                                    <option value="Diseño de Modas">Diseño de Modas</option>
-                                    <option value="Diseño de Interiores">Diseño de Interiores</option>
-                                    <option value="Artes Plásticas">Artes Plásticas</option>
-                                    <option value="Artes Visuales">Artes Visuales</option>
-                                    <option value="Fotografía">Fotografía</option>
-                                    <option value="Cine y Televisión">Cine y Televisión</option>
-                                    <option value="Animación Digital">Animación Digital</option>
-                                    <option value="Música">Música</option>
-                                    <option value="Danza">Danza</option>
-                                    <option value="Teatro">Teatro</option>
-                                    <option value="Producción Multimedia">Producción Multimedia</option>
-                                </optgroup>
+                            <optgroup label="Artes, Arquitectura y Diseño">
+                                <option value="Arquitectura">Arquitectura</option>
+                                <option value="Diseño Gráfico">Diseño Gráfico</option>
+                                <option value="Diseño Industrial">Diseño Industrial</option>
+                                <option value="Diseño de Modas">Diseño de Modas</option>
+                                <option value="Diseño de Interiores">Diseño de Interiores</option>
+                                <option value="Artes Plásticas">Artes Plásticas</option>
+                                <option value="Artes Visuales">Artes Visuales</option>
+                                <option value="Fotografía">Fotografía</option>
+                                <option value="Cine y Televisión">Cine y Televisión</option>
+                                <option value="Animación Digital">Animación Digital</option>
+                                <option value="Música">Música</option>
+                                <option value="Danza">Danza</option>
+                                <option value="Teatro">Teatro</option>
+                                <option value="Producción Multimedia">Producción Multimedia</option>
+                            </optgroup>
 
-                                <optgroup label="Ciencias Básicas y Naturales">
-                                    <option value="Matemáticas">Matemáticas</option>
-                                    <option value="Estadística">Estadística</option>
-                                    <option value="Física">Física</option>
-                                    <option value="Química">Química</option>
-                                    <option value="Biología">Biología</option>
-                                    <option value="Bioquímica">Bioquímica</option>
-                                    <option value="Geología">Geología</option>
-                                    <option value="Ciencias de la Tierra">Ciencias de la Tierra</option>
-                                    <option value="Astronomía">Astronomía</option>
-                                    <option value="Nanociencia y Nanotecnología">Nanociencia y Nanotecnología</option>
-                                    <option value="Ciencias del Mar">Ciencias del Mar</option>
-                                </optgroup>
+                            <optgroup label="Ciencias Básicas y Naturales">
+                                <option value="Matemáticas">Matemáticas</option>
+                                <option value="Estadística">Estadística</option>
+                                <option value="Física">Física</option>
+                                <option value="Química">Química</option>
+                                <option value="Biología">Biología</option>
+                                <option value="Bioquímica">Bioquímica</option>
+                                <option value="Geología">Geología</option>
+                                <option value="Ciencias de la Tierra">Ciencias de la Tierra</option>
+                                <option value="Astronomía">Astronomía</option>
+                                <option value="Nanociencia y Nanotecnología">Nanociencia y Nanotecnología</option>
+                                <option value="Ciencias del Mar">Ciencias del Mar</option>
+                            </optgroup>
 
-                                <optgroup label="Agropecuarias y Ambiente">
-                                    <option value="Medicina Veterinaria">Medicina Veterinaria</option>
-                                    <option value="Zootecnia">Zootecnia</option>
-                                    <option value="Agronomía">Agronomía</option>
-                                    <option value="Ingeniería Agronómica">Ingeniería Agronómica</option>
-                                    <option value="Ingeniería Forestal">Ingeniería Forestal</option>
-                                    <option value="Ingeniería Agroecológica">Ingeniería Agroecológica</option>
-                                    <option value="Ingeniería Agrícola">Ingeniería Agrícola</option>
-                                    <option value="Ingeniería Pesquera">Ingeniería Pesquera</option>
-                                    <option value="Acuicultura">Acuicultura</option>
-                                    <option value="Administración Ambiental">Administración Ambiental</option>
-                                    <option value="Gestión Ambiental">Gestión Ambiental</option>
-                                    <option value="Ciencias Ambientales">Ciencias Ambientales</option>
-                                    <option value="Hidrología">Hidrología</option>
-                                    <option value="Meteorología">Meteorología</option>
-                                </optgroup>
+                            <optgroup label="Agropecuarias y Ambiente">
+                                <option value="Medicina Veterinaria">Medicina Veterinaria</option>
+                                <option value="Zootecnia">Zootecnia</option>
+                                <option value="Agronomía">Agronomía</option>
+                                <option value="Ingeniería Agronómica">Ingeniería Agronómica</option>
+                                <option value="Ingeniería Forestal">Ingeniería Forestal</option>
+                                <option value="Ingeniería Agroecológica">Ingeniería Agroecológica</option>
+                                <option value="Ingeniería Agrícola">Ingeniería Agrícola</option>
+                                <option value="Ingeniería Pesquera">Ingeniería Pesquera</option>
+                                <option value="Acuicultura">Acuicultura</option>
+                                <option value="Administración Ambiental">Administración Ambiental</option>
+                                <option value="Gestión Ambiental">Gestión Ambiental</option>
+                                <option value="Ciencias Ambientales">Ciencias Ambientales</option>
+                                <option value="Hidrología">Hidrología</option>
+                                <option value="Meteorología">Meteorología</option>
+                            </optgroup>
 
-                                <optgroup label="Comunicación y Medios">
-                                    <option value="Comunicación Social">Comunicación Social</option>
-                                    <option value="Periodismo">Periodismo</option>
-                                    <option value="Publicidad">Publicidad</option>
-                                    <option value="Relaciones Públicas">Relaciones Públicas</option>
-                                    <option value="Comunicación Audiovisual">Comunicación Audiovisual</option>
-                                    <option value="Comunicación Digital">Comunicación Digital</option>
-                                    <option value="Producción de Radio y TV">Producción de Radio y TV</option>
-                                    <option value="Comunicación Organizacional">Comunicación Organizacional</option>
-                                </optgroup>
+                            <optgroup label="Comunicación y Medios">
+                                <option value="Comunicación Social">Comunicación Social</option>
+                                <option value="Periodismo">Periodismo</option>
+                                <option value="Publicidad">Publicidad</option>
+                                <option value="Relaciones Públicas">Relaciones Públicas</option>
+                                <option value="Comunicación Audiovisual">Comunicación Audiovisual</option>
+                                <option value="Comunicación Digital">Comunicación Digital</option>
+                                <option value="Producción de Radio y TV">Producción de Radio y TV</option>
+                                <option value="Comunicación Organizacional">Comunicación Organizacional</option>
+                            </optgroup>
 
-                                <optgroup label="Derecho, Gobierno y Seguridad">
-                                    <option value="Derecho">Derecho</option>
-                                    <option value="Criminología">Criminología</option>
-                                    <option value="Criminalística">Criminalística</option>
-                                    <option value="Gobierno y Asuntos Públicos">Gobierno y Asuntos Públicos</option>
-                                    <option value="Gestión Pública">Gestión Pública</option>
-                                    <option value="Seguridad y Salud en el Trabajo">Seguridad y Salud en el Trabajo</option>
-                                    <option value="Gestión de la Seguridad">Gestión de la Seguridad</option>
-                                    <option value="Investigación Criminal">Investigación Criminal</option>
-                                </optgroup>
+                            <optgroup label="Derecho, Gobierno y Seguridad">
+                                <option value="Derecho">Derecho</option>
+                                <option value="Criminología">Criminología</option>
+                                <option value="Criminalística">Criminalística</option>
+                                <option value="Gobierno y Asuntos Públicos">Gobierno y Asuntos Públicos</option>
+                                <option value="Gestión Pública">Gestión Pública</option>
+                                <option value="Seguridad y Salud en el Trabajo">Seguridad y Salud en el Trabajo</option>
+                                <option value="Gestión de la Seguridad">Gestión de la Seguridad</option>
+                                <option value="Investigación Criminal">Investigación Criminal</option>
+                            </optgroup>
 
-                                <optgroup label="Turismo, Gastronomía y Deporte">
-                                    <option value="Turismo">Turismo</option>
-                                    <option value="Administración Turística y Hotelera">Administración Turística y Hotelera</option>
-                                    <option value="Gastronomía">Gastronomía</option>
-                                    <option value="Guianza Turística">Guianza Turística</option>
-                                    <option value="Gestión Deportiva">Gestión Deportiva</option>
-                                    <option value="Recreación y Deporte">Recreación y Deporte</option>
-                                </optgroup>
+                            <optgroup label="Turismo, Gastronomía y Deporte">
+                                <option value="Turismo">Turismo</option>
+                                <option value="Administración Turística y Hotelera">Administración Turística y Hotelera</option>
+                                <option value="Gastronomía">Gastronomía</option>
+                                <option value="Guianza Turística">Guianza Turística</option>
+                                <option value="Gestión Deportiva">Gestión Deportiva</option>
+                                <option value="Recreación y Deporte">Recreación y Deporte</option>
+                            </optgroup>
 
-                                <option value="Otro">Otro</option>
-                            </select>
+                            <option value="Otro">Otro</option>
+                        </select>
 
-                            <!-- ESPECIALIZACIÓN -->
-                            <select id="posgrado_especializacion" name="posgrado_especializacion" style="display:none;">
-                                <option value="" disabled selected>-- Selecciona tu especialización --</option>
-                                <option value="Especialización en Gerencia de Proyectos">Especialización en Gerencia de Proyectos</option>
-                                <option value="Especialización en Seguridad y Salud en el Trabajo">Especialización en Seguridad y Salud en el Trabajo</option>
-                                <option value="Especialización en Finanzas">Especialización en Finanzas</option>
-                                <option value="Especialización en Analítica de Datos">Especialización en Analítica de Datos</option>
-                                <option value="Especialización en Docencia Universitaria">Especialización en Docencia Universitaria</option>
-                                <option value="Otro">Otro</option>
-                            </select>
+                        <!-- ESPECIALIZACIÓN -->
+                        <select id="posgrado_especializacion" name="posgrado_especializacion" style="display:none;">
+                            <option value="" disabled selected>-- Selecciona tu especialización --</option>
+                            <option value="Especialización en Gerencia de Proyectos">Especialización en Gerencia de Proyectos</option>
+                            <option value="Especialización en Seguridad y Salud en el Trabajo">Especialización en Seguridad y Salud en el Trabajo</option>
+                            <option value="Especialización en Finanzas">Especialización en Finanzas</option>
+                            <option value="Especialización en Analítica de Datos">Especialización en Analítica de Datos</option>
+                            <option value="Especialización en Docencia Universitaria">Especialización en Docencia Universitaria</option>
+                            <option value="Otro">Otro</option>
+                        </select>
 
-                            <!-- MAESTRÍA -->
-                            <select id="posgrado_maestria" name="posgrado_maestria" style="display:none;">
-                                <option value="" disabled selected>-- Selecciona tu maestría --</option>
-                                <option value="Maestría en Ingeniería de Software">Maestría en Ingeniería de Software</option>
-                                <option value="Maestría en Administración (MBA)">Maestría en Administración (MBA)</option>
-                                <option value="Maestría en Dirección de Proyectos">Maestría en Dirección de Proyectos</option>
-                                <option value="Maestría en Ciencias de Datos">Maestría en Ciencias de Datos</option>
-                                <option value="Maestría en Educación">Maestría en Educación</option>
-                                <option value="Maestría en Salud Pública">Maestría en Salud Pública</option>
-                                <option value="Maestría en Ingeniería Industrial">Maestría en Ingeniería Industrial</option>
-                                <option value="Otro">Otro</option>
-                            </select>
+                        <!-- MAESTRÍA -->
+                        <select id="posgrado_maestria" name="posgrado_maestria" style="display:none;">
+                            <option value="" disabled selected>-- Selecciona tu maestría --</option>
+                            <option value="Maestría en Ingeniería de Software">Maestría en Ingeniería de Software</option>
+                            <option value="Maestría en Administración (MBA)">Maestría en Administración (MBA)</option>
+                            <option value="Maestría en Dirección de Proyectos">Maestría en Dirección de Proyectos</option>
+                            <option value="Maestría en Ciencias de Datos">Maestría en Ciencias de Datos</option>
+                            <option value="Maestría en Educación">Maestría en Educación</option>
+                            <option value="Maestría en Salud Pública">Maestría en Salud Pública</option>
+                            <option value="Maestría en Ingeniería Industrial">Maestría en Ingeniería Industrial</option>
+                            <option value="Otro">Otro</option>
+                        </select>
 
-                            <!-- DOCTORADO -->
-                            <select id="posgrado_doctorado" name="posgrado_doctorado" style="display:none;">
-                                <option value="" disabled selected>-- Selecciona tu doctorado --</option>
-                                <option value="Doctorado en Ingeniería">Doctorado en Ingeniería</option>
-                                <option value="Doctorado en Ciencias">Doctorado en Ciencias</option>
-                                <option value="Doctorado en Educación">Doctorado en Educación</option>
-                                <option value="Doctorado en Salud Pública">Doctorado en Salud Pública</option>
-                                <option value="Doctorado en Economía">Doctorado en Economía</option>
-                                <option value="Otro">Otro</option>
-                            </select>
+                        <!-- DOCTORADO -->
+                        <select id="posgrado_doctorado" name="posgrado_doctorado"style="display:none;">
+                            <option value="" disabled selected>-- Selecciona tu doctorado --</option>
+                            <option value="Doctorado en Ingeniería">Doctorado en Ingeniería</option>
+                            <option value="Doctorado en Ciencias">Doctorado en Ciencias</option>
+                            <option value="Doctorado en Educación">Doctorado en Educación</option>
+                            <option value="Doctorado en Salud Pública">Doctorado en Salud Pública</option>
+                            <option value="Doctorado en Economía">Doctorado en Economía</option>
+                            <option value="Otro">Otro</option>
+                        </select>
 
-                            <label>Si eres aprendiz o egresado SENA, escribe tu numero de ficha, de lo contrario escribe "No aplica"</label>
+                        <label>Si eres aprendiz o egresado SENA, escribe tu numero de ficha, de lo contrario escribe "No aplica"</label>
 
                         <input type="text" id="numero_ficha" name="numero_ficha" required minlength="7" maxlength="7" inputmode="numeric" pattern="[0-9]{7,7}" placeholder="Ej: 12345 o No aplica">
 
-                        </div>
+                    </div>
                         <div id="navegacion_botones">
                             <button type="button" id="btn_volver">
                                 <svg width="30" height="30" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
@@ -692,7 +690,7 @@
 
                             <label>Eres un emprendedor que tiene...</label>
 
-                            <select id="situacion_negocio" name="situacion_negocio">
+                            <select id="situacion_negocio" name="situacion_negocio" >
                                 <option value="" disabled selected>-- Selecciona --</option>
                                 <option value="Ninguno">Ninguno</option>
                                 <option value="Idea de negocio">Una idea de negocio</option>
@@ -757,7 +755,7 @@
                                 <option value="">-- Selecciona un centro --</option>
 
                                 <option value="CAB">Centro Agropecuario de Buga (CAB)</option>
-                                <option value="CBI">Centro de Biotecnología Industrial (CBI Palmira)</option>
+                                <option value="CBI" >Centro de Biotecnología Industrial (CBI Palmira)</option>
                                 <option value="CDTI">Centro de Diseño Tecnológico Industrial (CDTI Cali)</option>
                                 <option value="CEAI">Centro de Electricidad y Automatización Industrial (CEAI Cali)</option>
                                 <option value="CGTS">Centro de Gestión Tecnológica de Servicios (CGTS Cali)</option>
@@ -771,10 +769,10 @@
                             <label>¿Cuál fue el orientador que brindó la orientación?</label>
 
                             <select id="orientador" name="orientador" required>
-                                <option value="" disabled selected>-- Selecciona primero un centro --</option>
-                                <option value="CAB">Carlos Alberto Bernal</option>
-                                <option value="CBI">Diana Carolina Rodríguez</option>
-                                <option value="CDTI">Jorge Iván Martínez</option>
+                                    <option value="" disabled selected>-- Selecciona primero un centro --</option>
+                                    <option value="CAB">Carlos Alberto Bernal</option>
+                                    <option value="CBI">Diana Carolina Rodríguez</option>
+                                    <option value="CDTI">Jorge Iván Martínez</option>   
                             </select>
                         </div>
 
@@ -797,9 +795,9 @@
 
                 <div id="cont_pie_pagina">
 
-                    <img src="../static/img/logocolombiaporlavidatrabajo.png" width="80" height="30" loading="eager">
+                        <img src="../static/img/logocolombiaporlavidatrabajo.png" width="80" height="30" loading="eager">
 
-                    <img src="../static/img/mintrabajo.png" width="70" height="30" loading="eager">
+                        <img src="../static/img/mintrabajo.png" width="70" height="30" loading="eager">
 
                 </div>
 
@@ -808,6 +806,10 @@
         </section>
 
     </main>
+
+    <script src="../static/js/registro_emprendedores.js"></script>
+
+    <script src="../static/js/funciones.js"></script>
 
 </body>
 
