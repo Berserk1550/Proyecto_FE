@@ -159,7 +159,7 @@
 
                                     <label>Correo electrónico</label>
 
-                                    <input type="email" id="correo_emprendedor" name="correo_emprendedor" maxlength="64" minlength="11" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{2,64}" placeholder="Ej: soyemprendedor@gmail.com" required>
+                                    <input type="email" id="correo_emprendedor" name="correo_emprendedor" maxlength="64" minlength="14" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{14,64}" placeholder="Ej: soyemprendedor@gmail.com" required>
 
                                 </div>
 
