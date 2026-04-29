@@ -40,6 +40,7 @@ body {
     display: flex;
     width: 100%;
     height: 100vh;
+    flex-direction: column;
     position: relative;
     z-index: 2;
 }
@@ -61,7 +62,11 @@ body {
             width: 100%;
         }
 
-            #cont_encabezado #medalla_programa {
+            #cont_encabezado #caja_separadora {
+                display: flex;
+            }
+
+            #caja_separadora #medalla_programa {
                 margin-right: 20px;
                 z-index: 101;
             }
@@ -81,7 +86,7 @@ body {
                 z-index: 101;
             }
 
-            #cont_encabezado #volver_inicio {
+            #caja_separadora #volver_inicio {
                 background: var(--verde-oscuro);
                 font-size: 13px;
                 font-weight: bold;
@@ -628,3 +633,65 @@ body {
                         font-size: 15px;
                         font-weight: bold;
                     }
+
+@media screen and (min-width: 650px){
+
+        #pagina_principal #tarjeta_informacion {
+            margin-top: 10%;
+            width: 80%;
+        }
+
+        #pagina_principal #contenido_registro {
+            width: 80%;
+        }
+
+            #fase_1 #cont_fase_1 {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            #cont_fase_1 #grupos {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            #grupos #caja {
+                width: 48%;
+            }
+
+}
+
+@media screen and (min-width: 1024px) {
+
+    #caja_padre #pagina_principal {
+        flex-direction: row;
+        justify-content: center
+    }
+
+        #pagina_principal #tarjeta_informacion {
+            width: 20%;
+            left: 0;
+            margin-top: 0;
+            top: 50%;
+            max-height: max-content;
+            transform: translate(0, -50%);
+            margin-right: 30px;
+            font-size: 16px;
+        }
+
+        #pagina_principal #contenido_registro {
+            width: 40%;
+            left: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+            max-height: max-content;
+            margin-left: 30px;
+        }
+
+            #tarjeta_informacion h2 {
+                font-size: 1.2rem;
+            }   
+}

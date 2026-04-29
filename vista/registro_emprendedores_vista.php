@@ -23,15 +23,19 @@
 
                 <img src="../static/img/logoFondoEmprender.svg" with="160" height="50" loading="eager">
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#39a900" stroke-width="2" id="medalla_programa">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M9 3h6l3 7l-6 2l-6 -2z" />
-                    <path d="M12 12l-3 -9" />
-                    <path d="M15 11l-3 -8" />
-                    <path d="M12 19.5l-3 1.5l.5 -3.5l-2 -2l3 -.5l1.5 -3l1.5 3l3 .5l-2 2l.5 3.5z" />
-                </svg>
+                <div id="caja_separadora">
 
-                <a id="volver_inicio" href="<!-- ruta al login -->">Volver al inicio</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#39a900" stroke-width="2" id="medalla_programa">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M9 3h6l3 7l-6 2l-6 -2z" />
+                        <path d="M12 12l-3 -9" />
+                        <path d="M15 11l-3 -8" />
+                        <path d="M12 19.5l-3 1.5l.5 -3.5l-2 -2l3 -.5l1.5 -3l1.5 3l3 .5l-2 2l.5 3.5z" />
+                    </svg>
+
+                    <a id="volver_inicio" href="../index.php">Volver al inicio</a>
+
+                </div>
 
                 <p id="texto_programa" style="display: none;">ANÁLISIS Y DESARROLLO DE SOFTWARE | 2931527</p>
 
@@ -757,14 +761,14 @@
                             </div>
 
 
-                                <!-- FASE 6  -->
-                                <div id="fase_6">
+                            <!-- FASE 6  -->
+                            <div id="fase_6">
 
-                                    <h3>Centro y orientador</h3>
+                                <h3>Centro y orientador</h3>
 
-                                    <div id="cont_fase_6">
+                                <div id="cont_fase_6">
 
-                                        <label>¿Cuál es el centro de Desarrollo Empresarial que brinda la orientación?</label>
+                                    <label>¿Cuál es el centro de Desarrollo Empresarial que brinda la orientación?</label>
 
                                     <select id="centro_orientacion" name="centro_orientacion" required>
                                         <option value="">-- Selecciona un centro --</option>
@@ -800,23 +804,23 @@
                                     <button type="submit" id="btn_fase6">Enviar formulario</button>
                                 </div>
 
-                </form>
+                        </form>
 
             </article>
 
-            <footer id="pie_pagina">
-
-                <div id="cont_pie_pagina">
-
-                    <img src="../static/img/logocolombiaporlavidatrabajo.png" width="80" height="30" loading="eager">
-
-                    <img src="../static/img/mintrabajo.png" width="70" height="30" loading="eager">
-
-                </div>
-
-            </footer>
-
         </section>
+
+        <footer id="pie_pagina">
+
+            <div id="cont_pie_pagina">
+
+                <img src="../static/img/logocolombiaporlavidatrabajo.png" width="80" height="30" loading="eager">
+
+                <img src="../static/img/mintrabajo.png" width="70" height="30" loading="eager">
+
+            </div>
+
+        </footer>
 
     </main>
 
