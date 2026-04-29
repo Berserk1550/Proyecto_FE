@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const extensionesMini = ['co', 'mx', 'ar', 've', 'pe', 'cl', 'br', 'uy', 'py', 'ec', 'bo', 'gt', 'hn', 'ni', 'sv', 'pa', 'do', 'cu', 'pr', 'cr', 'uk', 'nz', 'au', 'in', 'cn', 'jp', 'kr', 'th', 'ph', 'sg', 'id', 'my', 'vn', 'za', 'eg', 'ng', 'ke', 'gh', 'tz', 'pk', 'bd', 'ir', 'sa', 'ae', 'jo', 'il', 'tr', 'gr', 'it', 'fr', 'de', 'nl', 'be', 'ch', 'at', 'se', 'no', 'dk', 'fi', 'pl', 'cz', 'hu', 'ro', 'ua', 'ru'];
 
         // Patrón de validación de correo base
-        const patronCorreo = /^[a-zA-Z0-9.\-_]+@[a-zA-Z0-9.\-_]+\.[a-z]{2,}$/;
+        const patronCorreo = /^[a-zA-Z0-9.\-_]+@[a-z.\-_]+\.[a-z]{2,}$/;
 
         // Validación en tiempo real
         correoInput.addEventListener('blur', function () {
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Validar contra el patrón básico
             if (!patronCorreo.test(correo)) {
                 this.setCustomValidity('Correo inválido');
-                mensajeErrorCorreo.textContent = 'El correo debe tener un formato válido. Ej: soyemprendedor@gmail.com';
+                mensajeErrorCorreo.textContent = 'El correo debe tener un formato válido. Ej: soyemprendedor@gmail.com y no debe contener caracteres especiales y estar en minuscula';
                 mensajeErrorCorreo.style.display = 'block';
                 return;
             }
@@ -343,8 +343,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            if (extension.length < 2) {
-                mensajeErrorCorreo.textContent = 'La extensión debe tener al menos 2 caracteres';
+            if (extension.length < 1) {
+                mensajeErrorCorreo.textContent = 'La extensión debe tener al menos 1 caracter';
                 mensajeErrorCorreo.style.display = 'block';
                 this.setCustomValidity('Extensión demasiado corta');
                 return;
