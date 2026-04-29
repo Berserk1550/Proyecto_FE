@@ -167,7 +167,9 @@
 
                                             <label>Correo electrónico</label>
 
-                                            <input type="email" id="correo_emprendedor" name="correo_emprendedor" maxlength="64" minlength="11" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{2,64}" placeholder="Ej: soyemprendedor@gmail.com" required>
+                                            <input type="email" id="correo_emprendedor" name="correo_emprendedor" maxlength="64" minlength="14" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{14,64}" placeholder="Ej: soyemprendedor@gmail.com" required>
+
+                                            <div id="mensajeErrorCorreo" style="color: red; font-size: 12px; margin-top: 5px; display: none;"></div>
 
                                         </div>
 
@@ -747,62 +749,53 @@
                                         </svg>
                                     </button>
                                     <button type="button" id="btn_fase5">Siguiente</button>
-                                <div id="caja">
-
-                                    <label>Correo electrónico</label>
-
-                                    <input type="email" id="correo_emprendedor" name="correo_emprendedor" maxlength="64" minlength="14" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{14,64}" placeholder="Ej: soyemprendedor@gmail.com" required>
-
-                                    <div id="mensajeErrorCorreo" style="color: red; font-size: 12px; margin-top: 5px; display: none;"></div>
 
                                 </div>
 
-                            </div>
+                                <!-- FASE 6  -->
+                                <div id="fase_6">
 
-                            <!-- FASE 6  -->
-                            <div id="fase_6">
+                                    <h3>Centro y orientador</h3>
 
-                                <h3>Centro y orientador</h3>
+                                    <div id="cont_fase_6">
 
-                                <div id="cont_fase_6">
+                                        <label>¿Cuál es el centro de Desarrollo Empresarial que brinda la orientación?</label>
 
-                                    <label>¿Cuál es el centro de Desarrollo Empresarial que brinda la orientación?</label>
+                                        <select id="centro_orientacion" name="centro_orientacion" required>
+                                            <option value="">-- Selecciona un centro --</option>
 
-                                    <select id="centro_orientacion" name="centro_orientacion" required>
-                                        <option value="">-- Selecciona un centro --</option>
+                                            <option value="CAB">Centro Agropecuario de Buga (CAB)</option>
+                                            <option value="CBI">Centro de Biotecnología Industrial (CBI Palmira)</option>
+                                            <option value="CDTI">Centro de Diseño Tecnológico Industrial (CDTI Cali)</option>
+                                            <option value="CEAI">Centro de Electricidad y Automatización Industrial (CEAI Cali)</option>
+                                            <option value="CGTS">Centro de Gestión Tecnológica de Servicios (CGTS Cali)</option>
+                                            <option value="ASTIN">Centro Nacional de Asistencia Técnica a la Industria (ASTIN - Cali)</option>
+                                            <option value="CTA">Centro de Tecnologías Agroindustriales (CTA - Cartago)</option>
+                                            <option value="CLEM">Centro Latinoamericano de Especies Menores (CLEM - Tuluá)</option>
+                                            <option value="CNP">Centro Náutico y Pesquero (CNP - Buenaventura)</option>
+                                            <option value="CC">Centro de la Construcción (CC - Cali)</option>
+                                        </select>
 
-                                        <option value="CAB">Centro Agropecuario de Buga (CAB)</option>
-                                        <option value="CBI">Centro de Biotecnología Industrial (CBI Palmira)</option>
-                                        <option value="CDTI">Centro de Diseño Tecnológico Industrial (CDTI Cali)</option>
-                                        <option value="CEAI">Centro de Electricidad y Automatización Industrial (CEAI Cali)</option>
-                                        <option value="CGTS">Centro de Gestión Tecnológica de Servicios (CGTS Cali)</option>
-                                        <option value="ASTIN">Centro Nacional de Asistencia Técnica a la Industria (ASTIN - Cali)</option>
-                                        <option value="CTA">Centro de Tecnologías Agroindustriales (CTA - Cartago)</option>
-                                        <option value="CLEM">Centro Latinoamericano de Especies Menores (CLEM - Tuluá)</option>
-                                        <option value="CNP">Centro Náutico y Pesquero (CNP - Buenaventura)</option>
-                                        <option value="CC">Centro de la Construcción (CC - Cali)</option>
-                                    </select>
+                                        <label>¿Cuál fue el orientador que brindó la orientación?</label>
 
-                                    <label>¿Cuál fue el orientador que brindó la orientación?</label>
+                                        <select id="orientador" name="orientador" required>
+                                            <option value="" disabled selected>-- Selecciona primero un centro --</option>
+                                            <option value="CAB">Carlos Alberto Bernal</option>
+                                            <option value="CBI">Diana Carolina Rodríguez</option>
+                                            <option value="CDTI">Jorge Iván Martínez</option>
+                                        </select>
+                                    </div>
 
-                                    <select id="orientador" name="orientador" required>
-                                        <option value="" disabled selected>-- Selecciona primero un centro --</option>
-                                        <option value="CAB">Carlos Alberto Bernal</option>
-                                        <option value="CBI">Diana Carolina Rodríguez</option>
-                                        <option value="CDTI">Jorge Iván Martínez</option>
-                                    </select>
+                                    <div id="navegacion_botones">
+                                        <button type="button" id="btn_volver">
+                                            <svg width="30" height="30" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                                                <path d="M3.57813 12.4981C3.5777 12.6905 3.65086 12.8831 3.79761 13.0299L9.7936 19.0301C10.0864 19.3231 10.5613 19.3233 10.8543 19.0305C11.1473 18.7377 11.1474 18.2629 10.8546 17.9699L6.13418 13.2461L20.3295 13.2461C20.7437 13.2461 21.0795 12.9103 21.0795 12.4961C21.0795 12.0819 20.7437 11.7461 20.3295 11.7461L6.14168 11.7461L10.8546 7.03016C11.1474 6.73718 11.1473 6.2623 10.8543 5.9695C10.5613 5.6767 10.0864 5.67685 9.79362 5.96984L3.84392 11.9233C3.68134 12.0609 3.57812 12.2664 3.57812 12.4961L3.57813 12.4981Z" fill="#fdfdfd" />
+                                            </svg>
+                                        </button>
+                                        <button type="submit" id="btn_fase6">Enviar formulario</button>
+                                    </div>
+
                                 </div>
-
-                                <div id="navegacion_botones">
-                                    <button type="button" id="btn_volver">
-                                        <svg width="30" height="30" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
-                                            <path d="M3.57813 12.4981C3.5777 12.6905 3.65086 12.8831 3.79761 13.0299L9.7936 19.0301C10.0864 19.3231 10.5613 19.3233 10.8543 19.0305C11.1473 18.7377 11.1474 18.2629 10.8546 17.9699L6.13418 13.2461L20.3295 13.2461C20.7437 13.2461 21.0795 12.9103 21.0795 12.4961C21.0795 12.0819 20.7437 11.7461 20.3295 11.7461L6.14168 11.7461L10.8546 7.03016C11.1474 6.73718 11.1473 6.2623 10.8543 5.9695C10.5613 5.6767 10.0864 5.67685 9.79362 5.96984L3.84392 11.9233C3.68134 12.0609 3.57812 12.2664 3.57812 12.4961L3.57813 12.4981Z" fill="#fdfdfd" />
-                                        </svg>
-                                    </button>
-                                    <button type="submit" id="btn_fase6">Enviar formulario</button>
-                                </div>
-
-                            </div>
 
                         </form>
 
