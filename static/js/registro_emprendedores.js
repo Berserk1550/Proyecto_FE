@@ -653,6 +653,17 @@ function cargarPaises() {
     paisSelect.remove(1);
   }
 
+  if (paisSelect) {
+      paisSelect.value = "Colombia";
+        // Actualizar nacionalidad al cargar 
+      const nacionalidadField = document.getElementById("nacionalidad");
+      if (nacionalidadField) {
+        nacionalidadField.textContent = "Colombiano/a";
+      } else {
+        console.warn('Elemento #nacionalidad no encontrado en el DOM');
+      }
+    }
+
   // Agregar opciones ordenadas alfabéticamente
   paises.sort((a, b) => a.nombre.localeCompare(b.nombre));
   
