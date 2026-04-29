@@ -25,6 +25,8 @@
                     <path d="M12 19.5l-3 1.5l.5 -3.5l-2 -2l3 -.5l1.5 -3l1.5 3l3 .5l-2 2l.5 3.5z" />
                 </svg>
 
+                <a id="volver_inicio" href="<!-- ruta al login -->">Volver al inicio</a>
+
                 <p id="texto_programa" style="display: none;">ANÁLISIS Y DESARROLLO DE SOFTWARE | 2931527</p>
 
             </div>
@@ -55,7 +57,7 @@
 
                     <div id="caja_progreso">
 
-                        <span id="progreso_no" class="step" data-step="1">1</span>
+                        <span id="progreso_no" class="step-completed" data-step="1">1</span>
                         <span id="progreso_no" class="step" data-step="2">2</span>
                         <span id="progreso_no" class="step" data-step="3">3</span>
                         <span id="progreso_no" class="step" data-step="4">4</span>
@@ -67,7 +69,7 @@
                 <form action="../controller/registro.php" id="formulario" method="POST">
 
                     <!-- FASE 1 Lmao -->
-                    <div id="fase_1">
+                    <div id="fase_1" class="fase-step active">
 
                         <h3>Información Personal</h3>
 
@@ -177,7 +179,7 @@
                     </div>
 
                     <!-- FASE 2  -->
-                    <div id="fase_2">
+                    <div id="fase_2" class="fase-step">
 
                         <h3>Nacionalidad</h3>
 
@@ -255,7 +257,7 @@
                     </div>
 
                     <!-- FASE 3 -->
-                    <div id="fase_3">
+                    <div id="fase_3" class="fase-step">
 
                         <h3>Caracterización</h3>
 
@@ -320,7 +322,7 @@
                     </div>
 
                     <!-- FASE 4 -->
-                    <div id="fase_4">
+                    <div id="fase_4" class="fase-step">
 
                         <h3>Caracterización educativa</h3>
 
@@ -681,7 +683,7 @@
                     </div>
 
                     <!-- FASE 5  -->
-                    <div id="fase_5">
+                    <div id="fase_5" class="fase-step">
 
                         <h3>Información complementaria del emprendedor</h3>
 
@@ -742,7 +744,7 @@
                     </div>
 
                     <!-- FASE 6  -->
-                    <div id="fase_6">
+                    <div id="fase_6" class="fase-step">
 
                         <h3>Centro y orientador</h3>
 
