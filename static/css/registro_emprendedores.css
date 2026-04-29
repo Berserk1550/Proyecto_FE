@@ -157,6 +157,20 @@ body {
                     margin: 30px 0;
                 }   
 
+                .progreso_total {
+                    height: 9px;
+                    background: #ddd;
+                    border-radius: 3px;
+                    overflow: hidden;
+                }
+
+                .progreso_total-fill {
+                    height: 100%;
+                    width: 0%;
+                    background: linear-gradient(90deg, #39A900, #007832);
+                    transition: width .4s ease;
+                }
+
                     #caja_progreso #progreso_no {
                         background: var(--gris-claro);
                         color: var(--blanco-total);
@@ -261,3 +275,335 @@ body {
             justify-content: space-between;
             padding: 0 10px;
         }
+
+                #formulario #fase_2 {
+                    width: 90%;
+                    left: 50%;
+                    position: relative;
+                    transform: translateX(-50%);
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                    #fase_2 h3 {
+                        font-size: 1.3rem;
+                        text-align: center;
+                        margin-bottom: 20px;
+                        color: var(--verde-oscuro);
+                    }
+
+                    #fase_2 #cont_fase_2 {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    #cont_fase_2 label {
+                        margin:20px 0 5px 0;
+                        font-weight: 600;
+                        font-size: 15px;
+                        color: var(--texto-verde-oscuro);
+                    }
+
+                    #cont_fase_2 input,select,span {
+                        border: 2px solid var(--color-verde-sena);
+                        border-radius: 8px;
+                        height: 45px;
+                        padding: 5px;
+                        font-size: 15px;
+                        outline: none;
+                    }
+
+                    span {
+                        padding: 5px;
+                        text-align: left;
+                        padding-top: 12px;
+                        font-size: 15px;
+                    }
+
+                #fase_2 #navegacion_botones {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin: 30px 0 10px ;
+                }
+
+                    #navegacion_botones #btn_volver {
+                        height: 50px;
+                        width: 25%;
+                        align-items: center;
+                        background: var(--verde-oscuro);
+                        border: none;
+                        border-radius: 99px;
+                    }
+
+                    #navegacion_botones #btn_fase2 {
+                        height: 50px;
+                        width: 50%;
+                        align-items: center;
+                        background: var(--verde-oscuro);
+                        border: none;
+                        border-radius: 99px;
+                        color: var(--blanco-total);
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+
+                #formulario #fase_3 {
+                    width: 90%;
+                    left: 50%;
+                    position: relative;
+                    transform: translateX(-50%);
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                    #fase_3 h3 {
+                        font-size: 1.3rem;
+                        text-align: center;
+                        margin-bottom: 20px;
+                        color: var(--verde-oscuro);
+                    }
+
+                    #fase_3 #cont_fase_3 {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                        #cont_fase_3 label {
+                            margin:20px 0 5px 0;
+                            font-weight: 600;
+                            font-size: 15px;
+                            color: var(--texto-verde-oscuro);
+                        }
+
+                    #cont_fase_3 select {
+                        border: 2px solid var(--color-verde-sena);
+                        border-radius: 8px;
+                        height: 45px;
+                        padding: 5px;
+                        font-size: 15px;
+                        outline: none;
+                    }
+
+                #fase_3 #navegacion_botones {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin: 30px 0 10px ;
+                }
+
+                    #navegacion_botones #btn_volver {
+                        height: 50px;
+                        width: 25%;
+                        align-items: center;
+                        background: var(--verde-oscuro);
+                        border: none;
+                        border-radius: 99px;
+                    }
+
+                    #navegacion_botones #btn_fase3 {
+                        height: 50px;
+                        width: 50%;
+                        align-items: center;
+                        background: var(--verde-oscuro);
+                        border: none;
+                        border-radius: 99px;
+                        color: var(--blanco-total);
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+
+                #formulario #fase_4 {
+                    width: 90%;
+                    left: 50%;
+                    position: relative;
+                    transform: translateX(-50%);
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                    #fase_4 h3 {
+                        font-size: 1.3rem;
+                        text-align: center;
+                        margin-bottom: 20px;
+                        color: var(--verde-oscuro);
+                    }
+
+                    #fase_4 #cont_fase_4 {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                        #cont_fase_4 label {
+                            margin:20px 0 5px 0;
+                            font-weight: 600;
+                            font-size: 15px;
+                            color: var(--texto-verde-oscuro);
+                        }
+
+                    #cont_fase_4 select,input {
+                        border: 2px solid var(--color-verde-sena);
+                        border-radius: 8px;
+                        height: 45px;
+                        padding: 5px;
+                        font-size: 15px;
+                        outline: none;
+                    }
+
+                #fase_4 #navegacion_botones {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin: 30px 0 10px ;
+                }
+
+                    #navegacion_botones #btn_volver {
+                        height: 50px;
+                        width: 25%;
+                        align-items: center;
+                        background: var(--verde-oscuro);
+                        border: none;
+                        border-radius: 99px;
+                    }
+
+                    #navegacion_botones #btn_fase4 {
+                        height: 50px;
+                        width: 50%;
+                        align-items: center;
+                        background: var(--verde-oscuro);
+                        border: none;
+                        border-radius: 99px;
+                        color: var(--blanco-total);
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+
+                #formulario #fase_5 {
+                    width: 90%;
+                    left: 50%;
+                    position: relative;
+                    transform: translateX(-50%);
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                    #fase_5 h3 {
+                        font-size: 1.3rem;
+                        text-align: center;
+                        margin-bottom: 20px;
+                        color: var(--verde-oscuro);
+                    }
+
+                    #fase_5 #cont_fase_5 {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                        #cont_fase_5 label {
+                            margin:20px 0 5px 0;
+                            font-weight: 600;
+                            font-size: 15px;
+                            color: var(--texto-verde-oscuro);
+                        }
+
+                    #cont_fase_5 select {
+                        border: 2px solid var(--color-verde-sena);
+                        border-radius: 8px;
+                        height: 45px;
+                        padding: 5px;
+                        font-size: 15px;
+                        outline: none;
+                    }
+
+                #fase_5 #navegacion_botones {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin: 30px 0 10px ;
+                }
+
+                    #navegacion_botones #btn_volver {
+                        height: 50px;
+                        width: 25%;
+                        align-items: center;
+                        background: var(--verde-oscuro);
+                        border: none;
+                        border-radius: 99px;
+                    }
+
+                    #navegacion_botones #btn_fase5 {
+                        height: 50px;
+                        width: 50%;
+                        align-items: center;
+                        background: var(--verde-oscuro);
+                        border: none;
+                        border-radius: 99px;
+                        color: var(--blanco-total);
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+
+                #formulario #fase_6 {
+                    width: 90%;
+                    left: 50%;
+                    position: relative;
+                    transform: translateX(-50%);
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                    #fase_6 h3 {
+                        font-size: 1.3rem;
+                        text-align: center;
+                        margin-bottom: 20px;
+                        color: var(--verde-oscuro);
+                    }
+
+                    #fase_6 #cont_fase_6 {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                        #cont_fase_6 label {
+                            margin:20px 0 5px 0;
+                            font-weight: 600;
+                            font-size: 15px;
+                            color: var(--texto-verde-oscuro);
+                        }
+
+                    #cont_fase_6 select {
+                        border: 2px solid var(--color-verde-sena);
+                        border-radius: 8px;
+                        height: 45px;
+                        padding: 5px;
+                        font-size: 15px;
+                        outline: none;
+                    }
+
+                #fase_6 #navegacion_botones {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin: 30px 0 10px ;
+                }
+
+                    #navegacion_botones #btn_volver {
+                        height: 50px;
+                        width: 20%;
+                        align-items: center;
+                        background: var(--verde-oscuro);
+                        border: none;
+                        border-radius: 99px;
+                    }
+
+                    #navegacion_botones #btn_fase6 {
+                        height: 50px;
+                        width: 60%;
+                        align-items: center;
+                        background: var(--verde-oscuro);
+                        border: none;
+                        border-radius: 99px;
+                        color: var(--blanco-total);
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
