@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const correo = this.value.trim();
       
       if (correo === '') {
-        mensajeErrorCorreo.style.display = 'none';
+        mensajeErrorCorreo.style.display = 'block';
         this.setCustomValidity('');
         return;
       }
@@ -310,6 +310,17 @@ document.addEventListener('DOMContentLoaded', () => {
         this.setCustomValidity('');
         mensajeErrorCorreo.style.display = 'none';
       }
+
+      const dominio = correo.split('@')[1].split('.')[0].toLowerCase();
+      if (dominio.is_null || dominio === '' ||  dominio.is_integer) {
+        mensajeErrorCorreo.textContent = 'El correo debe contener un dominio válido después de @';
+        mensajeErrorCorreo.style.display = 'block';
+        this.setCustomValidity('Dominio inválido');
+      } else {
+        this.setCustomValidity('');
+        mensajeErrorCorreo.style.display = 'none';
+      }
+
     });
 
     // Limpiar mensaje de error al escribir
