@@ -754,6 +754,9 @@
 
                                 </div>
 
+                            </div>
+
+
                                 <!-- FASE 6  -->
                                 <div id="fase_6">
 
@@ -796,8 +799,6 @@
                                     </button>
                                     <button type="submit" id="btn_fase6">Enviar formulario</button>
                                 </div>
-
-                            </div>
 
                 </form>
 
