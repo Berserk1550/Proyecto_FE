@@ -39,8 +39,9 @@ body {
     margin: 0;
     display: flex;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     flex-direction: column;
+    justify-content: space-between;
     position: relative;
     z-index: 2;
 }
@@ -102,6 +103,7 @@ body {
         width: 100%;
         height: 100vh;
         display: flex;
+        flex: 1;
         flex-direction: column;
         z-index: 3;
     }
@@ -279,28 +281,6 @@ body {
                         border-radius: 99px;
                         margin: 30px 0 10px 0;
                     }
-
-    #caja_padre #pie_pagina {
-        position: relative;
-        bottom: 0;
-        left: 0;
-        height: 50px;
-        margin-top: 20px;
-        background: var(--blanco);
-        width: 100%;
-        display: block;
-        z-index: 100;
-    }
-
-        #pie_pagina #cont_pie_pagina {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 10px;
-        }
 
                 #formulario #fase_2 {
                     width: 90%;
@@ -634,6 +614,25 @@ body {
                         font-weight: bold;
                     }
 
+    #caja_padre #pie_pagina {
+        height: 50px;
+        background: var(--blanco);
+        width: 100%;
+        display: block;
+        margin-top: 30px;
+        z-index: 100;
+    }
+
+        #pie_pagina #cont_pie_pagina {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
 @media screen and (min-width: 650px){
 
         #pagina_principal #tarjeta_informacion {
@@ -668,16 +667,16 @@ body {
 
     #caja_padre #pagina_principal {
         flex-direction: row;
-        justify-content: center
+        justify-content: center;
     }
 
         #pagina_principal #tarjeta_informacion {
             width: 20%;
             left: 0;
+            position: relative;
             margin-top: 0;
-            top: 50%;
             max-height: max-content;
-            transform: translate(0, -50%);
+            transform: translateX(0);
             margin-right: 30px;
             font-size: 16px;
         }
@@ -685,8 +684,7 @@ body {
         #pagina_principal #contenido_registro {
             width: 40%;
             left: 0;
-            top: 50%;
-            transform: translate(0, -50%);
+            transform: translateX(0);
             max-height: max-content;
             margin-left: 30px;
         }
