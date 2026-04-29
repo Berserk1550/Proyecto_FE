@@ -282,6 +282,47 @@ document.addEventListener('DOMContentLoaded', () => {
     campoFecha.max = formatoFecha(desde15anos);
     campoFecha.min = formatoFecha(hasta100anos);
   }
+
+  // Validación de correo electrónico
+  const correoInput = document.getElementById('correo_emprendedor');
+  const mensajeErrorCorreo = document.getElementById('mensajeErrorCorreo');
+  
+  if (correoInput && mensajeErrorCorreo) {
+    // Patrón de validación de correo
+    const patronCorreo = /^[a-zA-Z0-9.\-_]+@[a-zA-Z]+\.[a-z.]{2,}$/;
+
+    // Validación en tiempo real
+    correoInput.addEventListener('blur', function() {
+      const correo = this.value.trim();
+      
+      if (correo === '') {
+        mensajeErrorCorreo.style.display = 'none';
+        this.setCustomValidity('');
+        return;
+      }
+
+      // Validar contra el patrón
+      if (!patronCorreo.test(correo)) {
+        this.setCustomValidity('Correo inválido');
+        mensajeErrorCorreo.textContent = 'El correo debe tener un formato válido. Ej: soyemprendedor@gmail.com';
+        mensajeErrorCorreo.style.display = 'block';
+      } else {
+        this.setCustomValidity('');
+        mensajeErrorCorreo.style.display = 'none';
+      }
+    });
+
+    // Limpiar mensaje de error al escribir
+    correoInput.addEventListener('input', function() {
+      if (this.value.trim() === '') {
+        mensajeErrorCorreo.style.display = 'none';
+        this.setCustomValidity('');
+      } else if (patronCorreo.test(this.value.trim())) {
+        mensajeErrorCorreo.style.display = 'none';
+        this.setCustomValidity('');
+      }
+    });
+  }
 });
 
 // API para países y nacionalidades
