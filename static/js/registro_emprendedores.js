@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('fase_6')
   ];
   const pasos = Array.from(document.querySelectorAll('#caja_progreso .step'));
-  const barraLleno = document.getElementById('progress-bar-fill');
+  const barraLleno = document.getElementById('progreso_total-fill');
 
   if (!form || fases.length === 0 || pasos.length === 0) {
     console.error('Elementos del formulario no encontrados');
