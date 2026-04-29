@@ -5,6 +5,36 @@
     class RegistroController {
         private $model;
 
+        public function sanitizarEntrada($post) {
+            
+            if (is_null($post) || $post === '') {
+                echo "Error: No se recibieron datos del formulario.";
+                return false;
+            }
+
+            else{
+        
+                $nombre_emp = filter_var($post['nombre_emprendedor'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $apellido_emp = filter_var($post['apellido_emprendedor'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $num_id = filter_var($post['documento_emprendedor'], FILTER_SANITIZE_NUMBER_INT);
+                $telefono_emp = filter_var($post['telefono_emprendedor'], FILTER_SANITIZE_NUMBER_INT);
+                $correo_emp = filter_var($post['correo_emprendedor'], FILTER_SANITIZE_EMAIL);
+                $municipio_emp = filter_var($post['municipio'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $ficha_emp = filter_var($post['numero_ficha'], FILTER_SANITIZE_NUMBER_INT);
+
+                return [
+                    'nombre_emp' => $nombre_emp,
+                    'apellido_emp' => $apellido_emp,
+                    'num_id' => $num_id,
+                    'telefono_emp' => $telefono_emp,
+                    'correo_emp' => $correo_emp,
+                    'municipio_emp' => $municipio_emp,
+                    'ficha_emp' => $ficha_emp
+                ];
+            }
+            
+        }
+
         public function __construct($conn) {
             $this->model = new Emprendedor($conn);
         }
