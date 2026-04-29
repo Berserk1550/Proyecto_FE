@@ -81,6 +81,17 @@ body {
                 z-index: 101;
             }
 
+            #cont_encabezado #volver_inicio {
+                background: var(--verde-oscuro);
+                font-size: 13px;
+                font-weight: bold;
+                border-radius: 99px;
+                text-decoration: none;
+                color: var(--blanco-total);
+                padding: 8px;
+                margin-right: 5px;
+            }
+
     #caja_padre #pagina_principal {
         position: relative;
         width: 100%;
@@ -184,6 +195,16 @@ body {
                         font-size: 13px;
                         justify-content: center;
                     }
+
+                    .completed {
+                        background: var(--color-verde-sena);
+                    }
+
+                    .fase-step {
+                        display: none;
+                    }
+
+                    .active
 
             #contenido_registro #formulario {
                 width: 100%;
