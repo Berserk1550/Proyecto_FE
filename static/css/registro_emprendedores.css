@@ -667,24 +667,25 @@ body {
 
     #caja_padre #pagina_principal {
         flex-direction: row;
+        align-items: center;
         justify-content: center;
     }
 
         #pagina_principal #tarjeta_informacion {
-            width: 20%;
+            width: 25%;
             left: 0;
             position: relative;
             margin-top: 0;
             max-height: max-content;
-            transform: translateX(0);
+            transform: translate(0);
             margin-right: 30px;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         #pagina_principal #contenido_registro {
-            width: 40%;
+            width: 45%;
             left: 0;
-            transform: translateX(0);
+            transform: translate(0);
             max-height: max-content;
             margin-left: 30px;
         }
