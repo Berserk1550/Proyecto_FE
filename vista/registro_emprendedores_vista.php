@@ -129,7 +129,7 @@
 
                                             <label>Número de documento</label>
 
-                                            <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="11" inputmode="numeric" pattern="[0-9]{5,11}" title="Solo números (5-11 dígitos)" placeholder="Ej: 1234567890">
+                                            <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="17" inputmode="numeric" pattern="[0-9]{5,17}" title="Solo números (5-15 dígitos)" placeholder="Ej: 1234567890">
 
                                         </div>
 
@@ -201,7 +201,7 @@
                                     <select name="paises" id="paises" required>
 
                                         <option disabled selected>Selecciona un pais</option>
-
+                                        <option value="Colombia" selected>Colombia</option>
                                     </select>
 
                                     <label>Nacionalidad</label>
