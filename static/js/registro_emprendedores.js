@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('fase_5'),
     document.getElementById('fase_6')
   ];
-  const pasos = Array.from(document.querySelectorAll('#progress-steps .step'));
-  const barraLleno = document.getElementById('progress-bar-fill');
+  const pasos = Array.from(document.querySelectorAll('#caja_progreso .step'));
+  const barraLleno = document.getElementById('progreso_total-fill');
 
   if (!form || fases.length === 0 || pasos.length === 0) {
     console.error('Elementos del formulario no encontrados');
@@ -285,8 +285,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Validación de correo electrónico
   const correoInput = document.getElementById('correo_emprendedor');
+  const mensajeErrorCorreo = document.getElementById('mensajeErrorCorreo');
   
-  if (correoInput) {
+  if (correoInput && mensajeErrorCorreo) {
     // Patrón de validación de correo
     const patronCorreo = /^[a-zA-Z0-9.\-_]+@[a-zA-Z]+\.[a-z.]{2,}$/;
 
@@ -295,23 +296,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const correo = this.value.trim();
       
       if (correo === '') {
+        mensajeErrorCorreo.style.display = 'none';
         this.setCustomValidity('');
         return;
       }
 
       // Validar contra el patrón
       if (!patronCorreo.test(correo)) {
-        this.setCustomValidity('Correo inválido. Ej: soyemprendedor@gmail.com');
+        this.setCustomValidity('Correo inválido');
+        mensajeErrorCorreo.textContent = 'El correo debe tener un formato válido. Ej: soyemprendedor@gmail.com';
+        mensajeErrorCorreo.style.display = 'block';
       } else {
         this.setCustomValidity('');
+        mensajeErrorCorreo.style.display = 'none';
       }
     });
 
-    // Limpiar validación al escribir
+    // Limpiar mensaje de error al escribir
     correoInput.addEventListener('input', function() {
       if (this.value.trim() === '') {
+        mensajeErrorCorreo.style.display = 'none';
         this.setCustomValidity('');
       } else if (patronCorreo.test(this.value.trim())) {
+        mensajeErrorCorreo.style.display = 'none';
         this.setCustomValidity('');
       }
     });
@@ -571,16 +578,7 @@ function cargarPaises() {
   });
 
   // Establecer Colombia como seleccionado por defecto
-  if (paisSelect) {
-    paisSelect.value = "Colombia";
-      // Actualizar nacionalidad al cargar 
-    const nacionalidadField = document.getElementById("nacionalidad");
-    if (nacionalidadField) {
-      nacionalidadField.textContent = "Colombiano/a";
-    } else {
-      console.warn('Elemento #nacionalidad no encontrado en el DOM');
-    }
-  }
+  paisSelect.value = "Colombia";
 
   console.log('✓ Países cargados correctamente: ' + paises.length);
 }
