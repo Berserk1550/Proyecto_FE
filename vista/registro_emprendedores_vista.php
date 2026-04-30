@@ -59,22 +59,28 @@
 
             <article id="contenido_registro">
 
-                <div id="cont_progreso">
+                
+                <div>
 
                     <h1>Registro Ruta Emprendedora 2025</h1>
+                    
+                    <div id="cont_progreso">
+                        
+                        <div id="Barra_progreso">
+                            <div id="progreso_total-fill"></div>
+                        </div>
 
-                    <div class="progreso_total" id="progreso_total"></div>
-
-                    <div id="caja_progreso">
-
-                        <span id="progreso_no" class="step active" data-step="1">1</span>
-                        <span id="progreso_no" class="step" data-step="2">2</span>
-                        <span id="progreso_no" class="step" data-step="3">3</span>
-                        <span id="progreso_no" class="step" data-step="4">4</span>
-                        <span id="progreso_no" class="step" data-step="5">5</span>
-                        <span id="progreso_no" class="step" data-step="6">6</span>
-
-                    </div>
+                        <div id="caja_progreso">
+                            <span id="progreso_no" class="step active" data-step="1">1</span>
+                            <span id="progreso_no" class="step" data-step="2">2</span>
+                            <span id="progreso_no" class="step" data-step="3">3</span>
+                            <span id="progreso_no" class="step" data-step="4">4</span>
+                            <span id="progreso_no" class="step" data-step="5">5</span>
+                            <span id="progreso_no" class="step" data-step="6">6</span>
+                        </div>
+                    </div>    
+                </div>
+                
 
                     <form action="../controller/registro.php" id="formulario" method="POST">
 
