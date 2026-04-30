@@ -58,7 +58,7 @@
             header("Location: ../index.php");
             exit();
         }else{
-            echo "Error al guardar";
+            echo "Error al guardar"; 
         }
     }
 ?>
