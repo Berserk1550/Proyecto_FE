@@ -45,6 +45,7 @@
                     if (!preg_match('/^[A-Za-z0-9]+$/', $numero_id) || strlen($numero_id) < 6 || strlen($numero_id) > 9) {
                         echo "El Pasaporte debe ser alfanumérico y tener de 6 a 9 caracteres.";
                         return false;
+                    }
                     break;
 
                 case 'PPT':
@@ -126,6 +127,6 @@
                 return false;
             }
             return true;
-        }
-    }
+        };
+    };
 ?>
