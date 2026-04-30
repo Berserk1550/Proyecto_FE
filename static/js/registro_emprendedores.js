@@ -255,8 +255,13 @@ document.addEventListener('DOMContentLoaded', () => {
             })
                 .then(response => response.text())
                 .then(data => {
-                    console.log('Respuesta del servidor:', data);
-                    alert('Registro guardado correctamente');
+                    Swal.fire({
+                        title: "Formulario enviado exitosamente",
+                        icon: "success",
+                        draggable: true,
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "#39A900"
+                    });
                 })
                 .catch(error => {
                     console.error('Error al enviar:', error);

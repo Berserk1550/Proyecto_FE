@@ -77,6 +77,11 @@
     $controller = new RegistroController($conn);
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $resultado = $controller->procesarFormulario($_POST);
-        echo $resultado ? "OK" : "Error al guardar";
+        if ($resultado) {
+            header("Location: ../index.php");
+            exit();
+        }else{
+        echo "Error al guardar";
+        }
     }
 ?>

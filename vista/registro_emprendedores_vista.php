@@ -181,7 +181,7 @@
 
                                         <label>Correo electrónico</label>
 
-                                        <input type="email" id="correo_emprendedor" name="correo_emprendedor" minlength="7" maxlength="70" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{7,70}" placeholder="Ej: soyemprendedor@gmail.com" required>
+                                        <input type="email" id="correo_emprendedor" name="correo_emprendedor" minlength="7" maxlength="70" pattern="[a-zA-Z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}" placeholder="Ej: soyemprendedor@gmail.com" required>
 
                                         <div id="mensajeErrorCorreo" style="color: red; font-size: 12px; margin-top: 5px; display: none;"></div>
 
@@ -833,5 +833,8 @@
     </main>
     <script src="../static/js/validacion.js"></script>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </html>
