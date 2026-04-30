@@ -1,7 +1,5 @@
 
-//validacion de cedula si existe en la base de datos
-const cedulaInput = document.getElementById('documento_emprendedor');
-const mensajeCedula = document.getElementById('mensajeErrorCedula');
+document.addEventListener("DOMContentLoaded", function () {
 
 cedulaInput.addEventListener('input', async function () {
   const cedula = this.value.trim();
@@ -15,6 +13,70 @@ cedulaInput.addEventListener('input', async function () {
     // Detectar errores del PHP
     if (data.includes("ERROR")) {
       mensajeCedula.textContent = "Error en la consulta. Revisa el archivo PHP.";
+    const cedulaInput = document.getElementById('documento_emprendedor');
+    const mensajeCedula = document.getElementById('mensajeErrorCedula');
+
+    if (!cedulaInput || !mensajeCedula) {
+        console.error("ERROR: No se encontró documento_emprendedor o mensajeErrorCedula en el HTML.");
+        return;
+    }
+
+    cedulaInput.addEventListener('input', async function () {
+        const cedula = this.value.trim();
+
+        if (cedula === '' || cedula === null) {
+            mensajeCedula.textContent = "El número de identificación no puede estar vacío.";
+            mensajeCedula.style.color = "orange";
+            mensajeCedula.style.display = "block";
+            this.setCustomValidity("Campo vacío");
+            return;
+        }
+
+        try {
+            const response = await fetch(`../models/m_registro.php?documento_emprendedor=${cedula}`);
+            const data = await response.text();
+            console.log("Respuesta del servidor:", response);
+
+            if (data.includes("ERROR")) {
+                mensajeCedula.textContent = "Error en la consulta. Revisa el archivo PHP.";
+                mensajeCedula.style.color = "orange";
+                mensajeCedula.style.display = "block";
+                return;
+            }
+
+            if (data.trim() === "existe") {
+                mensajeCedula.textContent = "Este número de identificación ya está registrado.";
+                mensajeCedula.style.color = "red";
+                mensajeCedula.style.display = "block";
+                this.setCustomValidity("Duplicado");
+            } else {
+                mensajeCedula.textContent = "Número de identificación disponible.";
+                mensajeCedula.style.color = "green";
+                mensajeCedula.style.display = "block";
+                this.setCustomValidity("");
+            }
+
+        } catch (error) {
+            console.error("Error en la validación:", error);
+            mensajeCedula.textContent = "No se pudo conectar con el servidor.";
+            mensajeCedula.style.color = "orange";
+            mensajeCedula.style.display = "block";
+        }
+    });
+
+});
+
+
+
+
+  //Restriciones para cada tipo de documento
+  const tipoDocumentoSelect = document.getElementById('tipo_documento_emprendedor');
+  const documentoInput = document.getElementById('documento_emprendedor');
+
+  tipoDocumentoSelect.addEventListener('change', function() {
+    const tipoDocumento = this.value;
+    if (tipoDocumento === ''|| tipoDocumento === null) {
+      mensajeCedula.textContent = "Por favor, selecciona un tipo de documento.";
       mensajeCedula.style.color = "orange";
       mensajeCedula.style.display = "block";
       console.error("Respuesta del servidor:", data);

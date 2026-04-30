@@ -11,6 +11,7 @@
 
     <script src="../static/js/funciones.js"></script>
 
+
 </head>
 
 <body>
@@ -59,27 +60,33 @@
 
             <article id="contenido_registro">
 
-                <div id="cont_progreso">
+                
+                <div>
 
                     <h1>Registro Ruta Emprendedora 2025</h1>
+                    
+                    <div id="cont_progreso">
+                        
+                        <div id="Barra_progreso">
+                            <div id="progreso_total-fill"></div>
+                        </div>
 
-                    <div class="progreso_total" id="progreso_total"></div>
-
-                    <div id="caja_progreso">
-
-                        <span id="progreso_no" class="step active" data-step="1">1</span>
-                        <span id="progreso_no" class="step" data-step="2">2</span>
-                        <span id="progreso_no" class="step" data-step="3">3</span>
-                        <span id="progreso_no" class="step" data-step="4">4</span>
-                        <span id="progreso_no" class="step" data-step="5">5</span>
-                        <span id="progreso_no" class="step" data-step="6">6</span>
-
-                    </div>
+                        <div id="caja_progreso">
+                            <span id="progreso_no" class="step active" data-step="1">1</span>
+                            <span id="progreso_no" class="step" data-step="2">2</span>
+                            <span id="progreso_no" class="step" data-step="3">3</span>
+                            <span id="progreso_no" class="step" data-step="4">4</span>
+                            <span id="progreso_no" class="step" data-step="5">5</span>
+                            <span id="progreso_no" class="step" data-step="6">6</span>
+                        </div>
+                    </div>    
+                </div>
+                
 
                     <form action="../controller/registro.php" id="formulario" method="POST">
 
                         <!-- FASE 1 Lmao -->
-                        <div id="fase_1" class="">
+                        <div id="fase_1">
 
                             <h3>Información Personal</h3>
 
@@ -127,7 +134,8 @@
 
                                         <label>Número de documento</label>
 
-                                        <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="17" inputmode="numeric" pattern="[0-9]{5,17}" title="Solo números (5-15 dígitos)" placeholder="Ej: 1234567890">
+                                        <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="11" inputmode="numeric" pattern="[0-9]+" title="Solo números (5-11 dígitos)" placeholder="Ej: 1234567890">
+                                        <div id="mensajeErrorCedula" style="color: red; font-size: 12px; margin-top: 5px; display: none;"></div>
 
                                         <div id="mensajeErrorDocumento" style="color: red; font-size: 12px; margin-top: 5px; display: none;"></div>
 
@@ -823,9 +831,7 @@
         </footer>
 
     </main>
-
     <script src="../static/js/validacion.js"></script>
-
 </body>
 
 </html>
