@@ -19,7 +19,7 @@
 
             if ($documento === "") {
             
-                exit ('no existe')
+                exit ('no existe');
             
             }
 

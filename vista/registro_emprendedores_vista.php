@@ -11,6 +11,7 @@
 
     <script src="../static/js/funciones.js"></script>
 
+
 </head>
 
 <body>
@@ -133,7 +134,8 @@
 
                                         <label>Número de documento</label>
 
-                                        <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="17" inputmode="numeric" pattern="[0-9]{5,17}" title="Solo números (5-15 dígitos)" placeholder="Ej: 1234567890">
+                                        <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="11" inputmode="numeric" pattern="[0-9]+" title="Solo números (5-11 dígitos)" placeholder="Ej: 1234567890">
+                                        <div id="mensajeErrorCedula" style="color: red; font-size: 12px; margin-top: 5px; display: none;"></div>
 
                                     </div>
 
@@ -827,7 +829,7 @@
         </footer>
 
     </main>
-
+    <script src="../static/js/validacion.js"></script>
 </body>
 
 </html>
