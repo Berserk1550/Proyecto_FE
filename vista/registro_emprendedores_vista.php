@@ -79,7 +79,7 @@
                     <form action="../controller/registro.php" id="formulario" method="POST">
 
                         <!-- FASE 1 Lmao -->
-                        <div id="fase_1">
+                        <div id="fase_1" class="">
 
                             <h3>Información Personal</h3>
 
