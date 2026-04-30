@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch(`../models/m_registro.php?documento=${cedula}`);
+            const response = await fetch(`../models/m_registro.php?documento_emprendedor=${cedula}`);
             const data = await response.text();
-            console.log("Respuesta del servidor:", data);
+            console.log("Respuesta del servidor:", response);
 
             if (data.includes("ERROR")) {
                 mensajeCedula.textContent = "Error en la consulta. Revisa el archivo PHP.";
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            if (data === "existe") {
+            if (data.trim() === "existe") {
                 mensajeCedula.textContent = "Este número de identificación ya está registrado.";
                 mensajeCedula.style.color = "red";
                 mensajeCedula.style.display = "block";

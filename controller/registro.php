@@ -11,7 +11,7 @@
 
         public function validarDocumento($post) {
 
-            $documento = trim($post["documento"] ?? "");
+            $documento = trim($post["documento_emprendedor"] ?? "");
 
             $documento = str_replace(" ", "", $documento);
             $documento = preg_replace('/[^a-zA-Z0-9]/', '', $documento);
