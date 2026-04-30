@@ -31,18 +31,18 @@
 
         public function procesarFormulario($post) {
             $data = [
-                'nombres'       => $post['nombre_emprendedor'] ?? '',
-                'apellidos'     => $post['apellido_emprendedor'] ?? '',
+                'nombres'       => mb_strtolower($post['nombre_emprendedor'] ?? '', 'UTF-8'),
+                'apellidos'     => mb_strtolower($post['apellido_emprendedor'] ?? '', 'UTF-8'),
                 'tipo_id'       => $post['tipo_documento_emprendedor'] ?? '',
                 'numero_id'     => $post['documento_emprendedor'] ?? '',
                 'celular'       => $post['telefono_emprendedor'] ?? '',
                 'fecha_nacimiento' => $post['fecha_nacimiento_emprendedor'] ?? '',
                 'sexo'          => $post['sexo_emprendedor'] ?? '',
-                'correo'        => $post['correo_emprendedor'] ?? '',
+                'correo'        => mb_strtolower($post['correo_emprendedor'] ?? '', 'UTF-8'),
                 'pais'          => $post['paises'] ?? '',
                 'nacionalidad'  => $post['nacionalidad'] ?? '',
                 'departamento'  => $post['departamento'] ?? '',
-                'municipio'     => $post['municipio'] ?? '',
+                'municipio'     => mb_strtolower($post['municipio'] ?? '', 'UTF-8'),
                 'clasificacion' => $post['clasificacion'] ?? '',
                 'discapacidad'  => $post['discapacidad'] ?? '',
                 'tipo_emprendedor' => $post['tipo_emprendedor'] ?? '',
