@@ -21,7 +21,7 @@ const mensajeCedula = document.getElementById('mensajeErrorCedula');
               return;
           }
 
-          if (data === "EXISTE") {
+          if (data === true) {
               mensajeCedula.textContent = "Este número de identificación ya está registrado.";
               mensajeCedula.style.color = "red";
               mensajeCedula.style.display = "block";
