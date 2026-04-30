@@ -9,13 +9,18 @@
         
         public function insertar($data) {
 
-            $sql = "INSERT INTO registro_emprendedor (
-                nombres, apellidos, tipo_id, numero_id, celular, fecha_nacimiento, sexo, correo,
-                pais, nacionalidad, departamento, municipio, clasificacion, discapacidad,
-                tipo_emprendedor, nivel_formacion, ficha, carrera, programa, situacion_negocio,
-                centro_orientacion, orientador, ejercer_actividad_proyecto, empresa_formalizada,
-                rol, estado_proceso, contrasena
-            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO orientacion_rcde2025_valle (
+            nombres, apellidos, tipo_id, numero_id,
+            correo, celular, pais, nacionalidad,
+            departamento, municipio, fecha_nacimiento,
+            sexo, clasificacion, discapacidad,
+            tipo_emprendedor, nivel_formacion,
+            ficha, carrera, programa, situacion_negocio,
+            centro_orientacion, orientador,
+            ejercer_actividad_proyecto, empresa_formalizada,
+            rol, estado_proceso)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
 
             $stmt = $this->db->prepare($sql);
             if (!$stmt){
@@ -23,19 +28,19 @@
             }
 
             $stmt->bind_param(
-                "sssssssssssssssssssssssssss", // 27 parámetros
+                "ssssssssssssssssssssssssss",
                 $data['nombres'],
                 $data['apellidos'],
                 $data['tipo_id'],
                 $data['numero_id'],
-                $data['celular'],
-                $data['fecha_nacimiento'],
-                $data['sexo'],
                 $data['correo'],
+                $data['celular'],
                 $data['pais'],
                 $data['nacionalidad'],
                 $data['departamento'],
                 $data['municipio'],
+                $data['fecha_nacimiento'],
+                $data['sexo'],
                 $data['clasificacion'],
                 $data['discapacidad'],
                 $data['tipo_emprendedor'],
@@ -49,9 +54,9 @@
                 $data['ejercer_actividad_proyecto'],
                 $data['empresa_formalizada'],
                 $data['rol'],
-                $data['estado_proceso'],
-                $data['contrasena']
+                $data['estado_proceso']
             );
+
 
 
             if (!$stmt->execute()){

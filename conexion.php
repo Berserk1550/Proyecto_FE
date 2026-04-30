@@ -3,7 +3,7 @@
 $host = "localhost";   // IP servidor
 $user = "root";  // usuario MySQL
 $pass = ""; // contraseña MySQL
-$db   = "fe_cab";       // BD
+$db   = "arcanoposada_fondo";       // BD
 
 // Crear conexión
 $conn = new mysqli($host, $user, $pass, $db);
