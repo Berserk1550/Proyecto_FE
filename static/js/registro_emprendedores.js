@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (tipoEmprendedor) {
         tipoEmprendedor.addEventListener('change', function () {
-            if (this.value === 'No cuenta con formación' || this.value === 'Otro') {
+            if (this.value === 'No cuenta con formación' || this.value === 'Otro' || this.value === 'Instructor') {
                 numeroFicha.value = 'No aplica';
                 numeroFicha.disabled = true;
                 numeroFicha.removeAttribute('required');
