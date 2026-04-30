@@ -152,8 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'ejercer_actividad_proyecto',
             'empresa_formalizada',
             'centro_orientacion',
-            'orientador',
-            'departamento'
+            'orientador'
         ];
 
         selectsParaOrdenar.forEach(selectId => {

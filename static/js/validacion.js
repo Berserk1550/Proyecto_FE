@@ -53,8 +53,8 @@ const mensajeCedula = document.getElementById('mensajeErrorCedula');
       mensajeCedula.style.display = "block";
     } else if (tipoDocumento === 'CC') {
       documentoInput.setAttribute('maxlength', '10');
-      documentoInput.setAttribute('minlength', '7');
-      documentoInput.setAttribute('pattern', '\\d{7,10}');
+      documentoInput.setAttribute('minlength', '6');
+      documentoInput.setAttribute('pattern', '\\d{6,10}');
       documentoInput.setCustomValidity('');
     } else if (tipoDocumento === 'CE') {
       documentoInput.setAttribute('maxlength', '10');
@@ -74,7 +74,7 @@ const mensajeCedula = document.getElementById('mensajeErrorCedula');
     } else if (tipoDocumento === 'PAS') {
       documentoInput.setAttribute('maxlength', '20');
       documentoInput.setAttribute('minlength', '6');
-      documentoInput.setAttribute('pattern', '[a-zA-Z0-9]{6,20}');
+      documentoInput.setAttribute('pattern', '[A-Z][0-9]{6,20}');
       documentoInput.setCustomValidity('');
     } else if (tipoDocumento === 'PPT') {
       documentoInput.setAttribute('maxlength', '15');
