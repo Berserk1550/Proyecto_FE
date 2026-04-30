@@ -40,8 +40,13 @@
                 'contrasena'    => password_hash('default123', PASSWORD_DEFAULT)
             ];
 
+            if (!isset($data['ficha']) || trim($data['ficha']) === '' ){
 
-            // Depuración: ver qué datos llegan
+                $data['ficha'] = 'no aplica';
+
+            }
+
+            // Depuracion ver qué datos llegan
             error_log(print_r($data, true));
 
             return $this->model->insertar($data);
