@@ -256,8 +256,14 @@ document.addEventListener('DOMContentLoaded', () => {
             })
                 .then(response => response.text())
                 .then(data => {
-                    console.log('Respuesta del servidor:', data);
-                    alert('Registro guardado correctamente');
+                    Swal.fire({
+                        title: "Formulario enviado exitosamente",
+                        icon: "success",
+                        draggable: true,
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "#39A900"
+                    });
+
                 })
                 .catch(error => {
                     console.error('Error al enviar:', error);
@@ -652,27 +658,27 @@ function cargarPaises() {
     while (paisSelect.options.length > 1) {
         paisSelect.remove(1);
     }
-  if (paisSelect) {
-      paisSelect.value = "Colombia";
+    if (paisSelect) {
+        paisSelect.value = "Colombia";
         // Actualizar nacionalidad al cargar 
-      const nacionalidadField = document.getElementById("nacionalidad");
-      if (nacionalidadField) {
-        nacionalidadField.textContent = "Colombiano/a";
-      } else {
-        console.warn('Elemento #nacionalidad no encontrado en el DOM');
-      }
+        const nacionalidadField = document.getElementById("nacionalidad");
+        if (nacionalidadField) {
+            nacionalidadField.textContent = "Colombiano/a";
+        } else {
+            console.warn('Elemento #nacionalidad no encontrado en el DOM');
+        }
     }
 
-  // Agregar opciones ordenadas alfabéticamente
-  paises.sort((a, b) => a.nombre.localeCompare(b.nombre));
-  
-  paises.forEach(item => {
-    const option = document.createElement("option");
-    option.value = item.nombre;
-    option.textContent = `${item.nombre} (${item.gentilicio})`;
-    option.dataset.nacionalidad = item.gentilicio;
-    paisSelect.appendChild(option);
-  });
+    // Agregar opciones ordenadas alfabéticamente
+    paises.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    paises.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.nombre;
+        option.textContent = `${item.nombre} (${item.gentilicio})`;
+        option.dataset.nacionalidad = item.gentilicio;
+        paisSelect.appendChild(option);
+    });
 
     // Agregar opciones ordenadas alfabéticamente
     paises.sort((a, b) => a.nombre.localeCompare(b.nombre));
