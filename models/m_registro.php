@@ -6,6 +6,18 @@
         public function __construct($conn){
             $this->db = $conn;
         }
+
+
+        public function buscarDocumento($documento) {
+            $sql = "SELECT numero_id FROM orientacion_rcde2025_valle WHERE numero_id = ? LIMIT 1";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("s", $documento);
+            $stmt->execute();
+
+            return $stmt->get_result()->num_rows > 0;
+        }
+
         
         public function insertar($data) {
         // 1. Sanitizar: quitar espacios y validar que sea numérico
