@@ -91,7 +91,7 @@
 
                                         <label>Nombres</label>
 
-                                        <input type="text" id="nombre_emprendedor" name="nombre_emprendedor" required minlength="2" maxlength="50" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{2,50}" title="Solo se permiten letras y espacios" placeholder="Ej: Juan Carlos">
+                                        <input type="text" id="nombre_emprendedor" name="nombre_emprendedor" required minlength="1" maxlength="100" pattern="[0-9a-záéíóúñA-ZÁÉÍÓÚÑ\s]{1,100}" title="Solo se permiten letras y espacios" placeholder="Ej: Juan Carlos">
 
                                     </div>
 
@@ -99,7 +99,7 @@
 
                                         <label>Apellidos</label>
 
-                                        <input type="text" id="apellido_emprendedor" name="apellido_emprendedor" required minlength="2" maxlength="50" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{2,50}" title="Solo se permiten letras y espacios" placeholder="Ej: García Rodríguez">
+                                        <input type="text" id="apellido_emprendedor" name="apellido_emprendedor" required minlength="1" maxlength="100" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{1,100}" title="Solo se permiten letras y espacios" placeholder="Ej: García Rodríguez">
 
                                     </div>
 
@@ -171,7 +171,7 @@
 
                                         <label>Correo electrónico</label>
 
-                                        <input type="email" id="correo_emprendedor" name="correo_emprendedor" maxlength="64" minlength="14" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{14,64}" placeholder="Ej: soyemprendedor@gmail.com" required>
+                                        <input type="email" id="correo_emprendedor" name="correo_emprendedor" minlength="7" maxlength="64" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{7,64}" placeholder="Ej: soyemprendedor@gmail.com" required>
 
                                         <div id="mensajeErrorCorreo" style="color: red; font-size: 12px; margin-top: 5px; display: none;"></div>
 
@@ -250,7 +250,7 @@
 
                                 <label>Municipio</label>
 
-                                <input type="text" id="municipio" name="municipio" required minlength="2" maxlength="30" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{2,30}" placeholder="Ej: Cali">
+                                <input type="text" id="municipio" name="municipio" required minlength="3" maxlength="30" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{3,30}" placeholder="Ej: Cali">
 
                             </div>
 
@@ -680,9 +680,9 @@
                                     <option value="Otro">Otro</option>
                                 </select>
 
-                                <label>Si eres aprendiz o egresado SENA, escribe tu numero de ficha, de lo contrario escribe "No aplica"</label>
+                                <label>Si eres aprendiz o egresado SENA, escribe tu numero de ficha, de lo contrario omite esta pregunta</label>
 
-                                <input type="text" id="numero_ficha" name="numero_ficha" required minlength="7" maxlength="7" inputmode="numeric" pattern="[0-9]{7,7}" placeholder="Ej: 12345 o No aplica">
+                                <input type="text" id="numero_ficha" name="numero_ficha" minlength="7" maxlength="7" inputmode="numeric" pattern="[0-9]{7,7}" placeholder="Ej: 12345 o No aplica">
 
                             </div>
                             <div id="navegacion_botones">
