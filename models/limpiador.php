@@ -7,7 +7,7 @@ class Vigilante {
 
         if (in_array($tipo, ['CC', 'TI', 'CE', 'PPT'])){
         return filter_var($numero, FILTER_SANITIZE_NUMBER_INT);
-
+        }
         if (in_array($tipo, ['PAS', 'PEP'])) {
             $sanitizado = filter_var($numero, FILTER_SANITEZ_STRING, FILTER_FLAG_STRIP_HIGH);
         }
