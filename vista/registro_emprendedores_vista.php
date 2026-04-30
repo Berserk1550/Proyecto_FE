@@ -11,6 +11,7 @@
 
     <script src="../static/js/funciones.js"></script>
 
+
 </head>
 
 <body>
@@ -59,22 +60,28 @@
 
             <article id="contenido_registro">
 
-                <div id="cont_progreso">
+                
+                <div>
 
                     <h1>Registro Ruta Emprendedora 2025</h1>
+                    
+                    <div id="cont_progreso">
+                        
+                        <div id="Barra_progreso">
+                            <div id="progreso_total-fill"></div>
+                        </div>
 
-                    <div class="progreso_total" id="progreso_total"></div>
-
-                    <div id="caja_progreso">
-
-                        <span id="progreso_no" class="step active" data-step="1">1</span>
-                        <span id="progreso_no" class="step" data-step="2">2</span>
-                        <span id="progreso_no" class="step" data-step="3">3</span>
-                        <span id="progreso_no" class="step" data-step="4">4</span>
-                        <span id="progreso_no" class="step" data-step="5">5</span>
-                        <span id="progreso_no" class="step" data-step="6">6</span>
-
-                    </div>
+                        <div id="caja_progreso">
+                            <span id="progreso_no" class="step active" data-step="1">1</span>
+                            <span id="progreso_no" class="step" data-step="2">2</span>
+                            <span id="progreso_no" class="step" data-step="3">3</span>
+                            <span id="progreso_no" class="step" data-step="4">4</span>
+                            <span id="progreso_no" class="step" data-step="5">5</span>
+                            <span id="progreso_no" class="step" data-step="6">6</span>
+                        </div>
+                    </div>    
+                </div>
+                
 
                     <form action="../controller/registro.php" id="formulario" method="POST">
 
@@ -91,7 +98,7 @@
 
                                         <label>Nombres</label>
 
-                                        <input type="text" id="nombre_emprendedor" name="nombre_emprendedor" required minlength="2" maxlength="50" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{2,50}" title="Solo se permiten letras y espacios" placeholder="Ej: Juan Carlos">
+                                        <input type="text" id="nombre_emprendedor" name="nombre_emprendedor" required minlength="1" maxlength="100" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{1,100}" title="Solo se permiten letras y espacios" placeholder="Ej: Juan Carlos">
 
                                     </div>
 
@@ -99,7 +106,7 @@
 
                                         <label>Apellidos</label>
 
-                                        <input type="text" id="apellido_emprendedor" name="apellido_emprendedor" required minlength="2" maxlength="50" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{2,50}" title="Solo se permiten letras y espacios" placeholder="Ej: García Rodríguez">
+                                        <input type="text" id="apellido_emprendedor" name="apellido_emprendedor" required minlength="1" maxlength="100" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{1,100}" title="Solo se permiten letras y espacios" placeholder="Ej: García Rodríguez">
 
                                     </div>
 
@@ -127,7 +134,8 @@
 
                                         <label>Número de documento</label>
 
-                                        <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="17" inputmode="numeric" pattern="[0-9]{5,17}" title="Solo números (5-15 dígitos)" placeholder="Ej: 1234567890">
+                                        <input type="text" id="documento_emprendedor" name="documento_emprendedor" required minlength="5" maxlength="11" inputmode="numeric" pattern="[0-9]+" title="Solo números (5-11 dígitos)" placeholder="Ej: 1234567890">
+                                        <div id="mensajeErrorCedula" style="color: red; font-size: 12px; margin-top: 5px; display: none;"></div>
 
                                     </div>
 
@@ -171,7 +179,7 @@
 
                                         <label>Correo electrónico</label>
 
-                                        <input type="email" id="correo_emprendedor" name="correo_emprendedor" maxlength="64" minlength="14" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{14,64}" placeholder="Ej: soyemprendedor@gmail.com" required>
+                                        <input type="email" id="correo_emprendedor" name="correo_emprendedor" minlength="7" maxlength="70" pattern="[a-zA-Z0-9\.\-\_]+@+[a-zA-Z]+\.+[a-z\.]{7,70}" placeholder="Ej: soyemprendedor@gmail.com" required>
 
                                         <div id="mensajeErrorCorreo" style="color: red; font-size: 12px; margin-top: 5px; display: none;"></div>
 
@@ -250,7 +258,7 @@
 
                                 <label>Municipio</label>
 
-                                <input type="text" id="municipio" name="municipio" required minlength="2" maxlength="30" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{2,30}" placeholder="Ej: Cali">
+                                <input type="text" id="municipio" name="municipio" required minlength="3" maxlength="28" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{3,28}" placeholder="Ej: Cali">
 
                             </div>
 
@@ -821,7 +829,7 @@
         </footer>
 
     </main>
-
+    <script src="../static/js/validacion.js"></script>
 </body>
 
 </html>

@@ -43,7 +43,8 @@ body::before {
     padding: 0;
     margin: 0;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    justify-content: space-between;
     position: relative;
     z-index: 2;
 }
@@ -88,10 +89,10 @@ body::before {
     #caja_padre #pagina_principal {
         position: relative;
         width: 100%;
-        height: 100vh;
         display: flex;
         flex-direction: column;
         margin-top: 15%;
+        flex: 1;
         z-index: 3;
     }
 
@@ -286,6 +287,7 @@ body::before {
                 font-size: 15px;
                 font-weight: 600;
                 text-align: center;
+                justify-content: center;
                 display: flex;
                 padding-top: 10px;
                 z-index: 5;
@@ -352,7 +354,14 @@ body::before {
                 z-index: 5;
             }
 
-        #pagina_principal #cont_emprendedores_orientados {
+    #caja_padre #estadisticas {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+        #estadisticas #cont_emprendedores_orientados {
             width: 90%;
             background: var(--blanco);
             left: 50%;
@@ -411,7 +420,7 @@ body::before {
                     z-index: 5;
                 }
 
-        #pagina_principal #cont_top_municipios {
+        #estadisticas #cont_top_municipios {
             width: 90%;
             background: var(--blanco);
             left: 50%;
@@ -455,7 +464,7 @@ body::before {
                     z-index: 5;
                 }
 
-        #pagina_principal #cont_top_niveles_de_estudio {
+        #estadisticas #cont_top_niveles_de_estudio {
             width: 90%;
             background: var(--blanco);
             left: 50%;
@@ -499,7 +508,7 @@ body::before {
                     z-index: 5;
                 }
 
-        #pagina_principal #top_tipificaciones {
+        #estadisticas #top_tipificaciones {
             width: 90%;
             background: var(--blanco);
             left: 50%;
@@ -544,13 +553,11 @@ body::before {
                 }
 
     #caja_padre #pie_pagina {
-        position: fixed;
-        bottom: 0;
-        left: 0;
         height: 50px;
         background: var(--blanco);
         width: 100%;
-        display: flex;
+        display: block;
+        margin-top: 30px;
         z-index: 100;
     }
 
@@ -563,3 +570,136 @@ body::before {
             justify-content: space-between;
             padding: 0 10px;
         }
+
+@media screen and (min-width: 650px) {
+
+            #cont_encabezado #texto_programa {
+                width: 50%;
+                
+            }
+
+    #caja_padre #pagina_principal {
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #caja_padre #estadisticas {
+        width: 90%;
+        display: grid;
+        left: 50%;
+        transform: translateX(-50%);
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    #caja_padre {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-height: 100vh;
+        height: 100vh;
+        justify-content: space-between;
+        flex-direction: column;
+        position: relative;
+        z-index: 2;
+    }
+
+            #cont_encabezado #texto_programa {
+                width: 40%;
+            }
+
+    #caja_padre #pagina_principal {
+        width: 90%;
+        height: 50%;
+        justify-content: space-between;
+        margin-top: 0;
+        display: flex;
+        flex: 0;
+        flex-direction: row;
+    }
+
+    #caja_padre #pagina_principal article:hover {
+        margin-top: 85px;
+    }
+
+        #pagina_principal #cont_registro {
+            left: 0;
+            transform: translateX(0);
+            width: 30%;
+            margin-top: 70px;
+            height: max-content;
+            z-index: 4;
+        }
+
+        #pagina_principal #cont_inicio_sesion {
+            left: 0;
+            transform: translateX(0);
+            width: 30%;
+            margin-top: 70px;
+            height: max-content;
+        }
+
+        #pagina_principal #cont_convocatoria {
+            left: 0;
+            transform: translateX(0);
+            width: 30%;
+            margin-top: 70px;
+            height: max-content;
+        }
+
+    #caja_padre #estadisticas {
+        width: 90%;
+        display: flex;
+        flex: 0;
+        height: 50%;
+        margin-top: 0;
+        grid-template-columns: 0;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+        #estadisticas #cont_emprendedores_orientados {
+            left: 0;
+            transform: translateX(0);
+            margin-top: 10%;
+            height: max-content;
+            width: 23%;
+        }
+
+        #estadisticas #cont_top_municipios {
+            left: 0;
+            transform: translateX(0);
+            margin-top: 10%;
+            height: max-content;
+            width: 23%;
+        }
+
+        #estadisticas #cont_top_niveles_de_estudio {
+            left: 0;
+            transform: translateX(0);
+            margin-top: 10%;
+            height: max-content;
+            width: 23%;
+        }
+
+        #estadisticas #top_tipificaciones {
+            left: 0;
+            transform: translateX(0);
+            margin-top: 10%;
+            width: 23%;
+            height: max-content;
+        }
+
+    #caja_padre #pie_pagina {
+        position: fixed;
+        bottom: 0;
+    }
+
+    #caja_padre #estadisticas article:hover {
+        margin-top: 9%;
+    }
+
+}

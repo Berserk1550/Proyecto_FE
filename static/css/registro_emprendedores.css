@@ -153,6 +153,14 @@ body {
             padding: 15px;
             margin-top: 50px;
         }
+        
+        #contenido_registro h1 {
+            text-align: center;
+            font-size: 1.28rem;
+            color: #157a24;
+            margin-bottom: 22px;
+            font-weight: 800;
+        }
 
             #contenido_registro #cont_progreso {
                 width: 95%;
@@ -161,7 +169,69 @@ body {
                 transform: translateX(-50%);
             }
 
-                #cont_progreso h1 {
+
+            #cont_progreso {
+                width: 100%;
+                max-width: 760px;
+                margin: 18px auto 22px;
+            }
+
+            #Barra_progreso {
+                height: 9px;
+                background: #ddd;
+                border-radius: 3px;
+                overflow: hidden;
+            }
+
+                #progreso_total-fill {
+                    height: 100%;
+                    width: 0%;
+                    background: linear-gradient(90deg, #39a900, #007832);
+                    transition: width .4s ease;
+                }
+
+            #caja_progreso {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 6px;
+            }
+
+                #caja_progreso .step {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background: #e1e1e1;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: .8rem;
+                    font-weight: 700;
+                }
+
+                #caja_progreso .step.active {
+                    background: #39a900;
+                }
+
+            .step {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: #e1e1e1;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: .8rem;
+                font-weight: 700;
+                transition: background .3s ease;
+            }
+
+            .step.active {
+                background: #39a900;
+            }
+
+                #contenido_registro h1 {
                     font-size: 1.4rem;
                     text-align: center;
                     margin-bottom: 15px;
@@ -175,20 +245,6 @@ body {
                     margin: 30px 0;
                 }   
 
-                .progreso_total {
-                    height: 9px;
-                    background: #ddd;
-                    border-radius: 3px;
-                    overflow: hidden;
-                }
-
-                .progreso_total-fill {
-                    height: 100%;
-                    width: 0%;
-                    background: linear-gradient(90deg, #39A900, #007832);
-                    transition: width .4s ease;
-                }
-
                     #caja_progreso #progreso_no {
                         background: var(--gris-claro);
                         color: var(--blanco-total);
@@ -196,22 +252,13 @@ body {
                         width: 28px;
                         display: flex;
                         height: 28px;
+                        border: none;
                         border-radius: 99px;
                         font-weight: bold;
                         align-items: center;
                         font-size: 13px;
                         justify-content: center;
                     }
-
-                    .completed {
-                        background: var(--color-verde-sena);
-                    }
-
-                    .fase-step {
-                        display: none;
-                    }
-
-                    .active
 
             #contenido_registro #formulario {
                 width: 100%;

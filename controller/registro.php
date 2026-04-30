@@ -9,20 +9,40 @@
             $this->model = new Emprendedor($conn);
         }
 
+        public function validarDocumento($post) {
+
+            $documento = trim($post["documento"] ?? "");
+
+            $documento = str_replace(" ", "", $documento);
+            $documento = preg_replace('/[^a-zA-Z0-9]/', '', $documento);
+            $documento = strtoupper($documento);
+
+            if ($documento === "") {
+            
+                exit ('no existe');
+            
+            }
+
+            $existe = $this->model->buscarDocumento($documento);
+
+            echo $existe ? "existe" : "no existe";
+
+        }
+
         public function procesarFormulario($post) {
             $data = [
-                'nombres'       => $post['nombre_emprendedor'] ?? '',
-                'apellidos'     => $post['apellido_emprendedor'] ?? '',
+                'nombres'       => mb_strtolower($post['nombre_emprendedor'] ?? '', 'UTF-8'),
+                'apellidos'     => mb_strtolower($post['apellido_emprendedor'] ?? '', 'UTF-8'),
                 'tipo_id'       => $post['tipo_documento_emprendedor'] ?? '',
                 'numero_id'     => $post['documento_emprendedor'] ?? '',
                 'celular'       => $post['telefono_emprendedor'] ?? '',
                 'fecha_nacimiento' => $post['fecha_nacimiento_emprendedor'] ?? '',
                 'sexo'          => $post['sexo_emprendedor'] ?? '',
-                'correo'        => $post['correo_emprendedor'] ?? '',
+                'correo'        => mb_strtolower($post['correo_emprendedor'] ?? '', 'UTF-8'),
                 'pais'          => $post['paises'] ?? '',
                 'nacionalidad'  => $post['nacionalidad'] ?? '',
                 'departamento'  => $post['departamento'] ?? '',
-                'municipio'     => $post['municipio'] ?? '',
+                'municipio'     => mb_strtolower($post['municipio'] ?? '', 'UTF-8'),
                 'clasificacion' => $post['clasificacion'] ?? '',
                 'discapacidad'  => $post['discapacidad'] ?? '',
                 'tipo_emprendedor' => $post['tipo_emprendedor'] ?? '',
@@ -40,8 +60,13 @@
                 'contrasena'    => password_hash('default123', PASSWORD_DEFAULT)
             ];
 
+            if (!isset($data['ficha']) || trim($data['ficha']) === '' ){
 
-            // Depuración: ver qué datos llegan
+                $data['ficha'] = 'no aplica';
+
+            }
+
+            // Depuracion ver qué datos llegan
             error_log(print_r($data, true));
 
             return $this->model->insertar($data);
