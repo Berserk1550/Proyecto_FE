@@ -9,6 +9,26 @@
             $this->model = new Emprendedor($conn);
         }
 
+        public function validarDocumento($post) {
+
+            $documento = trim($post["documento"] ?? "");
+
+            $documento = str_replace(" ", "", $documento);
+            $documento = preg_replace('/[^a-zA-Z0-9]/', '', $documento);
+            $documento = strtoupper($documento);
+
+            if ($documento === "") {
+            
+                exit ('no existe')
+            
+            }
+
+            $existe = $this->model->buscarDocumento($documento);
+
+            echo $existe ? "existe" : "no existe";
+
+        }
+
         public function procesarFormulario($post) {
             $data = [
                 'nombres'       => $post['nombre_emprendedor'] ?? '',
