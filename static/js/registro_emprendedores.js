@@ -9,8 +9,8 @@ const fases = [
         document.getElementById('fase_6')
     ];
 function actualizarProgreso() {
-    const barraLleno = document.getElementById('progress-bar-fill');
-    const pasos = Array.from(document.querySelectorAll('#progress-steps .step'));
+    const barraLleno = document.getElementById('progreso_total-fill');
+    const pasos = Array.from(document.querySelectorAll('#caja_progreso .step'));
     const fases = [
         document.getElementById('fase_1'),
         document.getElementById('fase_2'),
@@ -20,13 +20,13 @@ function actualizarProgreso() {
         document.getElementById('fase_6')
     ];
 
-
     // Mostrar/ocultar fases
     if (!form || fases.length === 0 || pasos.length === 0) {
         console.error('Elementos del formulario no encontrados');
         return;
     }
     fases.forEach((fase, index) => {
+        
         if (fase) {
             fase.style.display = index === faseActual ? 'block' : 'none';
         }

@@ -338,6 +338,10 @@ body {
                     flex-direction: column;
                 }
 
+                #formulario #fase_2 {
+                    display: none;
+                }
+
                     #fase_2 h3 {
                         font-size: 1.3rem;
                         text-align: center;
@@ -410,6 +414,10 @@ body {
                     flex-direction: column;
                 }
 
+                #formulario #fase_3 {
+                    display: none;
+                }
+
                     #fase_3 h3 {
                         font-size: 1.3rem;
                         text-align: center;
@@ -473,6 +481,10 @@ body {
                     transform: translateX(-50%);
                     display: flex;
                     flex-direction: column;
+                }
+
+                #formulario #fase_4 {
+                    display: none;
                 }
 
                     #fase_4 h3 {
@@ -540,6 +552,10 @@ body {
                     flex-direction: column;
                 }
 
+                #formulario #fase_5 {
+                    display: none;
+                }
+
                     #fase_5 h3 {
                         font-size: 1.3rem;
                         text-align: center;
@@ -603,6 +619,10 @@ body {
                     transform: translateX(-50%);
                     display: flex;
                     flex-direction: column;
+                }
+
+                #formulario #fase_6 {
+                    display: none;
                 }
 
                     #fase_6 h3 {
