@@ -248,6 +248,9 @@ const paises = [
     
 
     function actualizarProgreso() {
+        const primerCampo = primeraFase.querySelector('input, select, textarea');  
+        const primeraFase = fases[faseActual];      
+        const porcentaje = ((faseActual + 1) / fases.length) * 100;
         // Mostrar/ocultar fases
         fases.forEach((fase, index) => {
             if (fase) {
@@ -266,14 +269,12 @@ const paises = [
 
         // Actualizar barra de progreso
         if (barraLleno) {
-            const porcentaje = ((faseActual + 1) / fases.length) * 100;
             barraLleno.style.width = `${porcentaje}%`;
         }
 
         // Enfocar primer input
-        const primeraFase = fases[faseActual];
         if (primeraFase) {
-            const primerCampo = primeraFase.querySelector('input, select, textarea');
+            
             if (primerCampo) {
                 primerCampo.focus();
             }
@@ -296,9 +297,12 @@ const paises = [
     };
 
 function actualizarCarrerasVisibles() {
+    const nivelSeleccionado = nivelFormacion.value;
+    const carreraProf = document.getElementById('carrera_profesional');
+    
     if (!nivelFormacion) return;
 
-    const nivelSeleccionado = nivelFormacion.value;
+    
 
     // Ocultar todos los campos de carrera
     Object.values(camposCarrera).forEach(campo => {
@@ -320,9 +324,9 @@ function actualizarCarrerasVisibles() {
     }
 
     // Manejar visibilidad dinámica de campos de posgrado
-    const carreraProf = document.getElementById('carrera_profesional');
+    
     if (carreraProf) {
-        carreraProf.addEventListener('change', function () {
+        carreraProf.addEventListener('change', () => {
             // La lógica para mostrar/ocultar especializaciones se maneja arriba
         });
     }
@@ -347,35 +351,39 @@ function validarFicha() {
 }
     // Función para ordenar alfabéticamente los selects
 function ordenarSelectsAlfabeticamente() {
-        const selectsParaOrdenar = [
-            'clasificacion',
-            'discapacidad',
-            'tipo_emprendedor',
-            'nivel_formacion',
-            'carrera_tecnico',
-            'carrera_tecnologo',
-            'carrera_operario',
-            'carrera_auxiliar',
-            'carrera_profesional',
-            'posgrado_especializacion',
-            'posgrado_maestria',
-            'posgrado_doctorado',
-            'situacion_negocio',
-            'programa',
-            'ejercer_actividad_proyecto',
-            'empresa_formalizada',
-            'centro_orientacion',
-            'orientador'
-        ];
+    const selectsParaOrdenar = [
+        'clasificacion',
+        'discapacidad',
+        'tipo_emprendedor',
+        'nivel_formacion',
+        'carrera_tecnico',
+        'carrera_tecnologo',
+        'carrera_operario',
+        'carrera_auxiliar',
+        'carrera_profesional',
+        'posgrado_especializacion',
+        'posgrado_maestria',
+        'posgrado_doctorado',
+        'situacion_negocio',
+        'programa',
+        'ejercer_actividad_proyecto',
+        'empresa_formalizada',
+        'centro_orientacion',
+        'orientador'
+    ];
+    const select = document.getElementById(selectId);
+    const conOptgroup = [];
+    let opcionesActuales = [];
+    const grupo = child.label;
+    const opcionesDelGrupo = Array.from(child.querySelectorAll('option'));
+    const optgroup = document.createElement('optgroup');
 
         selectsParaOrdenar.forEach(selectId => {
-            const select = document.getElementById(selectId);
+            
             if (!select) return;
 
             // Separar opciones con optgroup
-            const conOptgroup = [];
-            let opcionesActuales = [];
-
+            
             // Procesar todos los hijos del select
             Array.from(select.children).forEach((child, index) => {
                 if (child.tagName === 'OPTION') {
@@ -386,8 +394,7 @@ function ordenarSelectsAlfabeticamente() {
                         conOptgroup.push({ opciones: opcionesActuales, grupo: null });
                         opcionesActuales = [];
                     }
-                    const grupo = child.label;
-                    const opcionesDelGrupo = Array.from(child.querySelectorAll('option'));
+                    
                     conOptgroup.push({ opciones: opcionesDelGrupo, grupo: grupo });
                 }
             });
@@ -409,7 +416,7 @@ function ordenarSelectsAlfabeticamente() {
             // Reconstruir el select con opciones ordenadas
             conOptgroup.forEach(item => {
                 if (item.grupo) {
-                    const optgroup = document.createElement('optgroup');
+                    
                     optgroup.label = item.grupo;
                     item.opciones.forEach(opcion => {
                         optgroup.appendChild(opcion);
@@ -424,11 +431,12 @@ function ordenarSelectsAlfabeticamente() {
         });
     }
 function Formulario() {
+    const numero = parseInt(e.target.id.replace('btn_fase', ''));
     // Event listeners para botones de navegación
     document.addEventListener('click', (e) => {
         // Botón siguiente
         if (e.target.id.startsWith('btn_fase')) {
-            const numero = parseInt(e.target.id.replace('btn_fase', ''));
+            
             if (numero - 1 === faseActual) {
                 if (validarFaseActual()) {
                     if (faseActual < fases.length - 1) {
@@ -452,6 +460,7 @@ function Formulario() {
 }
 function enviarFormulario() {
     const enviar_formulario = document.getElementById('btn_fase6');
+    const formData = new FormData(form);
     // Envío del formulario
     form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -460,7 +469,7 @@ function enviarFormulario() {
             console.log('Formulario válido, enviando...');
 
             // Crear objeto FormData con todos los campos del formulario
-            const formData = new FormData(form);
+            
 
             // Enviar al controlador con fetch
             fetch('../controller/registro.php', {
@@ -485,16 +494,15 @@ function enviarFormulario() {
 }
     
 function FechaNacimiento() {
-    // Establecer restricciones de fecha en el campo de nacimiento
+    const hoy = new Date();
+    const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
+    const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
     const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
+    const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
+     // Establecer restricciones de fecha en el campo de nacimiento
+    
     if (campoFecha) {
-        const hoy = new Date();
-        const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
-        const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
-
         // Formato YYYY-MM-DD para HTML5 date input
-        const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
-
         campoFecha.max = formatoFecha(desde15anos);
         campoFecha.min = formatoFecha(hasta100anos);
 
@@ -514,20 +522,27 @@ function validarCorreo() {
 
     const correoInput = document.getElementById('correo_emprendedor');
     const mensajeErrorCorreo = document.getElementById('mensajeErrorCorreo');
+    // Extensiones comunes permitidas
+    const extensionesValidas = ['com', 'es', 'org', 'net', 'info', 'biz', 'tv', 'io', 'app', 'dev', 'edu', 'gov', 'mil', 'int'];
+    // Extensiones de nivel 2 (mini) que requieren extensión principal antes
+    const extensionesMini = ['co', 'mx', 'ar', 've', 'pe', 'cl', 'br', 'uy', 'py', 'ec', 'bo', 'gt', 'hn', 'ni', 'sv', 'pa', 'do', 'cu', 'pr', 'cr', 'uk', 'nz', 'au', 'in', 'cn', 'jp', 'kr', 'th', 'ph', 'sg', 'id', 'my', 'vn', 'za', 'eg', 'ng', 'ke', 'gh', 'tz', 'pk', 'bd', 'ir', 'sa', 'ae', 'jo', 'il', 'tr', 'gr', 'it', 'fr', 'de', 'nl', 'be', 'ch', 'at', 'se', 'no', 'dk', 'fi', 'pl', 'cz', 'hu', 'ro', 'ua', 'ru'];
 
+    // Patrón de validación de correo base
+    const patronCorreo = /^[a-zA-Z0-9.\-_]+@[a-z.\-_]+\.[a-z]{2,}$/;
+    const correo = this.value.trim();
+    // Validar dominio
+    const dominio = correo.split('@')[1].split('.')[0].toLowerCase();
+    // Extraer y validar extensión
+    const extension = correo.split('.').pop().toLowerCase();
+    const partesDominio = correo.split('@')[1].split('.');
+    // Validar que la extensión anterior sea válida
+    const extensionAnterior = partesDominio[partesDominio.length - 2].toLowerCase();
+    const extension = this.value.trim().split('.').pop().toLowerCase();
     if (correoInput && mensajeErrorCorreo) {
-        // Extensiones comunes permitidas
-        const extensionesValidas = ['com', 'es', 'org', 'net', 'info', 'biz', 'tv', 'io', 'app', 'dev', 'edu', 'gov', 'mil', 'int'];
-        // Extensiones de nivel 2 (mini) que requieren extensión principal antes
-        const extensionesMini = ['co', 'mx', 'ar', 've', 'pe', 'cl', 'br', 'uy', 'py', 'ec', 'bo', 'gt', 'hn', 'ni', 'sv', 'pa', 'do', 'cu', 'pr', 'cr', 'uk', 'nz', 'au', 'in', 'cn', 'jp', 'kr', 'th', 'ph', 'sg', 'id', 'my', 'vn', 'za', 'eg', 'ng', 'ke', 'gh', 'tz', 'pk', 'bd', 'ir', 'sa', 'ae', 'jo', 'il', 'tr', 'gr', 'it', 'fr', 'de', 'nl', 'be', 'ch', 'at', 'se', 'no', 'dk', 'fi', 'pl', 'cz', 'hu', 'ro', 'ua', 'ru'];
-
-        // Patrón de validación de correo base
-        const patronCorreo = /^[a-zA-Z0-9.\-_]+@[a-z.\-_]+\.[a-z]{2,}$/;
-
+        
         // Validación en tiempo real
-        correoInput.addEventListener('blur', function () {
-            const correo = this.value.trim();
-
+        correoInput.addEventListener('blur', () => {
+            
             if (correo === '') {
                 mensajeErrorCorreo.style.display = 'none';
                 this.setCustomValidity('');
@@ -541,18 +556,13 @@ function validarCorreo() {
                 mensajeErrorCorreo.style.display = 'block';
                 return;
             }
-
-            // Validar dominio
-            const dominio = correo.split('@')[1].split('.')[0].toLowerCase();
+            
             if (!dominio || dominio === '') {
                 mensajeErrorCorreo.textContent = 'El correo debe contener un dominio válido después de @';
                 mensajeErrorCorreo.style.display = 'block';
                 this.setCustomValidity('Dominio inválido');
                 return;
             }
-
-            // Extraer y validar extensión
-            const extension = correo.split('.').pop().toLowerCase();
 
             if (!extension || extension === '') {
                 mensajeErrorCorreo.textContent = 'El correo debe contener una extensión válida después del último punto';
@@ -584,15 +594,14 @@ function validarCorreo() {
 
             // Validar extensiones mini (requieren extensión principal antes)
             if (extensionesMini.includes(extension)) {
-                const partesDominio = correo.split('@')[1].split('.');
+                
                 if (partesDominio.length < 3) {
                     mensajeErrorCorreo.textContent = `La extensión ".${extension}" requiere una extensión principal antes (ej: ejemplo.com.${extension})`;
                     mensajeErrorCorreo.style.display = 'block';
                     this.setCustomValidity('Extensión incompleta');
                     return;
                 }
-                // Validar que la extensión anterior sea válida
-                const extensionAnterior = partesDominio[partesDominio.length - 2].toLowerCase();
+                
                 if (!extensionesValidas.includes(extensionAnterior)) {
                     mensajeErrorCorreo.textContent = `Antes de ".${extension}" debe haber una extensión válida (com, org, net, etc.)`;
                     mensajeErrorCorreo.style.display = 'block';
@@ -620,7 +629,6 @@ function validarCorreo() {
                 mensajeErrorCorreo.style.display = 'none';
                 this.setCustomValidity('');
             } else if (patronCorreo.test(this.value.trim())) {
-                const extension = this.value.trim().split('.').pop().toLowerCase();
                 if (extensionesValidas.includes(extension) || extensionesMini.includes(extension)) {
                     mensajeErrorCorreo.style.display = 'none';
                     this.setCustomValidity('');
@@ -633,6 +641,9 @@ function validarCorreo() {
 // API para países y nacionalidades
 function cargarPaises() {
     const paisSelect = document.getElementById("paises");
+    const nacionalidadField = document.getElementById("nacionalidad");
+    const option = document.createElement("option");
+
 
     if (!paisSelect) {
         console.error('Elemento #paises no encontrado en el DOM');
@@ -648,7 +659,7 @@ function cargarPaises() {
   if (paisSelect) {
       paisSelect.value = "Colombia";
         // Actualizar nacionalidad al cargar 
-      const nacionalidadField = document.getElementById("nacionalidad");
+      
       if (nacionalidadField) {
         nacionalidadField.textContent = "Colombiano/a";
       } else {
@@ -660,7 +671,7 @@ function cargarPaises() {
   paises.sort((a, b) => a.nombre.localeCompare(b.nombre));
   
   paises.forEach(item => {
-    const option = document.createElement("option");
+    
     option.value = item.nombre;
     option.textContent = `${item.nombre} (${item.gentilicio})`;
     option.dataset.nacionalidad = item.gentilicio;
@@ -671,7 +682,6 @@ function cargarPaises() {
     paises.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
     paises.forEach(item => {
-        const option = document.createElement("option");
         option.value = item.nombre;
         option.textContent = `${item.nombre} (${item.gentilicio})`;
         option.dataset.nacionalidad = item.gentilicio;
@@ -686,8 +696,9 @@ function cargarPaises() {
 
 // Ejecutar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-    
-    
+    const nacionalidad = this.selectedOptions[0]?.dataset.nacionalidad || '';
+    const nacionalidadField = document.getElementById("nacionalidad");    
+    const paisSelect = document.getElementById("paises");
     // Inicializar
     actualizarProgreso();
     ordenarSelectsAlfabeticamente();
@@ -700,11 +711,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
 
     // Evento para actualizar nacionalidad
-    const paisSelect = document.getElementById("paises");
+    
     if (paisSelect) {
         paisSelect.addEventListener("change", function () {
-            const nacionalidad = this.selectedOptions[0]?.dataset.nacionalidad || '';
-            const nacionalidadField = document.getElementById("nacionalidad");
+            
             if (nacionalidadField) {
                 nacionalidadField.textContent = nacionalidad;
             }
