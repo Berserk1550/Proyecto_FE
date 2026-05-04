@@ -30,7 +30,7 @@ function validarDocumento() {
     //Restriciones para cada tipo de documento
   const tipoDocumentoSelect = document.getElementById('tipo_documento_emprendedor');
   const tipoDocumento = this.value;
-  tipoDocumentoSelect.addEventListener('change', function () {
+  tipoDocumentoSelect.addEventListener('change', ()=> {
     
     if (tipoDocumento === '' || tipoDocumento === null) {
       mensajeCedula.textContent = "Por favor, selecciona un tipo de documento.";
@@ -61,7 +61,7 @@ function validarTipoDocumento() {
   const documentoInput = document.getElementById('documento_emprendedor');
   const mensaje = document.getElementById('mensajeErrorDocumento');
 
-  tipoDocumentoSelect2.addEventListener('change', function () {
+  tipoDocumentoSelect2.addEventListener('change', () => {
     const tipoDocumento = this.value;
 
     if (tipoDocumento == "CC" || tipoDocumento == "CE") {
@@ -216,7 +216,7 @@ function validarCorreo() {
         });
 
         // Limpiar mensaje de error al escribir
-        correoInput.addEventListener('input', function () {
+        correoInput.addEventListener('input', () => {
             if (this.value.trim() === '') {
                 mensajeErrorCorreo.style.display = 'none';
                 this.setCustomValidity('');
@@ -231,6 +231,12 @@ function validarCorreo() {
 }
 
 document.addEventListener("DOMContentLoaded", ()=> {
+
+    enviarCedula();
+    validarDocumento();
+    validarTipoDocumento();
+    validarCorreo();
+
 
 
 });
