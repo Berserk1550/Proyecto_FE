@@ -9,6 +9,7 @@ const fases = [
         document.getElementById('fase_6')
     ];
 function actualizarProgreso() {
+    const form = document.getElementById('formulario');
     const barraLleno = document.getElementById('progreso_total-fill');
     const pasos = Array.from(document.querySelectorAll('#caja_progreso .step'));
     const fases = [
@@ -22,7 +23,7 @@ function actualizarProgreso() {
 
     // Mostrar/ocultar fases
     if (!form || fases.length === 0 || pasos.length === 0) {
-        console.error('Elementos del formulario no encontrados');
+        console.error('Elementos del formulario no encontrados', form, fases, pasos);
         return;
     }
     fases.forEach((fase, index) => {
@@ -265,6 +266,7 @@ function botonesFase() {
     });
 }
 function enviarFormulario() {
+    const form = document.getElementById('formulario');
     const enviar_formulario = document.getElementById('btn_fase6');
     // Envío del formulario
     form.addEventListener('submit', (event) => {
@@ -292,30 +294,27 @@ function enviarFormulario() {
         }
     });
 }
-// Inicializar
-actualizarProgreso();
-ordenarSelectsAlfabeticamente();
 
-// Establecer restricciones de fecha en el campo de nacimiento
-const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
-if (campoFecha) {
-    const hoy = new Date();
-    const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
-    const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
+function fechaNacimiento() {
+    // Establecer restricciones de fecha en el campo de nacimiento
+    const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
+    if (campoFecha) {
+        const hoy = new Date();
+        const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
+        const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
 
-    // Formato YYYY-MM-DD para HTML5 date input
-    const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
+        // Formato YYYY-MM-DD para HTML5 date input
+        const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
 
-    campoFecha.max = formatoFecha(desde15anos);
-    campoFecha.min = formatoFecha(hasta100anos);
+        campoFecha.max = formatoFecha(desde15anos);
+        campoFecha.min = formatoFecha(hasta100anos);
 
-    // Hacer clickeable el input de fecha para abrir el datepicker
-    campoFecha.addEventListener('click', function () {
-        this.showPicker();
-    });
-
+        // Hacer clickeable el input de fecha para abrir el datepicker
+        campoFecha.addEventListener('click', function () {
+            this.showPicker();
+        });
+    }
 }
-
 // API para países y nacionalidades
 function cargarPaises() {
     const paisSelect = document.getElementById("paises");
@@ -537,18 +536,22 @@ function cargarPaises() {
 // Ejecutar cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
     // Pequeño delay para asegurar que el DOM esté completamente cargado
-    if (document.getElementById('progress-steps')) {
+    if (document.getElementById('caja_progreso')) {
         actualizarProgreso();
     }
 
     if (document.getElementById('input, select, textarea')) {
         validarFaseActual();
     }
+
+    if (document.getElementById('btn_fase6')) {
+        enviarFormulario();
+    }
     actualizarCarrerasVisibles();
     noAplicarFicha();
     ordenarSelectsAlfabeticamente();
     botonesFase();
-    enviarFormulario();
+    fechaNacimiento();
     cargarPaises();
 
 
