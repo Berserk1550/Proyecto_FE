@@ -1,6 +1,307 @@
 let faseActual = 0;
 // Lista de países y gentilicios (sin API externa)
-const paises = [
+
+
+function Progreso() {
+    const form = document.getElementById('formulario');
+    const fases = [
+        document.getElementById('fase_1'),
+        document.getElementById('fase_2'),
+        document.getElementById('fase_3'),
+        document.getElementById('fase_4'),
+        document.getElementById('fase_5'),
+        document.getElementById('fase_6')
+    ];
+    const pasos = Array.from(document.querySelectorAll('#caja_progreso .step'));
+    const barraLleno = document.getElementById('progreso_total-fill');
+
+    if (!form || fases.length === 0 || pasos.length === 0) {
+        console.error('Elementos del formulario no encontrados');
+        return;
+    }
+}
+
+
+function actualizarProgreso() {
+    const primerCampo = primeraFase.querySelector('input, select, textarea');
+    const primeraFase = fases[faseActual];
+    const porcentaje = ((faseActual + 1) / fases.length) * 100;
+    // Mostrar/ocultar fases
+    fases.forEach((fase, index) => {
+        if (fase) {
+            fase.style.display = index === faseActual ? 'block' : 'none';
+        }
+    });
+
+    // Actualizar pasos activos
+    pasos.forEach((paso, index) => {
+        if (index === faseActual) {
+            paso.classList.add('active');
+        } else {
+            paso.classList.remove('active');
+        }
+    });
+
+    // Actualizar barra de progreso
+    if (barraLleno) {
+        barraLleno.style.width = `${porcentaje}%`;
+    }
+
+    // Enfocar primer input
+    if (primeraFase) {
+
+        if (primerCampo) {
+            primerCampo.focus();
+        }
+    }
+}
+
+
+
+// Manejar visibilidad dinámica de campos de carrera
+const nivelFormacion = document.getElementById('nivel_formacion');
+const camposCarrera = {
+    'Técnico': document.getElementById('carrera_tecnico'),
+    'Tecnólogo': document.getElementById('carrera_tecnologo'),
+    'Operario': document.getElementById('carrera_operario'),
+    'Auxiliar': document.getElementById('carrera_auxiliar'),
+    'Profesional': document.getElementById('carrera_profesional'),
+    'Especialización': document.getElementById('posgrado_especializacion'),
+    'Maestría': document.getElementById('posgrado_maestria'),
+    'Doctorado': document.getElementById('posgrado_doctorado')
+};
+
+function actualizarCarrerasVisibles() {
+    const nivelSeleccionado = nivelFormacion.value;
+    const carreraProf = document.getElementById('carrera_profesional');
+
+    if (!nivelFormacion) return;
+
+
+
+    // Ocultar todos los campos de carrera
+    Object.values(camposCarrera).forEach(campo => {
+        if (campo) {
+            campo.style.display = 'none';
+            campo.removeAttribute('required');
+        }
+    });
+
+    // Mostrar el campo de carrera correspondiente
+    if (camposCarrera[nivelSeleccionado]) {
+        camposCarrera[nivelSeleccionado].style.display = 'block';
+        camposCarrera[nivelSeleccionado].setAttribute('required', 'required');
+    }
+}
+
+if (nivelFormacion) {
+    nivelFormacion.addEventListener('change', actualizarCarrerasVisibles);
+}
+
+// Manejar visibilidad dinámica de campos de posgrado
+
+if (carreraProf) {
+    carreraProf.addEventListener('change', () => {
+        // La lógica para mostrar/ocultar especializaciones se maneja arriba
+    });
+}
+function validarFicha() {
+    // Manejar tipo_emprendedor para llenar número de ficha automáticamente
+    const tipoEmprendedor = document.getElementById('tipo_emprendedor');
+    const numeroFicha = document.getElementById('numero_ficha');
+
+    if (tipoEmprendedor) {
+        tipoEmprendedor.addEventListener('change', function () {
+            if (this.value === 'No cuenta con formación' || this.value === 'Otro' || this.value === 'Instructor') {
+                numeroFicha.value = 'No aplica';
+                numeroFicha.disabled = true;
+                numeroFicha.removeAttribute('required');
+            } else {
+                numeroFicha.value = '';
+                numeroFicha.disabled = false;
+                numeroFicha.setAttribute('required', 'required');
+            }
+        });
+    }
+}
+// Función para ordenar alfabéticamente los selects
+function ordenarSelectsAlfabeticamente() {
+    const selectsParaOrdenar = [
+        'clasificacion',
+        'discapacidad',
+        'tipo_emprendedor',
+        'nivel_formacion',
+        'carrera_tecnico',
+        'carrera_tecnologo',
+        'carrera_operario',
+        'carrera_auxiliar',
+        'carrera_profesional',
+        'posgrado_especializacion',
+        'posgrado_maestria',
+        'posgrado_doctorado',
+        'situacion_negocio',
+        'programa',
+        'ejercer_actividad_proyecto',
+        'empresa_formalizada',
+        'centro_orientacion',
+        'orientador'
+    ];
+    const select = document.getElementById(selectId);
+    const conOptgroup = [];
+    let opcionesActuales = [];
+    const grupo = child.label;
+    const opcionesDelGrupo = Array.from(child.querySelectorAll('option'));
+    const optgroup = document.createElement('optgroup');
+
+    selectsParaOrdenar.forEach(selectId => {
+
+        if (!select) return;
+
+        // Separar opciones con optgroup
+
+        // Procesar todos los hijos del select
+        Array.from(select.children).forEach((child, index) => {
+            if (child.tagName === 'OPTION') {
+                if (index === 0) return; // Saltar la primera opción (placeholder)
+                opcionesActuales.push(child);
+            } else if (child.tagName === 'OPTGROUP') {
+                if (opcionesActuales.length > 0) {
+                    conOptgroup.push({ opciones: opcionesActuales, grupo: null });
+                    opcionesActuales = [];
+                }
+
+                conOptgroup.push({ opciones: opcionesDelGrupo, grupo: grupo });
+            }
+        });
+
+        if (opcionesActuales.length > 0) {
+            conOptgroup.push({ opciones: opcionesActuales, grupo: null });
+        }
+
+        // Ordenar las opciones alfabéticamente
+        conOptgroup.forEach(item => {
+            item.opciones.sort((a, b) => a.text.localeCompare(b.text, 'es'));
+        });
+
+        // Limpiar el select manteniendo solo la primera opción
+        while (select.children.length > 1) {
+            select.children[1].remove();
+        }
+
+        // Reconstruir el select con opciones ordenadas
+        conOptgroup.forEach(item => {
+            if (item.grupo) {
+
+                optgroup.label = item.grupo;
+                item.opciones.forEach(opcion => {
+                    optgroup.appendChild(opcion);
+                });
+                select.appendChild(optgroup);
+            } else {
+                item.opciones.forEach(opcion => {
+                    select.appendChild(opcion);
+                });
+            }
+        });
+    });
+}
+function Formulario() {
+    const numero = parseInt(e.target.id.replace('btn_fase', ''));
+    // Event listeners para botones de navegación
+    document.addEventListener('click', (e) => {
+        // Botón siguiente
+        if (e.target.id.startsWith('btn_fase')) {
+
+            if (numero - 1 === faseActual) {
+                if (validarFaseActual()) {
+                    if (faseActual < fases.length - 1) {
+                        faseActual += 1;
+                        actualizarProgreso();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                }
+            }
+        }
+
+        // Botón volver
+        if (e.target.id === 'btn_volver' || e.target.closest('#btn_volver')) {
+            if (faseActual > 0) {
+                faseActual -= 1;
+                actualizarProgreso();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+    });
+}
+function enviarFormulario() {
+    const enviar_formulario = document.getElementById('btn_fase6');
+    const formData = new FormData(form);
+    // Envío del formulario
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (validarFaseActual()) {
+            console.log('Formulario válido, enviando...');
+
+            // Crear objeto FormData con todos los campos del formulario
+
+
+            // Enviar al controlador con fetch
+            fetch('../controller/registro.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    Swal.fire({
+                        title: "Formulario enviado exitosamente",
+                        icon: "success",
+                        draggable: true,
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "#39A900"
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al enviar:', error);
+                });
+        }
+    });
+}
+
+function FechaNacimiento() {
+    const hoy = new Date();
+    const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
+    const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
+    const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
+    const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
+    // Establecer restricciones de fecha en el campo de nacimiento
+
+    if (campoFecha) {
+        // Formato YYYY-MM-DD para HTML5 date input
+        campoFecha.max = formatoFecha(desde15anos);
+        campoFecha.min = formatoFecha(hasta100anos);
+
+        // Hacer clickeable el input de fecha para abrir el datepicker
+        campoFecha.addEventListener('click', function () {
+            this.showPicker();
+        });
+
+        // También permitir que se abra con focus
+        campoFecha.addEventListener('focus', function () {
+            this.showPicker();
+        });
+    }
+}
+
+
+// API para países y nacionalidades
+function cargarPaises() {
+    const paisSelect = document.getElementById("paises");
+    const nacionalidadField = document.getElementById("nacionalidad");
+    const option = document.createElement("option");
+    const nacionalidad = this.selectedOptions[0]?.dataset.nacionalidad || '';
+    const paisSelect = document.getElementById("paises");
+    const paises = [
     { nombre: "Colombia", gentilicio: "Colombiano/a" },
     { nombre: "Afganistán", gentilicio: "Afgano/a" },
     { nombre: "Albania", gentilicio: "Albanés/a" },
@@ -224,7 +525,8 @@ const paises = [
     { nombre: "Yemen", gentilicio: "Yemení" },
     { nombre: "Zambia", gentilicio: "Zambiano/a" },
     { nombre: "Zimbabue", gentilicio: "Zimbabuense" }
-];
+    ];
+};
 
 
 function Progreso() {
@@ -545,6 +847,12 @@ function cargarPaises() {
         } else {
             console.warn('Elemento #nacionalidad no encontrado en el DOM');
         }
+        paisSelect.addEventListener("change", function () {
+
+            if (nacionalidadField) {
+                nacionalidadField.textContent = nacionalidad;
+            }
+        });
     }
 
     // Agregar opciones ordenadas alfabéticamente
@@ -587,7 +895,13 @@ document.addEventListener('DOMContentLoaded', () => {
         Progreso();
     }
 
+    
+    // Inicializar
+    Progreso();
     actualizarProgreso();
+    ordenarSelectsAlfabeticamente();
+    actualizarProgreso();
+    cargarPaises();
 
 
     setTimeout(() => {
@@ -604,4 +918,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});   
+});
