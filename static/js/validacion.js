@@ -20,7 +20,7 @@ function enviarCedula() {
                 .catch((error) => console.error("Error:", error))
                 .then((response) => console.log("Success:", response));
 
-                
+
         }
     });
 }
@@ -28,85 +28,85 @@ function enviarCedula() {
 function validarDocumento() {
 
     //Restriciones para cada tipo de documento
-  const tipoDocumentoSelect = document.getElementById('tipo_documento_emprendedor');
-  const tipoDocumento = this.value;
-  tipoDocumentoSelect.addEventListener('change', ()=> {
-    
-    if (tipoDocumento === '' || tipoDocumento === null) {
-      mensajeCedula.textContent = "Por favor, selecciona un tipo de documento.";
-      mensajeCedula.style.color = "orange";
-      mensajeCedula.style.display = "block";
-      console.error("Respuesta del servidor:", data);
-      return;
-    }
+    const tipoDocumentoSelect = document.getElementById('tipo_documento_emprendedor');
+    const tipoDocumento = this.value;
+    tipoDocumentoSelect.addEventListener('change', () => {
 
-    if (data === "EXISTE") {
-      mensajeCedula.textContent = "Este número de identificación ya está registrado.";
-      mensajeCedula.style.color = "red";
-      mensajeCedula.style.display = "block";
-      this.setCustomValidity("Duplicado");
-    } else {
-      mensajeCedula.textContent = "Número de identificación disponible.";
-      mensajeCedula.style.color = "green";
-      mensajeCedula.style.display = "block";
-      this.setCustomValidity("");
-    }
-  });
+        if (tipoDocumento === '' || tipoDocumento === null) {
+            mensajeCedula.textContent = "Por favor, selecciona un tipo de documento.";
+            mensajeCedula.style.color = "orange";
+            mensajeCedula.style.display = "block";
+            console.error("Respuesta del servidor:", data);
+            return;
+        }
+
+        if (data === "EXISTE") {
+            mensajeCedula.textContent = "Este número de identificación ya está registrado.";
+            mensajeCedula.style.color = "red";
+            mensajeCedula.style.display = "block";
+            this.setCustomValidity("Duplicado");
+        } else {
+            mensajeCedula.textContent = "Número de identificación disponible.";
+            mensajeCedula.style.color = "green";
+            mensajeCedula.style.display = "block";
+            this.setCustomValidity("");
+        }
+    });
 }
 
 function validarTipoDocumento() {
 
-  //Restriciones para cada tipo de documento
-  const tipoDocumentoSelect2 = document.getElementById('tipo_documento_emprendedor');
-  const documentoInput = document.getElementById('documento_emprendedor');
-  const mensaje = document.getElementById('mensajeErrorDocumento');
+    //Restriciones para cada tipo de documento
+    const tipoDocumentoSelect2 = document.getElementById('tipo_documento_emprendedor');
+    const documentoInput = document.getElementById('documento_emprendedor');
+    const mensaje = document.getElementById('mensajeErrorDocumento');
 
-  tipoDocumentoSelect2.addEventListener('change', () => {
-    const tipoDocumento = this.value;
+    tipoDocumentoSelect2.addEventListener('change', () => {
+        const tipoDocumento = this.value;
 
-    if (tipoDocumento == "CC" || tipoDocumento == "CE") {
-      documentoInput.setAttribute('pattern', '^[0-9]{6,10}$');
-      documentoInput.setAttribute('title', 'Debe contener entre 6 y 10 dígitos');
-    }
+        if (tipoDocumento == "CC" || tipoDocumento == "CE") {
+            documentoInput.setAttribute('pattern', '^[0-9]{6,10}$');
+            documentoInput.setAttribute('title', 'Debe contener entre 6 y 10 dígitos');
+        }
 
-    if (tipoDocumento == "TI") {
-      documentoInput.setAttribute('pattern', '^[0-9]{10}$');
-      documentoInput.setAttribute('title', 'Debe contener 10 dígitos');
-    }
+        if (tipoDocumento == "TI") {
+            documentoInput.setAttribute('pattern', '^[0-9]{10}$');
+            documentoInput.setAttribute('title', 'Debe contener 10 dígitos');
+        }
 
-    if (tipoDocumento == "PEP") {
-      documentoInput.setAttribute('pattern', '^[0-9]{15}$');
-      documentoInput.setAttribute('title', 'Debe contener 15 dígitos');
-    }
+        if (tipoDocumento == "PEP") {
+            documentoInput.setAttribute('pattern', '^[0-9]{15}$');
+            documentoInput.setAttribute('title', 'Debe contener 15 dígitos');
+        }
 
-    if (tipoDocumento == "PAS") {
-      documentoInput.setAttribute('pattern', '^[A-Z][0-9]{5,14}$');
-      documentoInput.setAttribute('title', 'Debe iniciar con una letra mayúscula seguida de 5 a 14 números');
-    }
+        if (tipoDocumento == "PAS") {
+            documentoInput.setAttribute('pattern', '^[A-Z][0-9]{5,14}$');
+            documentoInput.setAttribute('title', 'Debe iniciar con una letra mayúscula seguida de 5 a 14 números');
+        }
 
-    if (tipoDocumento == "PPT") {
-      documentoInput.setAttribute('pattern', '^[0-9]{7,8}$');
-      documentoInput.setAttribute('title', 'Debe contener entre 7 y 8 dígitos');
-    }
-  // Validación en tiempo real
-  documentoInput.addEventListener('input', () => {
-    const patron = documentoInput.getAttribute('pattern');
-    if (!patron) return;
+        if (tipoDocumento == "PPT") {
+            documentoInput.setAttribute('pattern', '^[0-9]{7,8}$');
+            documentoInput.setAttribute('title', 'Debe contener entre 7 y 8 dígitos');
+        }
+        // Validación en tiempo real
+        documentoInput.addEventListener('input', () => {
+            const patron = documentoInput.getAttribute('pattern');
+            if (!patron) return;
 
-    const regex = new RegExp(patron);
-    if (regex.test(documentoInput.value)) {
-      documentoInput.style.borderColor = "green";
-      mensaje.textContent = "Formato válido";
-      mensaje.style.color = "green";
-      mensaje.style.display = "none";
-    } else {
-      documentoInput.style.borderColor = "red";
-      mensaje.textContent = "Formato incorrecto";
-      mensaje.style.display = "block";
-      mensaje.style.color = "red";
-    }
-  })
-  });
+            const regex = new RegExp(patron);
+            if (regex.test(documentoInput.value)) {
+                documentoInput.style.borderColor = "green";
+                mensaje.textContent = "Formato válido";
+                mensaje.style.color = "green";
+                mensaje.style.display = "none";
+            } else {
+                documentoInput.style.borderColor = "red";
+                mensaje.textContent = "Formato incorrecto";
+                mensaje.style.display = "block";
+                mensaje.style.color = "red";
+            }
+        })
+    });
 
 }
 
@@ -131,10 +131,10 @@ function validarCorreo() {
     const extensionAnterior = partesDominio[partesDominio.length - 2].toLowerCase();
     const extension = this.value.trim().split('.').pop().toLowerCase();
     if (correoInput && mensajeErrorCorreo) {
-        
+
         // Validación en tiempo real
         correoInput.addEventListener('blur', () => {
-            
+
             if (correo === '') {
                 mensajeErrorCorreo.style.display = 'none';
                 this.setCustomValidity('');
@@ -148,7 +148,7 @@ function validarCorreo() {
                 mensajeErrorCorreo.style.display = 'block';
                 return;
             }
-            
+
             if (!dominio || dominio === '') {
                 mensajeErrorCorreo.textContent = 'El correo debe contener un dominio válido después de @';
                 mensajeErrorCorreo.style.display = 'block';
@@ -186,14 +186,14 @@ function validarCorreo() {
 
             // Validar extensiones mini (requieren extensión principal antes)
             if (extensionesMini.includes(extension)) {
-                
+
                 if (partesDominio.length < 3) {
                     mensajeErrorCorreo.textContent = `La extensión ".${extension}" requiere una extensión principal antes (ej: ejemplo.com.${extension})`;
                     mensajeErrorCorreo.style.display = 'block';
                     this.setCustomValidity('Extensión incompleta');
                     return;
                 }
-                
+
                 if (!extensionesValidas.includes(extensionAnterior)) {
                     mensajeErrorCorreo.textContent = `Antes de ".${extension}" debe haber una extensión válida (com, org, net, etc.)`;
                     mensajeErrorCorreo.style.display = 'block';
@@ -230,7 +230,7 @@ function validarCorreo() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", ()=> {
+document.addEventListener("DOMContentLoaded", () => {
 
     enviarCedula();
     validarDocumento();

@@ -224,85 +224,84 @@ const paises = [
     { nombre: "Yemen", gentilicio: "Yemení" },
     { nombre: "Zambia", gentilicio: "Zambiano/a" },
     { nombre: "Zimbabue", gentilicio: "Zimbabuense" }
-];    
-    
+];
 
-    function Progreso() {
-        const form = document.getElementById('formulario');
-        const fases = [
-            document.getElementById('fase_1'),
-            document.getElementById('fase_2'),
-            document.getElementById('fase_3'),
-            document.getElementById('fase_4'),
-            document.getElementById('fase_5'),
-            document.getElementById('fase_6')
-        ];
-        const pasos = Array.from(document.querySelectorAll('#caja_progreso .step'));
-        const barraLleno = document.getElementById('progreso_total-fill');
 
-        if (!form || fases.length === 0 || pasos.length === 0) {
-            console.error('Elementos del formulario no encontrados');
-            return;
-        }
+function Progreso() {
+    const form = document.getElementById('formulario');
+    const fases = [
+        document.getElementById('fase_1'),
+        document.getElementById('fase_2'),
+        document.getElementById('fase_3'),
+        document.getElementById('fase_4'),
+        document.getElementById('fase_5'),
+        document.getElementById('fase_6')
+    ];
+    const pasos = Array.from(document.querySelectorAll('#caja_progreso .step'));
+    const barraLleno = document.getElementById('progreso_total-fill');
+
+    if (!form || fases.length === 0 || pasos.length === 0) {
+        console.error('Elementos del formulario no encontrados');
+        return;
     }
-    
+}
 
-    function actualizarProgreso() {
-        const primerCampo = primeraFase.querySelector('input, select, textarea');  
-        const primeraFase = fases[faseActual];      
-        const porcentaje = ((faseActual + 1) / fases.length) * 100;
-        // Mostrar/ocultar fases
-        fases.forEach((fase, index) => {
-            if (fase) {
-                fase.style.display = index === faseActual ? 'block' : 'none';
-            }
-        });
-
-        // Actualizar pasos activos
-        pasos.forEach((paso, index) => {
-            if (index === faseActual) {
-                paso.classList.add('active');
-            } else {
-                paso.classList.remove('active');
-            }
-        });
-
-        // Actualizar barra de progreso
-        if (barraLleno) {
-            barraLleno.style.width = `${porcentaje}%`;
+function actualizarProgreso() {
+    const primeraFase = fases[faseActual];
+    const primerCampo = primeraFase.querySelector('input, select, textarea');
+    const porcentaje = ((faseActual + 1) / fases.length) * 100;
+    // Mostrar/ocultar fases
+    fases.forEach((fase, index) => {
+        if (fase) {
+            fase.style.display = index === faseActual ? 'block' : 'none';
         }
+    });
 
-        // Enfocar primer input
-        if (primeraFase) {
-            
-            if (primerCampo) {
-                primerCampo.focus();
-            }
+    // Actualizar pasos activos
+    pasos.forEach((paso, index) => {
+        if (index === faseActual) {
+            paso.classList.add('active');
+        } else {
+            paso.classList.remove('active');
         }
+    });
+
+    // Actualizar barra de progreso
+    if (barraLleno) {
+        barraLleno.style.width = `${porcentaje}%`;
     }
 
+    // Enfocar primer input
+    if (primeraFase) {
+
+        if (primerCampo) {
+            primerCampo.focus();
+        }
+    }
+}
 
 
-    // Manejar visibilidad dinámica de campos de carrera
-    const nivelFormacion = document.getElementById('nivel_formacion');
-    const camposCarrera = {
-        'Técnico': document.getElementById('carrera_tecnico'),
-        'Tecnólogo': document.getElementById('carrera_tecnologo'),
-        'Operario': document.getElementById('carrera_operario'),
-        'Auxiliar': document.getElementById('carrera_auxiliar'),
-        'Profesional': document.getElementById('carrera_profesional'),
-        'Especialización': document.getElementById('posgrado_especializacion'),
-        'Maestría': document.getElementById('posgrado_maestria'),
-        'Doctorado': document.getElementById('posgrado_doctorado')
-    };
+
+// Manejar visibilidad dinámica de campos de carrera
+const nivelFormacion = document.getElementById('nivel_formacion');
+const camposCarrera = {
+    'Técnico': document.getElementById('carrera_tecnico'),
+    'Tecnólogo': document.getElementById('carrera_tecnologo'),
+    'Operario': document.getElementById('carrera_operario'),
+    'Auxiliar': document.getElementById('carrera_auxiliar'),
+    'Profesional': document.getElementById('carrera_profesional'),
+    'Especialización': document.getElementById('posgrado_especializacion'),
+    'Maestría': document.getElementById('posgrado_maestria'),
+    'Doctorado': document.getElementById('posgrado_doctorado')
+};
 
 function actualizarCarrerasVisibles() {
     const nivelSeleccionado = nivelFormacion.value;
     const carreraProf = document.getElementById('carrera_profesional');
-    
+
     if (!nivelFormacion) return;
 
-    
+
 
     // Ocultar todos los campos de carrera
     Object.values(camposCarrera).forEach(campo => {
@@ -319,17 +318,17 @@ function actualizarCarrerasVisibles() {
     }
 }
 
-    if (nivelFormacion) {
-        nivelFormacion.addEventListener('change', actualizarCarrerasVisibles);
-    }
+if (nivelFormacion) {
+    nivelFormacion.addEventListener('change', actualizarCarrerasVisibles);
+}
 
-    // Manejar visibilidad dinámica de campos de posgrado
-    
-    if (carreraProf) {
-        carreraProf.addEventListener('change', () => {
-            // La lógica para mostrar/ocultar especializaciones se maneja arriba
-        });
-    }
+// Manejar visibilidad dinámica de campos de posgrado
+
+if (carreraProf) {
+    carreraProf.addEventListener('change', () => {
+        // La lógica para mostrar/ocultar especializaciones se maneja arriba
+    });
+}
 function validarFicha() {
     // Manejar tipo_emprendedor para llenar número de ficha automáticamente
     const tipoEmprendedor = document.getElementById('tipo_emprendedor');
@@ -349,7 +348,7 @@ function validarFicha() {
         });
     }
 }
-    // Función para ordenar alfabéticamente los selects
+// Función para ordenar alfabéticamente los selects
 function ordenarSelectsAlfabeticamente() {
     const selectsParaOrdenar = [
         'clasificacion',
@@ -378,65 +377,65 @@ function ordenarSelectsAlfabeticamente() {
     const opcionesDelGrupo = Array.from(child.querySelectorAll('option'));
     const optgroup = document.createElement('optgroup');
 
-        selectsParaOrdenar.forEach(selectId => {
-            
-            if (!select) return;
+    selectsParaOrdenar.forEach(selectId => {
 
-            // Separar opciones con optgroup
-            
-            // Procesar todos los hijos del select
-            Array.from(select.children).forEach((child, index) => {
-                if (child.tagName === 'OPTION') {
-                    if (index === 0) return; // Saltar la primera opción (placeholder)
-                    opcionesActuales.push(child);
-                } else if (child.tagName === 'OPTGROUP') {
-                    if (opcionesActuales.length > 0) {
-                        conOptgroup.push({ opciones: opcionesActuales, grupo: null });
-                        opcionesActuales = [];
-                    }
-                    
-                    conOptgroup.push({ opciones: opcionesDelGrupo, grupo: grupo });
+        if (!select) return;
+
+        // Separar opciones con optgroup
+
+        // Procesar todos los hijos del select
+        Array.from(select.children).forEach((child, index) => {
+            if (child.tagName === 'OPTION') {
+                if (index === 0) return; // Saltar la primera opción (placeholder)
+                opcionesActuales.push(child);
+            } else if (child.tagName === 'OPTGROUP') {
+                if (opcionesActuales.length > 0) {
+                    conOptgroup.push({ opciones: opcionesActuales, grupo: null });
+                    opcionesActuales = [];
                 }
-            });
 
-            if (opcionesActuales.length > 0) {
-                conOptgroup.push({ opciones: opcionesActuales, grupo: null });
+                conOptgroup.push({ opciones: opcionesDelGrupo, grupo: grupo });
             }
-
-            // Ordenar las opciones alfabéticamente
-            conOptgroup.forEach(item => {
-                item.opciones.sort((a, b) => a.text.localeCompare(b.text, 'es'));
-            });
-
-            // Limpiar el select manteniendo solo la primera opción
-            while (select.children.length > 1) {
-                select.children[1].remove();
-            }
-
-            // Reconstruir el select con opciones ordenadas
-            conOptgroup.forEach(item => {
-                if (item.grupo) {
-                    
-                    optgroup.label = item.grupo;
-                    item.opciones.forEach(opcion => {
-                        optgroup.appendChild(opcion);
-                    });
-                    select.appendChild(optgroup);
-                } else {
-                    item.opciones.forEach(opcion => {
-                        select.appendChild(opcion);
-                    });
-                }
-            });
         });
-    }
+
+        if (opcionesActuales.length > 0) {
+            conOptgroup.push({ opciones: opcionesActuales, grupo: null });
+        }
+
+        // Ordenar las opciones alfabéticamente
+        conOptgroup.forEach(item => {
+            item.opciones.sort((a, b) => a.text.localeCompare(b.text, 'es'));
+        });
+
+        // Limpiar el select manteniendo solo la primera opción
+        while (select.children.length > 1) {
+            select.children[1].remove();
+        }
+
+        // Reconstruir el select con opciones ordenadas
+        conOptgroup.forEach(item => {
+            if (item.grupo) {
+
+                optgroup.label = item.grupo;
+                item.opciones.forEach(opcion => {
+                    optgroup.appendChild(opcion);
+                });
+                select.appendChild(optgroup);
+            } else {
+                item.opciones.forEach(opcion => {
+                    select.appendChild(opcion);
+                });
+            }
+        });
+    });
+}
 function Formulario() {
     const numero = parseInt(e.target.id.replace('btn_fase', ''));
     // Event listeners para botones de navegación
     document.addEventListener('click', (e) => {
         // Botón siguiente
         if (e.target.id.startsWith('btn_fase')) {
-            
+
             if (numero - 1 === faseActual) {
                 if (validarFaseActual()) {
                     if (faseActual < fases.length - 1) {
@@ -469,7 +468,7 @@ function enviarFormulario() {
             console.log('Formulario válido, enviando...');
 
             // Crear objeto FormData con todos los campos del formulario
-            
+
 
             // Enviar al controlador con fetch
             fetch('../controller/registro.php', {
@@ -492,15 +491,15 @@ function enviarFormulario() {
         }
     });
 }
-    
+
 function FechaNacimiento() {
     const hoy = new Date();
     const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
     const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
     const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
     const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
-     // Establecer restricciones de fecha en el campo de nacimiento
-    
+    // Establecer restricciones de fecha en el campo de nacimiento
+
     if (campoFecha) {
         // Formato YYYY-MM-DD para HTML5 date input
         campoFecha.max = formatoFecha(desde15anos);
@@ -531,33 +530,33 @@ function cargarPaises() {
         return;
     }
 
-    
+
 
     // Limpiar opciones anteriores (excepto la primera)
     while (paisSelect.options.length > 1) {
         paisSelect.remove(1);
     }
-  if (paisSelect) {
-      paisSelect.value = "Colombia";
+    if (paisSelect) {
+        paisSelect.value = "Colombia";
         // Actualizar nacionalidad al cargar 
-      
-      if (nacionalidadField) {
-        nacionalidadField.textContent = "Colombiano/a";
-      } else {
-        console.warn('Elemento #nacionalidad no encontrado en el DOM');
-      }
+
+        if (nacionalidadField) {
+            nacionalidadField.textContent = "Colombiano/a";
+        } else {
+            console.warn('Elemento #nacionalidad no encontrado en el DOM');
+        }
     }
 
-  // Agregar opciones ordenadas alfabéticamente
-  paises.sort((a, b) => a.nombre.localeCompare(b.nombre));
-  
-  paises.forEach(item => {
-    
-    option.value = item.nombre;
-    option.textContent = `${item.nombre} (${item.gentilicio})`;
-    option.dataset.nacionalidad = item.gentilicio;
-    paisSelect.appendChild(option);
-  });
+    // Agregar opciones ordenadas alfabéticamente
+    paises.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    paises.forEach(item => {
+
+        option.value = item.nombre;
+        option.textContent = `${item.nombre} (${item.gentilicio})`;
+        option.dataset.nacionalidad = item.gentilicio;
+        paisSelect.appendChild(option);
+    });
 
     // Agregar opciones ordenadas alfabéticamente
     paises.sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -578,24 +577,28 @@ function cargarPaises() {
 // Ejecutar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     const nacionalidad = this.selectedOptions[0]?.dataset.nacionalidad || '';
-    const nacionalidadField = document.getElementById("nacionalidad");    
+    const nacionalidadField = document.getElementById("nacionalidad");
     const paisSelect = document.getElementById("paises");
     // Inicializar
     actualizarProgreso();
     ordenarSelectsAlfabeticamente();
-    Progreso();
+
+    if (document.getElementById('formulario')) {
+        Progreso();
+    }
+
     actualizarProgreso();
 
-    
+
     setTimeout(() => {
         cargarPaises();
     }, 100);
 
     // Evento para actualizar nacionalidad
-    
+
     if (paisSelect) {
         paisSelect.addEventListener("change", function () {
-            
+
             if (nacionalidadField) {
                 nacionalidadField.textContent = nacionalidad;
             }
