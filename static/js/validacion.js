@@ -1,10 +1,28 @@
 
 
+function enviarCedula() {
 
+    const campo = document.getElementById("documento_emprendedor");
 
+    campo.addEventListener('keyup', (evento_num) => {
+        if (campo.value.length >= 6) {
+            var url = "../controller/registro.php";
+            var data = { emprendedor: campo.value };
 
-function respuestaCedula() {
-  
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((res) => res.json())
+                .catch((error) => console.error("Error:", error))
+                .then((response) => console.log("Success:", response));
+
+                
+        }
+    });
 }
 
 function validarDocumento() {
