@@ -1,6 +1,14 @@
-
+const form = document.getElementById('formulario');
+let faseActual = 0;
+const fases = [
+        document.getElementById('fase_1'),
+        document.getElementById('fase_2'),
+        document.getElementById('fase_3'),
+        document.getElementById('fase_4'),
+        document.getElementById('fase_5'),
+        document.getElementById('fase_6')
+    ];
 function actualizarProgreso() {
-    let faseActual = 0;
     const form = document.getElementById('formulario');
     const barraLleno = document.getElementById('progreso_total-fill');
     const pasos = Array.from(document.querySelectorAll('#caja_progreso .step'));
@@ -36,7 +44,7 @@ function actualizarProgreso() {
 
     // Actualizar barra de progreso
     if (barraLleno) {
-        const porcentaje = ((faseActual + 1) / fases.length) * 100;
+        const porcentaje = (faseActual / (fases.length - 1)) * 100;
         barraLleno.style.width = `${porcentaje}%`;
     }
 
@@ -149,7 +157,7 @@ function noAplicarFicha() {
         });
     }
 }
-
+// Función para ordenar alfabéticamente los selects
 function ordenarSelectsAlfabeticamente() {
     const selectsParaOrdenar = [
         'clasificacion',
@@ -227,7 +235,6 @@ function ordenarSelectsAlfabeticamente() {
         });
     });
 }
-
 function botonesFase() {
     // Event listeners para botones de navegación
     document.addEventListener('click', (e) => {
@@ -255,7 +262,6 @@ function botonesFase() {
         }
     });
 }
-
 function enviarFormulario() {
     const form = document.getElementById('formulario');
     const enviar_formulario = document.getElementById('btn_fase6');
@@ -306,7 +312,7 @@ function fechaNacimiento() {
         });
     }
 }
-
+// API para países y nacionalidades
 function cargarPaises() {
     const paisSelect = document.getElementById("paises");
 
@@ -524,7 +530,7 @@ function cargarPaises() {
         console.log('✓ Países cargados correctamente: ' + paises.length);
     }
 }
-
+// Ejecutar cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
     // Pequeño delay para asegurar que el DOM esté completamente cargado
     if (document.getElementById('caja_progreso')) {
@@ -538,17 +544,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById('btn_fase6')) {
         enviarFormulario();
     }
-
     actualizarCarrerasVisibles();
-
     noAplicarFicha();
-
     ordenarSelectsAlfabeticamente();
-
     botonesFase();
-
     fechaNacimiento();
-
     cargarPaises();
+
+
+
 
 });
