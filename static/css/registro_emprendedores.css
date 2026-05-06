@@ -227,7 +227,7 @@ body {
                     margin: 30px 0;
                 }   
 
-                    #caja_progreso #progreso_no {
+                    #caja_progreso .step {
                         background: var(--gris-claro);
                         color: var(--blanco-total);
                         padding: 3px;

@@ -23,7 +23,7 @@ function actualizarProgreso() {
 
     // Mostrar/ocultar fases
     if (!form || fases.length === 0 || pasos.length === 0) {
-        console.error('Elementos del formulario no encontrados', form, fases, pasos);
+        console.error('Elementos del formulario no encontrados');
         return;
     }
     fases.forEach((fase, index) => {
@@ -35,16 +35,16 @@ function actualizarProgreso() {
 
     // Actualizar pasos activos
     pasos.forEach((paso, index) => {
-        if (index === faseActual) {
-            paso.classList.add('active');
+        if (index <= faseActual) {
+            paso.classList.add("active");
         } else {
-            paso.classList.remove('active');
+            paso.classList.remove("active");
         }
     });
 
     // Actualizar barra de progreso
     if (barraLleno) {
-        const porcentaje = (faseActual / (fases.length - 1)) * 100;
+        const porcentaje = (faseActual / (fases.length -1)) * 100;
         barraLleno.style.width = `${porcentaje}%`;
     }
 
@@ -84,6 +84,8 @@ function validarFaseActual() {
     }
     return true;
 }
+
+
 
 function actualizarCarrerasVisibles() {
 
@@ -137,6 +139,7 @@ function actualizarCarrerasVisibles() {
     }
 
 }
+
 
 function noAplicarFicha() {
     // NO APLICA automatizado
@@ -263,7 +266,6 @@ function botonesFase() {
     });
 }
 function enviarFormulario() {
-    const form = document.getElementById('formulario');
     const enviar_formulario = document.getElementById('btn_fase6');
     // Envío del formulario
     form.addEventListener('submit', (event) => {
@@ -291,27 +293,26 @@ function enviarFormulario() {
         }
     });
 }
+// Establecer restricciones de fecha en el campo de nacimiento
+const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
+if (campoFecha) {
+    const hoy = new Date();
+    const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
+    const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
 
-function fechaNacimiento() {
-    // Establecer restricciones de fecha en el campo de nacimiento
-    const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
-    if (campoFecha) {
-        const hoy = new Date();
-        const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
-        const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
+    // Formato YYYY-MM-DD para HTML5 date input
+    const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
 
-        // Formato YYYY-MM-DD para HTML5 date input
-        const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
+    campoFecha.max = formatoFecha(desde15anos);
+    campoFecha.min = formatoFecha(hasta100anos);
 
-        campoFecha.max = formatoFecha(desde15anos);
-        campoFecha.min = formatoFecha(hasta100anos);
+    // Hacer clickeable el input de fecha para abrir el datepicker
+    campoFecha.addEventListener('click', function () {
+        this.showPicker();
+    });
 
-        // Hacer clickeable el input de fecha para abrir el datepicker
-        campoFecha.addEventListener('click', function () {
-            this.showPicker();
-        });
-    }
 }
+
 // API para países y nacionalidades
 function cargarPaises() {
     const paisSelect = document.getElementById("paises");
@@ -540,15 +541,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById('input, select, textarea')) {
         validarFaseActual();
     }
-
-    if (document.getElementById('btn_fase6')) {
-        enviarFormulario();
-    }
     actualizarCarrerasVisibles();
     noAplicarFicha();
     ordenarSelectsAlfabeticamente();
     botonesFase();
-    fechaNacimiento();
+    enviarFormulario();
     cargarPaises();
 
 
