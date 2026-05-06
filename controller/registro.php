@@ -1,87 +1,116 @@
 <?php
-    require '../conexion.php';
-    require '../models/m_registro.php';
+require '../conexion.php';
+require '../models/m_orientadores.php';
+require '../models/m_registro.php';
 
-    class RegistroController {
-        private $model;
+class RegistroController
+{
 
-        public function __construct($conn) {
-            $this->model = new Emprendedor($conn);
+    private $emprendedorModel;
+    private $orientadoresModel;
+
+    public function __construct($conn)
+    {
+        $this->emprendedorModel   = new Emprendedor($conn);
+        $this->orientadoresModel  = new Orientadores($conn);
+    }
+
+    public function validarDocumento()
+    {
+        header('Content-Type: application/json; charset=utf-8');
+        $recibido = file_get_contents('php://input');
+
+        if (!$recibido) {
+            http_response_code(400);
+            echo json_encode(['error' => true, 'message' => 'No se recibió ningún dato']);
+            exit;
         }
 
-        public function validarDocumento($post) {
+        $data = json_decode($recibido, true);
 
-            $documento = trim($post["documento_emprendedor"] ?? "");
-
-            $documento = str_replace(" ", "", $documento);
-            $documento = preg_replace('/[^a-zA-Z0-9]/', '', $documento);
-            $documento = strtoupper($documento);
-
-            if ($documento === "") {
-            
-                exit ('no existe');
-            
-            }
-
-            $existe = $this->model->buscarDocumento($documento);
-
-            echo $existe ? "existe" : "no existe";
-
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            http_response_code(400);
+            echo json_encode(['error' => true, 'message' => 'JSON inválido']);
+            exit;
         }
 
-        public function procesarFormulario($post) {
-            $data = [
-                'nombres'       => mb_strtolower($post['nombre_emprendedor'] ?? '', 'UTF-8'),
-                'apellidos'     => mb_strtolower($post['apellido_emprendedor'] ?? '', 'UTF-8'),
-                'tipo_id'       => $post['tipo_documento_emprendedor'] ?? '',
-                'numero_id'     => $post['documento_emprendedor'] ?? '',
-                'celular'       => $post['telefono_emprendedor'] ?? '',
-                'fecha_nacimiento' => $post['fecha_nacimiento_emprendedor'] ?? '',
-                'sexo'          => $post['sexo_emprendedor'] ?? '',
-                'correo'        => mb_strtolower($post['correo_emprendedor'] ?? '', 'UTF-8'),
-                'pais'          => $post['paises'] ?? '',
-                'nacionalidad'  => $post['nacionalidad'] ?? '',
-                'departamento'  => $post['departamento'] ?? '',
-                'municipio'     => mb_strtolower($post['municipio'] ?? '', 'UTF-8'),
-                'clasificacion' => $post['clasificacion'] ?? '',
-                'discapacidad'  => $post['discapacidad'] ?? '',
-                'tipo_emprendedor' => $post['tipo_emprendedor'] ?? '',
-                'nivel_formacion'  => $post['nivel_formacion'] ?? '',
-                'ficha'         => $post['numero_ficha'] ?? '',
-                'carrera'       => $post['carrera'] ?? '',
-                'programa'      => $post['programa'] ?? '',
-                'situacion_negocio' => $post['situacion_negocio'] ?? '',
-                'centro_orientacion' => $post['centro_orientacion'] ?? '',
-                'orientador'    => $post['orientador'] ?? '',
-                'ejercer_actividad_proyecto' => $post['ejercer_actividad_proyecto'] ?? 'NO',
-                'empresa_formalizada' => $post['empresa_formalizada'] ?? 'NO',
-                'rol'           => 'emprendedor',
-                'estado_proceso'=> 'activo',
-                'contrasena'    => password_hash('default123', PASSWORD_DEFAULT)
-            ];
+        $documento = trim($data["emprendedor"] ?? "");
+        $documento = str_replace(" ", "", $documento);
+        $documento = preg_replace('/[^a-zA-Z0-9]/', '', $documento);
+        $documento = strtoupper($documento);
 
-            if (!isset($data['ficha']) || trim($data['ficha']) === '' ){
+        if ($documento === "") {
+            echo json_encode(['existe' => false, 'documento' => $documento]);
+            exit;
+        }
 
-                $data['ficha'] = 'no aplica';
+        $existe = $this->emprendedorModel->buscarDocumento($documento);
 
+        echo json_encode([
+            'existe' => $existe,
+            'documento' => $documento
+        ]);
+        exit;
+    }
+
+    public function mostrarFormulario($get)
+    {
+        try {
+            $orientadores = $this->orientadoresModel->listarOrientadores();
+
+            if ($orientadores === false) {
+                throw new Exception("Error al consultar Orientadores");
             }
-
-            // Depuracion ver qué datos llegan
-            error_log(print_r($data, true));
-
-            return $this->model->insertar($data);
+            require '../views/registro.php';
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            echo "Ocurrió un error al cargar el formulario.";
         }
     }
 
-    // Bloque que realmente ejecuta el controlador
-    $controller = new RegistroController($conn);
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $resultado = $controller->procesarFormulario($_POST);
-        if ($resultado) {
-            header("Location: ../index.php");
-            exit();
-        }else{
-        echo "Error al guardar";
-        }
+
+    public function procesarFormulario($post)
+    {
+        $data = [
+            'nombre_emprendedor' => $post['nombre_emprendedor'] ?? '',
+            'apellido_emprendedor' => $post['apellido_emprendedor'] ?? '',
+            'tipo_documento_emprendedor' => $post['tipo_documento_emprendedor'] ?? '',
+            'documento_emprendedor' => $post['documento_emprendedor'] ?? '',
+            'telefono_emprendedor' => $post['telefono_emprendedor'] ?? '',
+            'fecha_nacimiento_emprendedor' => $post['fecha_nacimiento_emprendedor'] ?? '',
+            'sexo_emprendedor' => $post['sexo_emprendedor'] ?? '',
+            'correo_emprendedor' => $post['correo_emprendedor'] ?? '',
+            'paises' => $post['paises'] ?? '',
+            'nacionalidad' => $post['nacionalidad'] ?? '',
+            'departamento' => $post['departamento'] ?? '',
+            'municipio' => $post['municipio'] ?? '',
+            'clasificacion' => $post['clasificacion'] ?? '',
+            'discapacidad' => $post['discapacidad'] ?? '',
+            'tipo_emprendedor' => $post['tipo_emprendedor'] ?? '',
+            'nivel_formacion' => $post['nivel_formacion'] ?? '',
+            'numero_ficha' => $post['numero_ficha'] ?? '',
+            'carrera' => $post['carrera'] ?? '',
+            'programa' => $post['programa'] ?? '',
+            'situacion_negocio' => $post['situacion_negocio'] ?? '',
+            'centro_orientacion' => $post['centro_orientacion'] ?? '',
+            'orientador' => $post['orientador'] ?? '',
+            'ejercer_actividad_proyecto' => $post['ejercer_actividad_proyecto'] ?? 'NO',
+            'empresa_formalizada' => $post['empresa_formalizada'] ?? 'NO',
+        ];
+
+        $this->emprendedorModel->insertar($data);
     }
-?>
+}
+
+
+
+$con = new Conexion();
+
+$controller = new RegistroController($con->conn);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $controller->validarDocumento();
+} else {
+    $controller->mostrarFormulario($_GET);
+}
+

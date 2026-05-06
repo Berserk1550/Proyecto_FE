@@ -1,18 +1,23 @@
 <?php
-// Datos de conexión
-$host = "localhost";   // IP servidor
-$user = "root";  // usuario MySQL
-$pass = ""; // contraseña MySQL
-$db   = "arcanoposada_fondo";       // BD
+class Conexion {
+    public $conn;
 
-// Crear conexión
-$conn = new mysqli($host, $user, $pass, $db);
+    public function __construct() {
+        $host = "localhost";   
+        $user = "root";        
+        $pass = "";            
+        $db   = "arcanoposada_fondo"; 
 
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+        // Crea conexion
+        $this->conn = new mysqli($host, $user, $pass, $db);
+
+        // Verifica conexion
+        if ($this->conn->connect_error) {
+            die("Error de conexión: " . $this->conn->connect_error);
+        }
+
+
+        $this->conn->set_charset("utf8mb4");
+    }
 }
-
-// Opcional: configurar charset
-$conn->set_charset("utf8");
 ?>

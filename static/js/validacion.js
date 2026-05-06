@@ -1,55 +1,42 @@
-
-
 function enviarCedula() {
 
     const campo = document.getElementById("documento_emprendedor");
 
-    campo.addEventListener('keyup', (evento_num) => {
-        if (campo.value.length >= 6) {
-            var url = "../controller/registro.php";
-            var data = { emprendedor: campo.value };
+    const mensajeCedula = document.getElementById("mensajeErrorDocumento");
 
-            fetch(url, {
+    campo.addEventListener('keyup', (evento_num) => {
+
+        if (campo.value.length >= 6 && campo.value.length <= 15) {
+
+            fetch('../controller/registro.php', {
                 method: "POST",
-                body: JSON.stringify(data),
+                body: JSON.stringify(
+                    { emprendedor: campo.value }
+                ),
                 headers: {
                     "Content-Type": "application/json",
                 },
             })
-                .then((res) => res.json())
-                .catch((error) => console.error("Error:", error))
-                .then((response) => console.log("Success:", response));
+                .then(respuesta => respuesta.json())
+                .then(emprendedor => {
 
+                    console.log("Respuesta del servidor:", emprendedor);
 
-        }
-    });
-}
+                    if (emprendedor.existe === true) {
+                        console.log("El documento YA existe:", emprendedor.documento);
+                        mensajeCedula.textContent = "Este número ya está registrado";
+                        mensajeCedula.style.color = "red";
+                        mensajeCedula.style.display = "block";
+                    }
+                    else if (emprendedor.existe === false) {
+                        console.log("Documento disponible:", emprendedor.documento);
+                        mensajeCedula.textContent = "Documento disponible";
+                        mensajeCedula.style.color = "green";
+                        mensajeCedula.style.display = "block";
 
-function validarDocumento() {
-
-    //Restriciones para cada tipo de documento
-    const tipoDocumentoSelect = document.getElementById('tipo_documento_emprendedor');
-    const tipoDocumento = this.value;
-    tipoDocumentoSelect.addEventListener('change', () => {
-
-        if (tipoDocumento === '' || tipoDocumento === null) {
-            mensajeCedula.textContent = "Por favor, selecciona un tipo de documento.";
-            mensajeCedula.style.color = "orange";
-            mensajeCedula.style.display = "block";
-            console.error("Respuesta del servidor:", data);
-            return;
-        }
-
-        if (data === "EXISTE") {
-            mensajeCedula.textContent = "Este número de identificación ya está registrado.";
-            mensajeCedula.style.color = "red";
-            mensajeCedula.style.display = "block";
-            this.setCustomValidity("Duplicado");
-        } else {
-            mensajeCedula.textContent = "Número de identificación disponible.";
-            mensajeCedula.style.color = "green";
-            mensajeCedula.style.display = "block";
-            this.setCustomValidity("");
+                    }
+                })
+                .catch(err => console.error("Error en fetch:", err));
         }
     });
 }
@@ -80,7 +67,7 @@ function validarTipoDocumento() {
         }
 
         if (tipoDocumento == "PAS") {
-            documentoInput.setAttribute('pattern', '^[A-Z][0-9]{5,14}$');
+            documentoInput.setAttribute('pattern', '^[A-Z]{1,3}[0-9]{5,14}$');
             documentoInput.setAttribute('title', 'Debe iniciar con una letra mayúscula seguida de 5 a 14 números');
         }
 
@@ -121,10 +108,10 @@ function validarCorreo() {
 
     //extensiones mini que requieren una principal antes
     const extensionesMini = [
-        'co','mx','ar','ve','pe','cl','br','uy','py','ec','bo','gt','hn','ni','sv','pa','do','cu','pr','cr',
-        'uk','nz','au','in','cn','jp','kr','th','ph','sg','id','my','vn','za','eg','ng','ke','gh','tz','pk',
-        'bd','ir','sa','ae','jo','il','tr','gr','it','fr','de','nl','be','ch','at','se','no','dk','fi','pl',
-        'cz','hu','ro','ua','ru'
+        'co', 'mx', 'ar', 've', 'pe', 'cl', 'br', 'uy', 'py', 'ec', 'bo', 'gt', 'hn', 'ni', 'sv', 'pa', 'do', 'cu', 'pr', 'cr',
+        'uk', 'nz', 'au', 'in', 'cn', 'jp', 'kr', 'th', 'ph', 'sg', 'id', 'my', 'vn', 'za', 'eg', 'ng', 'ke', 'gh', 'tz', 'pk',
+        'bd', 'ir', 'sa', 'ae', 'jo', 'il', 'tr', 'gr', 'it', 'fr', 'de', 'nl', 'be', 'ch', 'at', 'se', 'no', 'dk', 'fi', 'pl',
+        'cz', 'hu', 'ro', 'ua', 'ru'
     ];
 
     //regex base mejorado
@@ -229,11 +216,16 @@ function validarCorreo() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    enviarCedula();
-    validarDocumento();
-    validarTipoDocumento();
-    validarCorreo();
+    if (document.getElementById("documento_emprendedor")) {
+        enviarCedula();
+    }
 
+    if (document.getElementById("tipo_documento_emprendedor")) {
+        validarTipoDocumento();
+    }
 
+    if (document.getElementById("correo_emprendedor")) {
+        validarCorreo();
+    }
 
 });
