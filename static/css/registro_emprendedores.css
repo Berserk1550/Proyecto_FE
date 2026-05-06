@@ -213,24 +213,6 @@ body {
                     background: #39a900;
                 }
 
-            .step {
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                background: #e1e1e1;
-                color: #fff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: .8rem;
-                font-weight: 700;
-                transition: background .3s ease;
-            }
-
-            .step.active {
-                background: #39a900;
-            }
-
                 #contenido_registro h1 {
                     font-size: 1.4rem;
                     text-align: center;

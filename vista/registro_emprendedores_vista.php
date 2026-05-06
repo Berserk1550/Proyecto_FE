@@ -71,8 +71,8 @@
                             <div id="progreso_total-fill"></div>
                         </div>
 
-                        <div id="caja_progreso">
-                            <span id="progreso_no" class="step" data-step="1">1</span>
+                        <div id="caja_progreso" class="caja_progreso-steps">
+                            <span id="progreso_no" class="step active" data-step="1">1</span>
                             <span id="progreso_no" class="step" data-step="2">2</span>
                             <span id="progreso_no" class="step" data-step="3">3</span>
                             <span id="progreso_no" class="step" data-step="4">4</span>
