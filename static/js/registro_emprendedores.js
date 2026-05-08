@@ -266,22 +266,37 @@ function botonesFase() {
 
 function enviarFormulario() {
     const enviar_formulario = document.getElementById('btn_fase6');
+    
+
     // Envío del formulario
     enviar_formulario.addEventListener('submit', (event) => {
+        const tiempo = new Date().toLocaleString("es-CO", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric", 
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        })
+
         event.preventDefault();
 
         if (validarFaseActual()) {
             console.log('Formulario válido, enviando...');
 
             // Crear objeto FormData con todos los campos del formulario
-            const formData = new FormData(form);
-
             // Enviar al controlador con fetch
             fetch('../controller/registro.php', {
                 method: 'POST',
-                body: formData
+                body: JSON.stringify(
+                    {data : enviar_formulario.value},
+                    {tiempo : tiempo}
+                ),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
-                .then(response => response.text())
+                .then(response => response.json())
                 .then(data => {
                     console.log('Respuesta del servidor:', data);
                     alert('Registro guardado correctamente');
@@ -543,6 +558,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById('input, select, textarea')) {
         validarFaseActual();
     }
+
 
     fechaNacimiento();
 
