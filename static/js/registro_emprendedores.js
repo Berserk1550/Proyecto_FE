@@ -85,8 +85,6 @@ function validarFaseActual() {
     return true;
 }
 
-
-
 function actualizarCarrerasVisibles() {
 
     // Manejar visibilidad dinámica de campos de carrera
@@ -139,7 +137,6 @@ function actualizarCarrerasVisibles() {
     }
 
 }
-
 
 function noAplicarFicha() {
     // NO APLICA automatizado
@@ -238,6 +235,7 @@ function ordenarSelectsAlfabeticamente() {
         });
     });
 }
+
 function botonesFase() {
     // Event listeners para botones de navegación
     document.addEventListener('click', (e) => {
@@ -265,10 +263,11 @@ function botonesFase() {
         }
     });
 }
+
 function enviarFormulario() {
     const enviar_formulario = document.getElementById('btn_fase6');
     // Envío del formulario
-    form.addEventListener('submit', (event) => {
+    enviar_formulario.addEventListener('submit', (event) => {
         event.preventDefault();
 
         if (validarFaseActual()) {
@@ -544,15 +543,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById('input, select, textarea')) {
         validarFaseActual();
     }
+
     fechaNacimiento();
+
     actualizarCarrerasVisibles();
+
     noAplicarFicha();
+
     ordenarSelectsAlfabeticamente();
+
     botonesFase();
+
     enviarFormulario();
+
     cargarPaises();
-
-
-
 
 });
