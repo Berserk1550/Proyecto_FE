@@ -30,7 +30,7 @@ class RegistroController
 
         if (json_last_error() !== JSON_ERROR_NONE) {
             http_response_code(400);
-            echo json_encode(['error' => true, 'message' => 'JSON inválido']);
+            echo json_encode(['error' => true, 'message' => 'JSON invalido']);
             exit;
         }
 
@@ -61,7 +61,7 @@ class RegistroController
             if ($orientadores === false) {
                 throw new Exception("Error al consultar Orientadores");
             }
-            require '../views/registro.php';
+            require '../vista/registro_emprendedores_vista.php';
         } catch (Exception $e) {
             error_log($e->getMessage());
             echo "Ocurrió un error al cargar el formulario.";
@@ -93,7 +93,8 @@ class RegistroController
             'programa' => $post['programa'] ?? '',
             'situacion_negocio' => $post['situacion_negocio'] ?? '',
             'centro_orientacion' => $post['centro_orientacion'] ?? '',
-            'orientador' => $post['orientador'] ?? '',
+            'orientador' => $post['orientador_nombre'] ?? '',
+            'orientador_id' => $post['orientador'] ?? '',
             'ejercer_actividad_proyecto' => $post['ejercer_actividad_proyecto'] ?? 'NO',
             'empresa_formalizada' => $post['empresa_formalizada'] ?? 'NO',
         ];
@@ -105,11 +106,20 @@ class RegistroController
 
 
 $con = new Conexion();
-
 $controller = new RegistroController($con->conn);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller->validarDocumento();
+    $recibido = file_get_contents('php://input');
+    $data = json_decode($recibido, true);
+
+    if ($data && isset($data['emprendedor'])) {
+        
+        $controller->validarDocumento();
+    } else {
+
+        $controller->procesarFormulario($_POST);
+        echo "Formulario guardado correctamente";
+    }
 } else {
     $controller->mostrarFormulario($_GET);
 }
