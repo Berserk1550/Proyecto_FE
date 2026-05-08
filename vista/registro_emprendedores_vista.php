@@ -775,7 +775,6 @@
 
                         <div id="cont_fase_6">
 
-<<<<<<< HEAD
                                 <select id="centro_orientacion" name="centro_orientacion" required>
 
                                     <option value="">-- Selecciona un centro --</option>
@@ -792,30 +791,14 @@
                                     <option value="CC">Centro de la Construcción (CC - Cali)</option>
 
                                 </select>
-=======
                             <label>¿Cuál es el centro de Desarrollo Empresarial que brinda la orientación?</label>
-
-                            <select id="centro_orientacion" name="centro_orientacion" required>
-                                <option value="">-- Selecciona un centro --</option>
->>>>>>> b402ae8b42b4b8fd829d816384994f69e406af67
-
-                                <option value="CAB">Centro Agropecuario de Buga (CAB)</option>
-                                <option value="CBI">Centro de Biotecnología Industrial (CBI Palmira)</option>
-                                <option value="CDTI">Centro de Diseño Tecnológico Industrial (CDTI Cali)</option>
-                                <option value="CEAI">Centro de Electricidad y Automatización Industrial (CEAI Cali)</option>
-                                <option value="CGTS">Centro de Gestión Tecnológica de Servicios (CGTS Cali)</option>
-                                <option value="ASTIN">Centro Nacional de Asistencia Técnica a la Industria (ASTIN - Cali)</option>
-                                <option value="CTA">Centro de Tecnologías Agroindustriales (CTA - Cartago)</option>
-                                <option value="CLEM">Centro Latinoamericano de Especies Menores (CLEM - Tuluá)</option>
-                                <option value="CNP">Centro Náutico y Pesquero (CNP - Buenaventura)</option>
-                                <option value="CC">Centro de la Construcción (CC - Cali)</option>
-                            </select>
 
                                 <select id="orientador" name="orientador" required>
 
                                     <option value="" disabled selected>
                                         -- Selecciona un orientador --
                                     </option>
+                                    <option value="CAB">Carlos Matallana</option>
 
                                     <?php var_dump($orientadores); ?>
 
