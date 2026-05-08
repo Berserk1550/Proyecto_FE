@@ -357,7 +357,6 @@
                             <select id="tipo_emprendedor" name="tipo_emprendedor" required>
                                 <option value="" disabled selected>Selecciona una opción</option>
                                 <option value="Aprendiz">Aprendiz</option>
-                                <option value="Instructor">Instructor</option>
                                 <option value="Egresado de Otras Instituciones">Egresado de Otras Instituciones</option>
                                 <option value="Egresado SENA Complementaria">Egresado SENA Complementaria</option>
                                 <option value="Egresado SENA Titulada">Egresado SENA Titulada</option>
