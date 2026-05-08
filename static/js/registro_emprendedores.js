@@ -293,6 +293,8 @@ function enviarFormulario() {
         }
     });
 }
+
+function fechaNacimiento() {
 // Establecer restricciones de fecha en el campo de nacimiento
 const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
 if (campoFecha) {
@@ -311,6 +313,7 @@ if (campoFecha) {
         this.showPicker();
     });
 
+}
 }
 
 // API para países y nacionalidades
@@ -541,6 +544,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById('input, select, textarea')) {
         validarFaseActual();
     }
+    fechaNacimiento();
     actualizarCarrerasVisibles();
     noAplicarFicha();
     ordenarSelectsAlfabeticamente();
