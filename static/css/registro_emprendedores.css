@@ -165,8 +165,6 @@ body {
             #contenido_registro #cont_progreso {
                 width: 95%;
                 position: relative;
-                left: 50%;
-                transform: translateX(-50%);
             }
 
 
