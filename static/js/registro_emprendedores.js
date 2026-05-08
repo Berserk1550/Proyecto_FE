@@ -1,13 +1,13 @@
 const form = document.getElementById('formulario');
 let faseActual = 0;
 const fases = [
-        document.getElementById('fase_1'),
-        document.getElementById('fase_2'),
-        document.getElementById('fase_3'),
-        document.getElementById('fase_4'),
-        document.getElementById('fase_5'),
-        document.getElementById('fase_6')
-    ];
+    document.getElementById('fase_1'),
+    document.getElementById('fase_2'),
+    document.getElementById('fase_3'),
+    document.getElementById('fase_4'),
+    document.getElementById('fase_5'),
+    document.getElementById('fase_6')
+];
 function actualizarProgreso() {
     const form = document.getElementById('formulario');
     const barraLleno = document.getElementById('progreso_total-fill');
@@ -27,7 +27,7 @@ function actualizarProgreso() {
         return;
     }
     fases.forEach((fase, index) => {
-        
+
         if (fase) {
             fase.style.display = index === faseActual ? 'block' : 'none';
         }
@@ -44,7 +44,7 @@ function actualizarProgreso() {
 
     // Actualizar barra de progreso
     if (barraLleno) {
-        const porcentaje = (faseActual / (fases.length -1)) * 100;
+        const porcentaje = (faseActual / (fases.length - 1)) * 100;
         barraLleno.style.width = `${porcentaje}%`;
     }
 
@@ -266,8 +266,9 @@ function botonesFase() {
 
 function enviarFormulario() {
     const enviar_formulario = document.getElementById('btn_fase6');
+    const form = document.getElementById('formulario');
     // Envío del formulario
-    enviar_formulario.addEventListener('submit', (event) => {
+    form.addEventListener('submit', (event) => {
         event.preventDefault();
 
         if (validarFaseActual()) {
@@ -278,7 +279,7 @@ function enviarFormulario() {
             fetch('../controller/registro.php', {
                 method: 'POST',
                 body: JSON.stringify(
-                    {data : enviar_formulario.value}
+                    { data: form.value }
                 ),
                 headers: {
                     'Content-Type': 'application/json'
@@ -287,35 +288,50 @@ function enviarFormulario() {
                 .then(response => response.json())
                 .then(data => {
                     console.log('Respuesta del servidor:', data);
-                    alert('Registro guardado correctamente');
+                    Swal.fire({
+                        title: "Registro guardado correctamente",
+                        icon: "success",
+                        draggable: true,
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "#39A900"
+                    }).then(() => {
+                        window.location.href = "../index.php";
+                    });
                 })
                 .catch(error => {
                     console.error('Error al enviar:', error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Ha ocurrido un error al guardar el registro. Por favor, inténtalo de nuevo.",
+                        confirmButtonColor: "#d33",
+                        footer: "<a href=\"#\">Why do I have this issue?</a>"
+                    });
                 });
-        }
+        };
     });
 }
 
 function fechaNacimiento() {
-// Establecer restricciones de fecha en el campo de nacimiento
-const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
-if (campoFecha) {
-    const hoy = new Date();
-    const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
-    const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
+    // Establecer restricciones de fecha en el campo de nacimiento
+    const campoFecha = document.getElementById('fecha_nacimiento_emprendedor');
+    if (campoFecha) {
+        const hoy = new Date();
+        const desde15anos = new Date(hoy.getFullYear() - 15, hoy.getMonth(), hoy.getDate());
+        const hasta100anos = new Date(desde15anos.getFullYear() - 100, desde15anos.getMonth(), desde15anos.getDate());
 
-    // Formato YYYY-MM-DD para HTML5 date input
-    const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
+        // Formato YYYY-MM-DD para HTML5 date input
+        const formatoFecha = (fecha) => fecha.toISOString().split('T')[0];
 
-    campoFecha.max = formatoFecha(desde15anos);
-    campoFecha.min = formatoFecha(hasta100anos);
+        campoFecha.max = formatoFecha(desde15anos);
+        campoFecha.min = formatoFecha(hasta100anos);
 
-    // Hacer clickeable el input de fecha para abrir el datepicker
-    campoFecha.addEventListener('click', function () {
-        this.showPicker();
-    });
+        // Hacer clickeable el input de fecha para abrir el datepicker
+        campoFecha.addEventListener('click', function () {
+            this.showPicker();
+        });
 
-}
+    }
 }
 
 // API para países y nacionalidades
