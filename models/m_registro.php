@@ -47,6 +47,12 @@ class Emprendedor {
             throw new Exception("Error en prepare: " . $this->db->error);
         }
 
+        $data = array_map(function($valor) {
+
+            return mb_strtolower(trim($valor), 'UTF-8');
+
+        }, $data);
+
         $stmt->bind_param(
             "sssssssssssssssssssssssss",
             $data['nombre_emprendedor'],

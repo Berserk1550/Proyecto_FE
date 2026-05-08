@@ -69,35 +69,64 @@ class RegistroController
     }
 
 
-    public function procesarFormulario($post)
-    {
+    public function procesarFormulario($post) {
+
         $data = [
-            'nombre_emprendedor' => $post['nombre_emprendedor'] ?? '',
-            'apellido_emprendedor' => $post['apellido_emprendedor'] ?? '',
-            'tipo_documento_emprendedor' => $post['tipo_documento_emprendedor'] ?? '',
-            'documento_emprendedor' => $post['documento_emprendedor'] ?? '',
-            'telefono_emprendedor' => $post['telefono_emprendedor'] ?? '',
-            'fecha_nacimiento_emprendedor' => $post['fecha_nacimiento_emprendedor'] ?? '',
-            'sexo_emprendedor' => $post['sexo_emprendedor'] ?? '',
-            'correo_emprendedor' => $post['correo_emprendedor'] ?? '',
-            'paises' => $post['paises'] ?? '',
-            'nacionalidad' => $post['nacionalidad'] ?? '',
-            'departamento' => $post['departamento'] ?? '',
-            'municipio' => $post['municipio'] ?? '',
-            'clasificacion' => $post['clasificacion'] ?? '',
-            'discapacidad' => $post['discapacidad'] ?? '',
-            'tipo_emprendedor' => $post['tipo_emprendedor'] ?? '',
-            'nivel_formacion' => $post['nivel_formacion'] ?? '',
-            'numero_ficha' => $post['numero_ficha'] ?? '',
-            'carrera' => $post['carrera'] ?? '',
-            'programa' => $post['programa'] ?? '',
-            'situacion_negocio' => $post['situacion_negocio'] ?? '',
-            'centro_orientacion' => $post['centro_orientacion'] ?? '',
-            'orientador' => $post['orientador_nombre'] ?? '',
-            'orientador_id' => $post['orientador'] ?? '',
-            'ejercer_actividad_proyecto' => $post['ejercer_actividad_proyecto'] ?? 'NO',
-            'empresa_formalizada' => $post['empresa_formalizada'] ?? 'NO',
+            'nombre_emprendedor' => Vigilante::sanitizarTexto($post['nombre_emprendedor'] ?? ''),
+            
+            'apellido_emprendedor' => Vigilante::sanitizarTexto($post['apellido_emprendedor'] ?? ''),
+            
+            'tipo_documento_emprendedor' => Vigilante::sanitizarTexto($post['tipo_documento_emprendedor'] ?? ''),
+            
+            'documento_emprendedor' => Vigilante::sanitizarDocumento($post['documento_emprendedor'] ?? ''),
+            
+            'telefono_emprendedor' => Vigilante::sanitizarTelefono($post['telefono_emprendedor'] ?? ''),
+            
+            'fecha_nacimiento_emprendedor' => Vigilante::sanitizarTexto($post['fecha_nacimiento_emprendedor'] ?? ''),
+            
+            'sexo_emprendedor' => Vigilante::sanitizarTexto($post['sexo_emprendedor'] ?? ''),
+            
+            'correo_emprendedor' => Vigilante::sanitizarCorreo($post['correo_emprendedor'] ?? ''),
+            
+            'paises' => Vigilante::sanitizarTexto($post['paises'] ?? ''),
+            
+            'nacionalidad' => Vigilante::sanitizarTexto($post['nacionalidad'] ?? ''),
+            
+            'departamento' => Vigilante::sanitizarTexto($post['departamento'] ?? ''),
+            
+            'municipio' => Vigilante::sanitizarTexto($post['municipio'] ?? ''),
+            
+            'clasificacion' => Vigilante::sanitizarTexto($post['clasificacion'] ?? ''),
+            
+            'discapacidad' => Vigilante::sanitizarTexto($post['discapacidad'] ?? ''),
+            
+            'tipo_emprendedor' => Vigilante::sanitizarTexto($post['tipo_emprendedor'] ?? ''),
+            
+            'nivel_formacion' => Vigilante::sanitizarTexto($post['nivel_formacion'] ?? ''),
+            
+            'numero_ficha' => Vigilante::sanitizarFicha($post['numero_ficha'] ?? ''),
+            
+            'carrera' => Vigilante::sanitizarTexto($post['carrera'] ?? ''),
+            
+            'programa' => Vigilante::sanitizarTexto($post['programa'] ?? ''),
+            
+            'situacion_negocio' => Vigilante::sanitizarTexto($post['situacion_negocio'] ?? ''),
+            
+            'centro_orientacion' => Vigilante::sanitizarTexto($post['centro_orientacion'] ?? ''),
+            
+            'orientador' => Vigilante::sanitizarTexto($post['orientador_nombre'] ?? ''),
+            
+            'orientador_id' => Vigilante::sanitizarDocumento($post['orientador'] ?? ''),
+            
+            'ejercer_actividad_proyecto' => Vigilante::sanitizarTexto($post['ejercer_actividad_proyecto'] ?? 'NO'),
+            
+            'empresa_formalizada' => Vigilante::sanitizarTexto($post['empresa_formalizada'] ?? 'NO'),
         ];
+
+        if (empty(trim($data['numero_ficha']))) {
+
+            $data['numero_ficha'] = 'No aplica';
+        }
 
         $this->emprendedorModel->insertar($data);
     }

@@ -1,35 +1,35 @@
 <?php
 
 class Vigilante {
+
     public static function sanitizarDocumento($valor) {
 
-        return filter_var(trim($valor), FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-
+        return preg_replace('/[^a-zA-Z0-9]/', '', trim($valor));
     }
 
     public static function sanitizarCorreo($correo) {
 
         return filter_var(trim($correo), FILTER_SANITIZE_EMAIL);
-
     }
 
-    
     public static function sanitizarTelefono($telefono) {
 
-        return filter_var(trim($telefono), FILTER_SANITIZE_NUMBER_INT);
-
+        return preg_replace('/[^0-9]/', '', trim($telefono));
     }
 
     public static function sanitizarFicha($ficha) {
 
-        return filter_var(trim($ficha), FILTER_SANITIZE_NUMBER_INT);
+        $ficha = trim($ficha);
+
+        if ($ficha === '' || strtolower($ficha) === 'no aplica') {
+            return 'No aplica';
+        }
+
+        return preg_replace('/[^0-9]/', '', $ficha);
     }
 
     public static function sanitizarTexto($texto) {
 
-        return filter_var(trim($texto), FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-
+        return htmlspecialchars(trim($texto), ENT_QUOTES, 'UTF-8');
     }
 }
-
-?>

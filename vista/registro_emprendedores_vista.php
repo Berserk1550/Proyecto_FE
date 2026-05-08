@@ -689,9 +689,9 @@
                                 <option value="Otro">Otro</option>
                             </select>
 
-                            <label>Si eres aprendiz o egresado SENA, escribe tu numero de ficha, de lo contrario escribe "No aplica"</label>
+                            <label>Si eres aprendiz o egresado SENA, escribe tu numero de ficha, de lo contrario omite esta pregunta</label>
 
-                            <input type="text" id="numero_ficha" name="numero_ficha" required minlength="7" maxlength="7" inputmode="numeric" pattern="[0-9]{7,7}" placeholder="Ej: 12345 o No aplica">
+                            <input type="text" id="numero_ficha" name="numero_ficha" minlength="7" maxlength="7" inputmode="numeric" pattern="[0-9]{7,7}" placeholder="Ej: 12345 u omite">
 
                         </div>
                         <div id="navegacion_botones">
