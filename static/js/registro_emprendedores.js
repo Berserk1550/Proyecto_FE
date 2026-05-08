@@ -274,14 +274,17 @@ function enviarFormulario() {
             console.log('Formulario válido, enviando...');
 
             // Crear objeto FormData con todos los campos del formulario
-            const formData = new FormData(form);
-
             // Enviar al controlador con fetch
             fetch('../controller/registro.php', {
                 method: 'POST',
-                body: formData
+                body: JSON.stringify(
+                    {data : enviar_formulario.value}
+                ),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
-                .then(response => response.text())
+                .then(response => response.json())
                 .then(data => {
                     console.log('Respuesta del servidor:', data);
                     alert('Registro guardado correctamente');
@@ -543,6 +546,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById('input, select, textarea')) {
         validarFaseActual();
     }
+
 
     fechaNacimiento();
 

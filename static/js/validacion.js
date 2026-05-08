@@ -10,11 +10,9 @@ function enviarCedula() {
 
             fetch('../controller/registro.php', {
                 method: "POST",
-                body: JSON.stringify(
-                    { emprendedor: campo.value }
-                ),
+                body: new URLSearchParams({action: 'validar', emprendedor: campo.value}),
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/x-www-form-urlencoded",
                 },
             })
                 .then(respuesta => respuesta.json())
