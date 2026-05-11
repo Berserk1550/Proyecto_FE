@@ -544,6 +544,22 @@ function cargarPaises() {
         console.log('✓ Países cargados correctamente: ' + paises.length);
     }
 }
+
+function mostarPrograma() {
+
+    const abrir_medalla = document.getElementById("medalla_programa");
+    const texto_programa = document.getElementById("texto_programa");
+
+    abrir_medalla.addEventListener("click", () => {
+
+        texto_programa.style.display = "flex";
+
+        setTimeout(() => {
+            texto_programa.style.display = "none";
+        }, 2000);
+    });
+}
+
 // Ejecutar cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
     // Pequeño delay para asegurar que el DOM esté completamente cargado
@@ -569,5 +585,7 @@ document.addEventListener("DOMContentLoaded", () => {
     enviarFormulario();
 
     cargarPaises();
+
+    mostarPrograma();
 
 });
