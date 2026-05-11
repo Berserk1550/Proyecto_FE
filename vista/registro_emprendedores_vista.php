@@ -83,7 +83,7 @@
                 </div>
 
 
-                <form action="../controller/registro.php" id="formulario" method="POST">
+                <form action="../controller/registro.php" id="formulario" name="formulario" method="POST" enctype="application/x-www-form-urlencoded">
 
                     <!-- FASE 1 Lmao -->
                     <div id="fase_1">
@@ -356,12 +356,12 @@
 
                             <select id="tipo_emprendedor" name="tipo_emprendedor" required>
                                 <option value="" disabled selected>Selecciona una opción</option>
-                                <option value="Aprendiz">Aprendiz</option>
-                                <option value="Egresado de Otras Instituciones">Egresado de Otras Instituciones</option>
-                                <option value="Egresado SENA Complementaria">Egresado SENA Complementaria</option>
-                                <option value="Egresado SENA Titulada">Egresado SENA Titulada</option>
-                                <option value="No cuenta con formación">No cuenta con formación</option>
-                                <option value="Otro">Otro</option>
+                                <option value="APRENDIZ">Aprendiz</option>
+                                <option value="EOI">Egresado de Otras Instituciones</option>
+                                <option value="ESC">Egresado SENA Complementaria</option>
+                                <option value="EST">Egresado SENA Titulada</option>
+                                <option value="NCF">No cuenta con formación</option>
+                                <option value="OTRO">Otro</option>
                             </select>
 
                             <label>Nivel de formación en el momento actual</label>
@@ -691,7 +691,7 @@
 
                             <label>Si eres aprendiz o egresado SENA, escribe tu numero de ficha, de lo contrario omite esta pregunta</label>
 
-                            <input type="text" id="numero_ficha" name="numero_ficha" minlength="7" maxlength="7" inputmode="numeric" pattern="[0-9]{7,7}" placeholder="Ej: 12345 u omite">
+                            <input type="text" id="numero_ficha" name="numero_ficha" minlength="7" maxlength="7" inputmode="numeric" pattern="[0-9]{7,7}" placeholder="Ej: 12345 u omite" disabled>
 
                         </div>
                         <div id="navegacion_botones">
@@ -799,18 +799,6 @@
                                         -- Selecciona un orientador --
                                     </option>
                                     <option value="CAB">Carlos Matallana</option>
-
-                                    <?php var_dump($orientadores); ?>
-
-                                    <?php foreach($orientadores as $orientador): ?>
-
-                                        <option value="<?= $orientador['id_orientador']; ?>">
-
-                                            <?= $orientador['nombres'] . ' ' . $orientador['apellidos']; ?>
-
-                                        </option>
-
-                                    <?php endforeach; ?>
 
                                 </select>
 

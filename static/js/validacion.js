@@ -9,7 +9,7 @@ function enviarCedula() {
     if (campo.value.length >= 6 && campo.value.length <= 15) {
       fetch("../controller/registro.php", {
         method: "POST",
-        body: JSON.stringify({ emprendedor: campo.value }),
+        body: JSON.stringify({ emprendedor: campo.value, action: "validar" }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -18,13 +18,13 @@ function enviarCedula() {
         .then((emprendedor) => {
           console.log("Respuesta del servidor:", emprendedor);
 
-          if (emprendedor.existe === true) {
+          if (emprendedor.existe === "no_disponible") {
             console.log("El documento YA existe:", emprendedor.documento);
             mensajeCedula.textContent = "Este número ya está registrado";
             mensajeCedula.style.color = "red";
             mensajeCedula.style.display = "block";
             boton_siguiente.disabled = true;
-          } else if (emprendedor.existe === false) {
+          } else if (emprendedor.existe === "disponible") {
             console.log("Documento disponible:", emprendedor.documento);
             mensajeCedula.textContent = "Documento disponible";
             mensajeCedula.style.color = "green";

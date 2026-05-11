@@ -145,14 +145,13 @@ function noAplicarFicha() {
 
     if (tipoEmprendedor) {
         tipoEmprendedor.addEventListener('change', function () {
-            if (this.value === 'No cuenta con formación' || this.value === 'Otro' || this.value === 'Instructor') {
-                numeroFicha.value = 'No aplica';
-                numeroFicha.disabled = true;
-                numeroFicha.removeAttribute('required');
-            } else {
-                numeroFicha.value = '';
+            if (this.value === 'APRENDIZ') {
+                numeroFicha.setAttribute('placeholder', 'Ej: 2931527')
                 numeroFicha.disabled = false;
                 numeroFicha.setAttribute('required', 'required');
+            } else {
+                numeroFicha.disabled = true;
+                numeroFicha.removeAttribute('required');
             }
         });
     }
@@ -266,32 +265,21 @@ function botonesFase() {
 
 function enviarFormulario() {
     const enviar_formulario = document.getElementById('btn_fase6');
-    
-
+    const formulario = document.getElementById('formulario');
     // Envío del formulario
-    enviar_formulario.addEventListener('submit', (event) => {
-        const tiempo = new Date().toLocaleString("es-CO", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric", 
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit"
-        })
-
+    formulario.addEventListener('submit', (event) => {
         event.preventDefault();
 
         if (validarFaseActual()) {
             console.log('Formulario válido, enviando...');
 
+            let datos = new FormData(formulario);
+
             // Crear objeto FormData con todos los campos del formulario
             // Enviar al controlador con fetch
             fetch('../controller/registro.php', {
                 method: 'POST',
-                body: JSON.stringify(
-                    {data : enviar_formulario.value},
-                    {tiempo : tiempo}
-                ),
+                body: datos, action: "guardar",
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -299,12 +287,20 @@ function enviarFormulario() {
                 .then(response => response.json())
                 .then(data => {
                     console.log('Respuesta del servidor:', data);
-                    alert('Registro guardado correctamente');
+                    Swal.fire({
+                        title: "Registro guardado correctamente",
+                        icon: "success",
+                        draggable: false,
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "#39A900"
+                    }).then(() => {
+                        window.location.href = "../index.php";
+                    });
                 })
                 .catch(error => {
                     console.error('Error al enviar:', error);
                 });
-        }
+        };
     });
 }
 
