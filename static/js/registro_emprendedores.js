@@ -8,6 +8,56 @@ const fases = [
         document.getElementById('fase_5'),
         document.getElementById('fase_6')
     ];
+
+async function cargarOrientadores() {
+    try {
+        const response = await fetch("../controller/registro.php?action=listar_orientadores", {
+        method: "GET"
+        });
+
+        if (!response.ok) throw new Error("Error en la petición al backend");
+
+        const data = await response.json();
+
+        const select = document.getElementById("orientador");
+        select.innerHTML = '<option value="">-- Selecciona un orientador --</option>';
+
+        if (data.status === "exitoso" && Array.isArray(data.orientadores)) {
+        data.orientadores.forEach(o => {
+            const option = document.createElement("option");
+            option.value = o.numero_id;
+            option.textContent = `${o.nombres} ${o.apellidos}`;
+            select.appendChild(option);
+
+            const orientador_select = document.getElementById("orientador");
+
+            orientador_select.addEventListener("change", function() {
+                id_seleccionado = orientador_select.value;
+                nombre_seleccionado = orientador_select.options[orientador_select.selectedIndex].text;
+
+                input_id = document.getElementById("id_orientador");
+                input_id.value = id_seleccionado;
+
+                input_nombre = document.getElementById("nombre_orientador");
+                input_nombre.value = nombre_seleccionado;
+            });
+        });
+        } else {
+            const option = document.createElement("option");
+            option.value = "";
+            option.textContent = data.mensaje || "No hay orientadores disponibles";
+            option.disabled = true;
+            select.appendChild(option);
+        }
+    } catch (error) {
+        console.error("Error cargando orientadores:", error);
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", cargarOrientadores);
+
+
 function actualizarProgreso() {
     const form = document.getElementById('formulario');
     const barraLleno = document.getElementById('progreso_total-fill');
@@ -142,6 +192,8 @@ function noAplicarFicha() {
     // NO APLICA automatizado
     const tipoEmprendedor = document.getElementById('tipo_emprendedor');
     const numeroFicha = document.getElementById('numero_ficha');
+    const labelFicha = document.getElementById('label_ficha');
+    const nivel = document.getElementById('nivel_formacion');
 
     if (tipoEmprendedor) {
         tipoEmprendedor.addEventListener('change', function () {
@@ -149,9 +201,18 @@ function noAplicarFicha() {
                 numeroFicha.setAttribute('placeholder', 'Ej: 2931527')
                 numeroFicha.disabled = false;
                 numeroFicha.setAttribute('required', 'required');
-            } else {
+                numeroFicha.removeAttribute("hidden");
+                labelFicha.removeAttribute("hidden");
+            } if(this.value !=='APRENDIZ') {
                 numeroFicha.disabled = true;
                 numeroFicha.removeAttribute('required');
+                numeroFicha.setAttribute("hidden", "");
+                labelFicha.setAttribute("hidden", "");
+            } if (this.value === 'NCF') {
+                nivel.value = "Sin título";
+                nivel.disabled = true;
+            } if (this.value !== 'NCF') {
+                nivel.disabled = false;
             }
         });
     }
@@ -264,45 +325,99 @@ function botonesFase() {
 }
 
 function enviarFormulario() {
-    const enviar_formulario = document.getElementById('btn_fase6');
-    const formulario = document.getElementById('formulario');
-    // Envío del formulario
-    formulario.addEventListener('submit', (event) => {
+    const formulario = document.getElementById("formulario");
+
+    formulario.addEventListener("submit", (event) => {
         event.preventDefault();
 
         if (validarFaseActual()) {
-            console.log('Formulario válido, enviando...');
+            console.log("Formulario válido, enviando...");
 
-            let datos = new FormData(formulario);
+            // Construir objeto con todos los campos
+            const datos = {
+                action: "guardar",
+                tipo_documento_emprendedor: document.getElementById("tipo_documento_emprendedor").value,
+                documento_emprendedor: document.getElementById("documento_emprendedor").value,
+                nombre_emprendedor: document.getElementById("nombre_emprendedor").value,
+                apellido_emprendedor: document.getElementById("apellido_emprendedor").value,
+                telefono_emprendedor: document.getElementById("telefono_emprendedor").value,
+                fecha_nacimiento_emprendedor: document.getElementById("fecha_nacimiento_emprendedor").value,
+                sexo_emprendedor: document.getElementById("sexo_emprendedor").value,
+                correo_emprendedor: document.getElementById("correo_emprendedor").value,
+                paises: document.getElementById("paises").value,
+                nacionalidad: document.getElementById("nacionalidad").value,
+                departamento: document.getElementById("departamento").value,
+                municipio: document.getElementById("municipio").value,
+                clasificacion: document.getElementById("clasificacion").value,
+                discapacidad: document.getElementById("discapacidad").value,
+                tipo_emprendedor: document.getElementById("tipo_emprendedor").value,
+                nivel_formacion: document.getElementById("nivel_formacion").value,
+                carrera_tecnico: document.getElementById("carrera_tecnico").value,
+                numero_ficha: document.getElementById("numero_ficha").value,
+                situacion_negocio: document.getElementById("situacion_negocio").value,
+                programa: document.getElementById("programa").value,
+                ejercer_actividad_proyecto: document.getElementById("ejercer_actividad_proyecto").value,
+                empresa_formalizada: document.getElementById("empresa_formalizada").value,
+                centro_orientacion: document.getElementById("centro_orientacion").value,
+                id_orientador: document.getElementById("id_orientador").value,
+                nombre_orientador: document.getElementById("nombre_orientador").value,
+            };
 
-            // Crear objeto FormData con todos los campos del formulario
-            // Enviar al controlador con fetch
-            fetch('../controller/registro.php', {
-                method: 'POST',
-                body: datos, action: "guardar",
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+            // Enviar al backend como JSON
+            fetch("../controller/registro.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(datos)
             })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Respuesta del servidor:', data);
+            .then(response => response.json())
+            .then(data => {
+                console.log("Respuesta del servidor:", data);
+
+                if (data.status === "exitoso") {
                     Swal.fire({
                         title: "Registro guardado correctamente",
+                        text: data.mensaje, // "Registro exitoso y correo enviado"
                         icon: "success",
-                        draggable: false,
                         confirmButtonText: "Aceptar",
                         confirmButtonColor: "#39A900"
                     }).then(() => {
                         window.location.href = "../index.php";
                     });
-                })
-                .catch(error => {
-                    console.error('Error al enviar:', error);
+
+                } else if (data.status === "alerta") {
+                    Swal.fire({
+                        title: "Registro guardado",
+                        text: data.mensaje, // "Registro exitoso pero error al enviar correo"
+                        icon: "warning",
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "#FFA500"
+                    });
+
+                } else if (data.status === "error") {
+                    Swal.fire({
+                        title: "Error",
+                        text: data.mensaje, // "Error al guardar el formulario"
+                        icon: "error",
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "#D33"
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Error al enviar:", error);
+                Swal.fire({
+                    title: "Error inesperado",
+                    text: "No se pudo conectar con el servidor",
+                    icon: "error",
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#D33"
                 });
-        };
+            });
+        }
     });
 }
+
+
 
 function fechaNacimiento() {
 // Establecer restricciones de fecha en el campo de nacimiento
@@ -538,7 +653,7 @@ function cargarPaises() {
 
         const nacionalidadField = document.getElementById("nacionalidad");
         if (nacionalidadField) {
-            nacionalidadField.textContent = "Colombiano/a";
+            nacionalidadField.value = "Colombiano";
         }
 
         console.log('✓ Países cargados correctamente: ' + paises.length);
@@ -571,6 +686,7 @@ document.addEventListener("DOMContentLoaded", () => {
         validarFaseActual();
     }
 
+    cargarOrientadores();
 
     fechaNacimiento();
 

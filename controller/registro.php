@@ -3,6 +3,8 @@
 require_once '../conexion.php';
 require '../models/m_orientadores.php';
 require '../models/m_registro.php';
+require '../models/limpiador.php';
+require '../models/cartero.php';
 
 class RegistroController {
 
@@ -14,6 +16,7 @@ class RegistroController {
     {
         $this->emprendedorModel= new Emprendedor($conn);
         $this->orientadorModel= new Orientadores($conn);
+
     }
 
     function redirigirError(): never
@@ -26,9 +29,44 @@ class RegistroController {
     {
         if ($_SERVER['REQUEST_METHOD'] !== "POST" && $_SERVER['REQUEST_METHOD'] !== "GET")
         {
-            redirigirError();
+            $this->redirigirError();
         }
     }
+
+    public function mostrarFormulario()
+    {
+        header('Content-Type: application/json; charset=utf-8');
+
+        try {
+            $orientadores = $this->orientadorModel->listarOrientadores();
+
+            // Si el modulo devuelve un codigo de error en lugar de un array
+            if (!is_array($orientadores)) {
+                $respuesta = match($orientadores) {
+                    'no_conexion'   => ['status' => 'error', 'mensaje' => 'Sin conexión a la base de datos'],
+                    'error_consulta'=> ['status' => 'error', 'mensaje' => 'Error al consultar orientadores'],
+                    default         => ['status' => 'error', 'mensaje' => 'Error desconocido']
+                };
+                var_dump($respuesta);
+                echo json_encode($respuesta);
+                return;
+            }
+
+            // devolver el arreglo de orientadores
+            echo json_encode([
+                'status' => 'exitoso',
+                'orientadores' => $orientadores
+            ]);
+
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            echo json_encode([
+                'status' => 'error',
+                'mensaje' => 'Ocurrió un error al cargar el formulario'
+            ]);
+        }
+    }
+
 
     public function validarDocumento(array $data)
     {
@@ -54,7 +92,8 @@ class RegistroController {
 
     public function recogerRegistro(array $datos)
     {
-        $documento = trim((string)($datos['documento'] ?? ''));
+
+        $documento = trim((string)($datos['documento_emprendedor'] ?? ''));
 
         if (empty($documento)) {
             echo json_encode([
@@ -83,7 +122,7 @@ class RegistroController {
             
             'paises' => Vigilante::sanitizarTexto($datos['paises'] ?? ''),
             
-            'nacionalidad' => Vigilante::sanitizarTexto($datos['nacionalidad'] ?? ''),
+            'nacionalidad' => ($datos['nacionalidad'] ?? ''),
             
             'departamento' => Vigilante::sanitizarTexto($datos['departamento'] ?? ''),
             
@@ -107,31 +146,47 @@ class RegistroController {
             
             'centro_orientacion' => Vigilante::sanitizarTexto($datos['centro_orientacion'] ?? ''),
             
-            'orientador' => Vigilante::sanitizarTexto($datos['orientador_nombre'] ?? ''),
+            'orientador' => Vigilante::sanitizarTexto($datos['nombre_orientador'] ?? ''),
             
-            'orientador_id' => Vigilante::sanitizarDocumento($datos['orientador'] ?? ''),
+            'orientador_id' => Vigilante::sanitizarDocumento($datos['id_orientador'] ?? ''),
             
             'ejercer_actividad_proyecto' => Vigilante::sanitizarTexto($datos['ejercer_actividad_proyecto'] ?? 'NO'),
             
             'empresa_formalizada' => Vigilante::sanitizarTexto($datos['empresa_formalizada'] ?? 'NO'),
         ];
+    
 
-        if (empty(trim($paqueteEmprendedor['numero_ficha']))) {
-
-            $paqueteEmprendedor['numero_ficha'] = 'No aplica';
+        if(empty(trim($paqueteEmprendedor['carrera']))){
+            $paqueteEmprendedor['carrera'] = 'No tiene';
         }
 
-    $resultado = $this->emprendedorModel->insertar($paqueteEmprendedor);
+        $resultado = $this->emprendedorModel->insertar($paqueteEmprendedor);
 
-    $respuesta = match($resultado) {
-        'ok' => ['status'=> 'exitoso','mensaje'=> 'registro exitoso'],
-        'no_guardo' => ['status'=> 'error','mensaje'=> 'error de guardado'],
-        'sin_conexion' => ['status'=> 'error','mensaje'=> 'sin conexion con la base de datos'],
-        default => ['status'=> 'error','mensaje'=> 'error desconocido']
-    };
+        if ($resultado == "ok") {
+            $paqueteCorreo = [
+                'nombre'     => $paqueteEmprendedor['nombre_emprendedor'],
+                'usuario'    => $paqueteEmprendedor['documento_emprendedor'],
+                'correo'     => $paqueteEmprendedor['correo_emprendedor'],
+                'orientador' => $paqueteEmprendedor['orientador_id'],
+                'telefono' => $paqueteEmprendedor['telefono_emprendedor']
+            ];
 
-    echo json_encode($respuesta);
-    }
+            $cartero = new Mensajero();
+            $resultado_correo = $cartero->enviarCorreoConfirmacion($paqueteCorreo);
+
+            if ($resultado_correo == "SI") {
+                $respuesta = ['status'=> 'exitoso','mensaje'=> 'Registro exitoso por favor consulta tu correo'];
+            } else {
+                $respuesta = ['status'=> 'alerta','mensaje'=> 'Registro exitoso pero error al enviar correo'];
+            }
+
+        } else {
+            $respuesta = ['status'=> 'error','mensaje'=> 'Error al guardar el formulario'];
+        }
+
+        echo json_encode($respuesta);
+
+    } 
 }
 
 // registro.php (router)
@@ -140,6 +195,7 @@ $conn = $conexion->getConn();
 $controller = new RegistroController($conn);
 
 $controller->validarPeticion();
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $recibido = file_get_contents('php://input');
@@ -161,6 +217,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         http_response_code(400);
         echo json_encode(['error' => true, 'message' => 'Acción desconocida']);
     }
+}elseif($_SERVER['REQUEST_METHOD'] === 'GET' && ($_GET['action']) == 'listar_orientadores'){
+    $controller->mostrarFormulario();
 }
 
 

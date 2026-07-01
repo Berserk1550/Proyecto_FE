@@ -43,33 +43,36 @@ class Emprendedor {
     }
 
 
-     public function insertar($data) {
+    public function insertar($data) {
         $ok = "ok"; // Estado inicial
 
         try {
-            // 1. Preparamos la consulta SQL
+            //Preparamos la consulta SQL
             $sql = "INSERT INTO orientacion_rcde2025_valle 
-                (nombres, apellidos, tipo_id, numero_id, correo, celular, fecha_nacimiento, sexo, pais, nacionalidad, 
-                departamento, municipio, clasificacion, discapacidad, tipo_emprendedor, nivel_formacion, carrera, ficha, 
-                situacion_negocio, programa, ejercer_actividad_proyecto, empresa_formalizada, centro_orientacion, orientador, orientador_id, 
-                fecha_registro, rol, estado_proceso) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'emprendedor', 'pendiente')";
+        (nombres, apellidos, tipo_id, numero_id, correo, celular, fecha_nacimiento, sexo, pais, nacionalidad, 
+        departamento, municipio, clasificacion, discapacidad, tipo_emprendedor, nivel_formacion, carrera, ficha, 
+        situacion_negocio, programa, ejercer_actividad_proyecto, empresa_formalizada, centro_orientacion, orientador, orientador_id, 
+        fecha_registro, rol, contrasena, estado_proceso) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'emprendedor', ?, 'pendiente')";
+
 
             $stmt = $this->db->prepare($sql);
 
             if (!$stmt) {
-                // Si falla el prepare, es probable que sea un error de conexión o estructura
+
                 throw new Exception("sin_conexion");
             }
 
-            // 2. Limpieza de datos masiva (Convertir a minúsculas y quitar espacios)
+            //limpieza de datos masiva (convertir a minusculas y quitar espacios)
             $data = array_map(function($valor) {
                 return mb_strtolower(trim((string)$valor), 'UTF-8');
             }, $data);
 
-            // 3. Vinculamos los parámetros (25 "s" para 25 variables)
+            $num = $data['telefono_emprendedor'];
+            $contra = hash('sha256', $num);
+
             $stmt->bind_param(
-                "sssssssssssssssssssssssss",
+                "ssssssssssssssssssssssssss",
                 $data['nombre_emprendedor'],
                 $data['apellido_emprendedor'],
                 $data['tipo_documento_emprendedor'],
@@ -94,22 +97,24 @@ class Emprendedor {
                 $data['empresa_formalizada'],
                 $data['centro_orientacion'],
                 $data['orientador'],
-                $data['orientador_id']
+                $data['orientador_id'],
+                $contra
             );
 
-            // 4. Ejecutamos
+
+            // ejecutamos
             if (!$stmt->execute()) {
-                // Si el execute falla (ej: error de llave duplicada o integridad)
+                // Si el execute falla
                 throw new Exception("no_guardo");
             }
 
             $stmt->close();
 
         } catch (Exception $e) {
-            // Capturamos el mensaje de la excepción ("sin_conexion" o "no_guardo")
+            //capturamos el mensaje de la excepción
             $ok = $e->getMessage();
             
-            // Si el error no es uno de nuestros mensajes definidos, lo tratamos como error de guardado
+            //si el error no es un mensaje definido, se trata como error de guardado
             if ($ok !== "sin_conexion" && $ok !== "no_guardo") {
                 $ok = "no_guardo";
             }
@@ -117,4 +122,47 @@ class Emprendedor {
 
         return $ok;
     }
+
+    public function cambiarEstado(string $cedula, string $respuesta): string {
+        try {
+            //definir valores segun la respuesta
+            if ($respuesta === 'interesado') {
+                $proceso = 'interesado';
+                $panel   = 'si';
+            } elseif ($respuesta == 'no_interesado') {
+                $proceso = 'no_interesado';
+                $panel   = 'no';
+            } else {
+                throw new Exception("Respuesta inválida: {$respuesta}");
+            }
+
+            //preparar consulta SQL
+            $sql = "UPDATE orientacion_rcde2025_valle 
+                    SET estado_proceso = ?, acceso_panel = ? 
+                    WHERE numero_id = ?";
+
+            $stmt = $this->db->prepare($sql);
+
+            if (!$stmt) {
+                throw new Exception("Error en la preparación de la consulta: " . $this->db->error);
+            }
+
+            // vincular parametros
+            $stmt->bind_param("sss", $proceso, $panel, $cedula);
+
+            //ejecutar consulta
+            if ($stmt->execute()) {
+                return "OK";
+            } else {
+                throw new Exception("Error al ejecutar la consulta: " . $stmt->error);
+            }
+
+        } catch (Exception $e) {
+            //captura cualquier error y lo registra
+            error_log("Error en cambiarEstado: " . $e->getMessage());
+            return "no se pudo enviar";
+        }
+    }
+
+
 }

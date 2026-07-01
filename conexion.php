@@ -8,19 +8,18 @@ class Conexion {
         $pass = "";            
         $db   = "arcanoposada_fondo"; 
 
-        // Crear conexión
+        //crear conexion
         $this->conn = new mysqli($host, $user, $pass, $db);
 
-        // Verificar conexión
+        //verificar conexion
         if ($this->conn->connect_error) {
             die("Error de conexión: " . $this->conn->connect_error);
         }
 
-        // Configurar charset
         $this->conn->set_charset("utf8mb4");
     }
 
-    // Método para obtener el objeto mysqli
+    //metodo para obtener el objeto mysqli
     public function getConn() {
         return $this->conn;
     }

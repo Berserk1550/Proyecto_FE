@@ -82,8 +82,6 @@
 
                     <button type="submit" id="btn_iniciar_sesion" tabindex="3">Ingresar</button>
 
-                    <a href="<!-- ruta de verificar -->">Verificar identidad (si no tienes contraseña, entra aqui)</a>
-
                 </form>
 
             </article>
