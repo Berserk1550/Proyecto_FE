@@ -18,7 +18,9 @@
     --opacidad-pantalla: rgba(184, 184, 184, 0.589);
     --texto-casi-negro: #2D3748;
     --bordes-input: #D1D5DB;
-    --gris-claro: #c5c5c5;
+    --gris-claro: #C5C5C5;
+    --amarillo: #FBBF24;
+    --gris: #9CA3AF;
 }
 
 body {
@@ -38,6 +40,7 @@ body {
     margin: 0;
     width: 100%;
     min-height: 100vh;
+    height: 100vh;
     justify-content: space-between;
     position: relative;
     z-index: 2;
@@ -113,3 +116,360 @@ body {
                         #menu_perfil p:hover {
                             background: var(--gris-claro);
                         }
+
+        #caja_padre #caja_contenedora {
+            width: 90%;
+            position: relative;
+            display: flex;
+            margin-top: 15%;
+            flex-direction: column;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--blanco-total);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+            #caja_contenedora h1 {
+                text-align: center;
+                color: var(--verde-oscuro);
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            #caja_contenedora h3 {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            #caja_contenedora #aplicativo {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                background: var(--blanco);
+                border-radius: 10px;
+                border: 2px solid var(--verde-oscuro);
+                border-left: 5px solid var(--verde-oscuro);
+                border-right: 5px solid var(--verde-oscuro);
+                padding: 10px 10px 10px 20px;
+            }
+
+                #aplicativo b {
+                    margin-bottom: 10px;
+                    font-size: 1rem;
+                }
+
+                #aplicativo #reglas_aplicativo {
+                    line-height: 1.5rem;
+                }
+
+                    #reglas_aplicativo li {
+                        list-style: none;
+                    }
+
+                #aplicativo img {
+                    width: 100%;
+                    padding: 20px;
+                }
+
+            #caja_contenedora #herramientas_ideacion {
+                background: var(--blanco);
+                border-radius: 10px;
+                border: 3px solid var(--color-verde-sena);
+                margin-top: 40px;
+            }
+
+                #herramientas_ideacion h2 {
+                    text-align: center;
+                    color: var(--verde-oscuro);
+                    font-size: 1.3rem;
+                    margin-bottom: 20px;
+                    margin-top: 10px;
+                }
+
+                #herramientas_ideacion #colores_fases {
+                    display: flex;
+                    width: 80%;
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    justify-content: space-between;
+                    font-size: 13px;
+                    margin-bottom: 40px;
+                }
+
+                    #colores_fases #completada {
+                        display: flex;
+                    }
+
+                        #completada span {
+                            background: var(--verde-oscuro);
+                            height: 8px;
+                            width: 8px;
+                            border-radius: 50%;
+                            align-self: center;
+                            margin-right: 5px;
+                            position: relative;
+                        }
+
+                    #colores_fases #activa {
+                        display: flex;
+                    }
+
+                        #activa span {
+                            background: var(--amarillo);
+                            height: 8px;
+                            width: 8px;
+                            border-radius: 50%;
+                            align-self: center;
+                            margin-right: 5px;
+                            position: relative;
+                        }
+
+                    #colores_fases #bloqueada {
+                        display: flex;
+                    }
+
+                        #bloqueada span {
+                            background: var(--gris);
+                            height: 8px;
+                            width: 8px;
+                            border-radius: 50%;
+                            align-self: center;
+                            margin-right: 5px;
+                            position: relative;
+                        }
+
+                #herramientas_ideacion #identificar_problema {
+                    background: linear-gradient(135deg, #eafded 80%, #b2f0c3 100%);
+                    position: relative;
+                    border-radius: 10px;
+                    width: 90%;
+                    justify-content: center;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    padding: 20px;
+                    border: 2px solid var(--verde-oscuro);
+                    margin-bottom: 40px;
+                }
+
+                    #identificar_problema svg {
+                        position: relative;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        margin-bottom: 10px;
+                    }
+
+                    #identificar_problema #id_txt_1 {
+                        font-size: 16px;
+                        text-align: center;
+                        font-weight: bold;
+                        margin-bottom: 10px;
+                        color: var(--verde-oscuro);
+                    }
+
+                    #identificar_problema #id_txt_2 {
+                        font-size: 15px;
+                        color: var(--texto-negro);
+                        text-align: center;
+                        line-height: 1.5rem;
+                        margin-bottom: 10px;
+                    }
+
+                    #identificar_problema #id_txt_3 {
+                        font-size: 15px;
+                        font-weight: bold;
+                        text-align: center;
+                        margin-bottom: 10px;
+                    }
+
+                #herramientas_ideacion #tarjeta_persona {
+                    background: linear-gradient(135deg, #eafded 80%, #b2f0c3 100%);
+                    position: relative;
+                    border-radius: 10px;
+                    width: 90%;
+                    justify-content: center;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    padding: 20px;
+                    border: 2px solid var(--verde-oscuro);
+                    margin-bottom: 40px;
+                }
+
+                    #tarjeta_persona svg {
+                        position: relative;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        margin-bottom: 10px;
+                    }
+
+                    #tarjeta_persona #tj_txt_1 {
+                        font-size: 16px;
+                        text-align: center;
+                        font-weight: bold;
+                        margin-bottom: 10px;
+                        color: var(--verde-oscuro);
+                    }
+
+                    #tarjeta_persona #tj_txt_2 {
+                        font-size: 15px;
+                        color: var(--texto-negro);
+                        text-align: center;
+                        line-height: 1.5rem;
+                        margin-bottom: 10px;
+                    }
+
+                    #tarjeta_persona #tj_txt_3 {
+                        font-size: 15px;
+                        font-weight: bold;
+                        text-align: center;
+                        margin-bottom: 10px;
+                    }
+
+                #herramientas_ideacion #jobs_to_be_done {
+                    background: linear-gradient(135deg, #eafded 80%, #b2f0c3 100%);
+                    position: relative;
+                    border-radius: 10px;
+                    width: 90%;
+                    justify-content: center;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    padding: 20px;
+                    border: 2px solid var(--verde-oscuro);
+                    margin-bottom: 40px;
+                }
+
+                    #jobs_to_be_done svg {
+                        position: relative;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        margin-bottom: 10px;
+                    }
+
+                    #jobs_to_be_done #jb_txt_1 {
+                        font-size: 16px;
+                        text-align: center;
+                        font-weight: bold;
+                        margin-bottom: 10px;
+                        color: var(--verde-oscuro);
+                    }
+
+                    #jobs_to_be_done #jb_txt_2 {
+                        font-size: 15px;
+                        color: var(--texto-negro);
+                        text-align: center;
+                        line-height: 1.5rem;
+                        margin-bottom: 10px;
+                    }
+
+                    #jobs_to_be_done #jb_txt_3 {
+                        font-size: 15px;
+                        font-weight: bold;
+                        text-align: center;
+                        margin-bottom: 10px;
+                    }
+
+                #herramientas_ideacion #lean_canvas {
+                    background: linear-gradient(135deg, #eafded 80%, #b2f0c3 100%);
+                    position: relative;
+                    border-radius: 10px;
+                    width: 90%;
+                    justify-content: center;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    padding: 20px;
+                    border: 2px solid var(--verde-oscuro);
+                    margin-bottom: 40px;
+                }
+
+                    #lean_canvas svg {
+                        position: relative;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        margin-bottom: 10px;
+                    }
+
+                    #lean_canvas #ln_txt_1 {
+                        font-size: 16px;
+                        text-align: center;
+                        font-weight: bold;
+                        margin-bottom: 10px;
+                        color: var(--verde-oscuro);
+                    }
+
+                    #lean_canvas #ln_txt_2 {
+                        font-size: 15px;
+                        color: var(--texto-negro);
+                        text-align: center;
+                        line-height: 1.5rem;
+                        margin-bottom: 10px;
+                    }
+
+                    #lean_canvas #ln_txt_3 {
+                        font-size: 15px;
+                        font-weight: bold;
+                        text-align: center;
+                        margin-bottom: 10px;
+                    }
+
+                #herramientas_ideacion #pitch {
+                    background: linear-gradient(135deg, #eafded 80%, #b2f0c3 100%);
+                    position: relative;
+                    border-radius: 10px;
+                    width: 90%;
+                    justify-content: center;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    padding: 20px;
+                    border: 2px solid var(--verde-oscuro);
+                    margin-bottom: 40px;
+                }
+
+                    #pitch svg {
+                        position: relative;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        margin-bottom: 10px;
+                    }
+
+                    #pitch #pth_txt_1 {
+                        font-size: 16px;
+                        text-align: center;
+                        font-weight: bold;
+                        margin-bottom: 10px;
+                        color: var(--verde-oscuro);
+                    }
+
+                    #pitch #pth_txt_2 {
+                        font-size: 15px;
+                        color: var(--texto-negro);
+                        text-align: center;
+                        line-height: 1.5rem;
+                        margin-bottom: 10px;
+                    }
+
+                    #pitch #pth_txt_3 {
+                        font-size: 15px;
+                        font-weight: bold;
+                        text-align: center;
+                        margin-bottom: 10px;
+                    }
+
+    #caja_padre #pie_pagina {
+        height: 50px;
+        background: var(--blanco);
+        width: 100%;
+        display: block;
+        margin-top: 30px;
+        z-index: 100;
+    }
+
+        #pie_pagina #cont_pie_pagina {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
