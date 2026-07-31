@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&display=swap");
+
+* {
+    box-sizing: border-box;
+    transition: 0.6s;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-verde-sena: #39A900;
+    --blanco: #F6F6F6;
+    --verde-oscuro: #007832;
+    --verde-claro: #9EE37D;
+    --texto-negro: #1A1A1A;
+    --texto-gris: #6F6F6F;
+    --blanco-total: #FFFFFF;
+    --opacidad-pantalla: rgba(184, 184, 184, 0.589);
+    --texto-casi-negro: #2D3748;
+    --bordes-input: #D1D5DB;
+    --gris-claro: #C5C5C5;
+    --amarillo: #FBBF24;
+    --gris: #9CA3AF;
+    --rojo: #FF1D1D;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-family: "Work Sans", system-ui, -apple-system, Roboto, Ubuntu Arial, sans-serif;
+    background-size: cover;
+    min-height: 100vh;
+    background: var(--color-verde-sena);
+    min-width: 100%;
+    z-index: 1;
+}
+
+#caja_padre {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+    #caja_padre #encabezado {
+        position: fixed;
+        top: 0;
+        background: var(--blanco);
+        width: 100%;
+        display: flex;
+        z-index: 100;
+    }
+
+        #encabezado #cont_encabezado {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+            #cont_encabezado #separador {
+                display: flex;
+                align-items: center;
+            }
+
+                #separador #medalla_programa {
+                    margin-right: 20px;
+                    z-index: 101;
+                }
+
+                #separador #texto_programa {
+                    position: absolute;
+                    width: 75%;
+                    top: 100%;
+                    margin-top: 2px;
+                    font-size: 11px;
+                    left: 60%;
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: 1px solid var(--verde-claro);
+                    transform: translatex(-50%);
+                    background: var(--blanco);
+                    z-index: 101;
+                }
+
+                #separador #perfil {
+                    margin: 0 20px 0 20px;
+                    background: var(--color-verde-sena);
+                    padding: 10px 25px;
+                    color: var(--blanco);
+                    border-radius: 10px;
+                    outline: inherit;
+                }
+
+                    #separador #menu_perfil {
+                        position: fixed;
+                        background: var(--bordes-input);
+                        border-radius: 10px;
+                        top: 45px;
+                        margin-left: 10px;
+                    }
+
+                        #menu_perfil p {
+                            font-size: 16px;
+                            color: var(--texto-casi-negro);
+                            padding: 10px 20px;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        #menu_perfil p:hover {
+                            background: var(--gris-claro);
+                        }
+
+        #caja_padre #caja_contenedora {
+            background: var(--blanco-total);
+            position: relative;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 15%;
+            width: 85%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+        }
+
+            #caja_contenedora h1 {
+                text-align: center;
+                margin: 10px 0 20px 0;
+            }
+
+            #caja_contenedora #datos_perfil {
+                flex-direction: column;
+                display: flex;
+            }
+
+                #datos_perfil label {
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+
+                #datos_perfil input {
+                    margin-bottom: 20px;
+                    border-radius: 8px;
+                    border: 1px solid var(--bordes-input);
+                    height: 40px;
+                    padding: 5px;
+                    font-size: 15px;
+                    outline: none;
+                }
+
+                #datos_perfil #guardar_cambios {
+                    margin: 10px 0;
+                    background: var(--color-verde-sena);
+                    color: var(--blanco-total);
+                    border: none;
+                    height: 45px;
+                    border-radius: 8px;
+                    outline: none;
+                    font-size: 15px;
+                    font-weight: 600;
+                }
+
+                #datos_perfil #cancelar_editar {
+                    border: none;
+                    outline: none;
+                    height: 40px;
+                    margin: 10px 0;
+                    background: var(--rojo);
+                    color: var(--blanco-total);
+                    font-size: 15px;
+                    font-weight: 600;
+                    border-radius: 8px;
+                    width: 50%;
+                    align-self: center;
+                }
+
+        #caja_padre #pie_pagina {
+            height: 50px;
+            background: var(--blanco);
+            width: 100%;
+            display: block;
+            margin-top: 30px;
+            z-index: 100;
+        }
+
+            #pie_pagina #cont_pie_pagina {
+                position: relative;
+                width: 100%;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 10px;
+            }
+
+@media screen and (min-width: 650px) {
+
+        #caja_padre #caja_contenedora {
+            margin-top: 0;
+            top: 50%;
+            width: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #caja_padre #pie_pagina {
+            position: fixed;
+            bottom: 0;
+        }
+}
+
+@media screen and (min-width: 1024px) {
+
+        #caja_padre #caja_contenedora {
+            width: 40%;
+        }
+
+            #caja_contenedora #datos_perfil {
+                padding: 0 30px;
+            }
+
+                #datos_perfil input {
+                    margin-bottom: 10px;
+                    font-size: 14px;
+                }
+}
+
