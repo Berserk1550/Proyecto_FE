@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&display=swap");
+
+* {
+    box-sizing: border-box;
+    transition: 0.6s;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-verde-sena: #39A900;
+    --blanco: #F6F6F6;
+    --verde-oscuro: #007832;
+    --verde-claro: #9EE37D;
+    --texto-negro: #1A1A1A;
+    --texto-gris: #6F6F6F;
+    --blanco-total: #FFFFFF;
+    --opacidad-pantalla: rgba(184, 184, 184, 0.589);
+    --texto-casi-negro: #2D3748;
+    --bordes-input: #D1D5DB;
+    --gris-claro: #C5C5C5;
+    --amarillo: #FBBF24;
+    --gris: #9CA3AF;
+    --rojo: #FF1D1D;
+    --blanco-opaco: #E8E7E7;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    font-family: "Work Sans", system-ui, -apple-system, Roboto, Ubuntu Arial, sans-serif;
+    background-size: cover;
+    min-height: 100vh;
+    background: url(../img/pc.jpg) center center no-repeat fixed;
+    min-width: 100%;
+    z-index: 1;
+}
+
+#caja_padre {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+    #caja_padre #encabezado {
+        position: fixed;
+        top: 0;
+        background: var(--blanco);
+        width: 100%;
+        display: flex;
+        z-index: 100;
+    }
+
+        #encabezado #cont_encabezado {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+            #cont_encabezado #caja_separadora {
+                display: flex;
+            }
+
+            #caja_separadora #medalla_programa {
+                margin-right: 20px;
+                z-index: 101;
+            }
+
+            #cont_encabezado #texto_programa {
+                position: absolute;
+                width: 75%;
+                top: 100%;
+                margin-top: 2px;
+                font-size: 11px;
+                left: 60%;
+                padding: 5px;
+                border-radius: 5px;
+                border: 1px solid var(--verde-claro);
+                transform: translatex(-50%);
+                background: var(--blanco);
+                z-index: 101;
+            }
+
+            #caja_separadora #volver_inicio {
+                background: var(--verde-oscuro);
+                font-size: 13px;
+                font-weight: bold;
+                border-radius: 99px;
+                text-decoration: none;
+                color: var(--blanco-total);
+                padding: 8px;
+                margin-right: 5px;
+            }
+
+    #caja_padre #caja_principal {
+        width: 90%;
+        position: relative;
+        left: 50%;
+        transform: translatex(-50%);
+        margin-top: 80px;
+        border-radius: 15px;
+        background: var(--blanco);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+        #caja_principal #tlo_sbdc {
+            text-align: center;
+            color: var(--texto-negro);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        #caja_principal h1 {
+            text-align: center;
+            font-size: 1.7rem;
+            margin-top: 10px;
+            color: var(--texto-negro);
+            margin-bottom: 10px;
+        }
+
+        #caja_principal #tarjeta_1 {
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            border: 2px solid var(--bordes-input);
+            padding: 30px;
+            width: 100%;
+        }
+
+            #caja_datos_basicos #datos_basicos {
+                display: flex;
+                flex-direction: column;
+            }
+
+                #datos_basicos label {
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+
+                #datos_basicos input {
+                    border: 2px solid var(--bordes-input);
+                    height: 40px;
+                    padding: 5px;
+                    outline: none;
+                    border-radius: 8px;
+                    margin-bottom: 10px;
+                }
+
+                #datos_basicos textarea {
+                    border: 2px solid var(--bordes-input);
+                    height: 100px;
+                    outline: none;
+                    padding: 5px;
+                    border-radius: 8px;
+                    margin-bottom: 10px;
+                }
+
+            #caja_datos_basicos #foto_perfil {
+                position: relative;
+                left: 50%;
+                width: 80%;
+                transform: translateX(-50%);
+                padding: 10px;
+                margin: 20px 0;
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                border: 2px solid var(--verde-oscuro);
+            }
+
+                #foto_perfil svg {
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    margin-top: 10px;
+                    border: 2px solid var(--verde-oscuro);
+                    border-radius: 8px;
+                }
+
+                #foto_perfil p {
+                    font-size: 11px;
+                    text-align: center;
+                }
+
+            #tarjeta_1 #quien_es {
+                font-size: 15px;
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+
+            #tarjeta_1 textarea {
+                border: 2px solid var(--bordes-input);
+                height: 100px;
+                outline: none;
+                padding: 5px;
+                border-radius: 8px;
+                margin-bottom: 10px;
+            }
+
+            
